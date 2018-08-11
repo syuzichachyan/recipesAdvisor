@@ -1,6 +1,3 @@
-import { changeNoPreferences } from './changeNoPreferences';
-import { addIndifference, removeIndifference } from './indifference';
-import { addPreference, removePreference } from './preference';
 import {
     recipesFetching,
     recipesFetchingSuccess,
@@ -8,3 +5,9 @@ import {
     getRecipes
 } from './recipes';
 
+export {
+    recipesFetching,
+    recipesFetchingFailure,
+    recipesFetchingSuccess,
+    getRecipes
+};
