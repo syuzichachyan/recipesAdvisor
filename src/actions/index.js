@@ -1,13 +1,21 @@
+import { changeNoPreferences } from './changeNoPreferences';
+import { addIndifference, removeIndifference } from './indifference';
+import { addPreference, removePreference } from './preference';
 import {
-    recipesFetching,
-    recipesFetchingSuccess,
-    recipesFetchingFailure,
-    getRecipes
+  recipesFetching,
+  recipesFetchingSuccess,
+  recipesFetchingFailure,
+  getRecipes
 } from './recipes';
 
 export {
-    recipesFetching,
-    recipesFetchingFailure,
-    recipesFetchingSuccess,
-    getRecipes
+  changeNoPreferences,
+  addIndifference,
+  removeIndifference,
+  addPreference,
+  removePreference,
+  recipesFetching,
+  recipesFetchingFailure,
+  recipesFetchingSuccess,
+  getRecipes
 };

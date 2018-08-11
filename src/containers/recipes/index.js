@@ -1,21 +1,20 @@
 import { connect } from 'react-redux';
 import { getRecipes } from '../../actions';
-import Recipes from '../../components/recipes';
+import Recipes from '../../components/Recipes';
 
 const mapStateToProps = state => {
-    return {
-        isRecipesFetching: state.isRecipesFetching,
-        recipes: state.recipes
-    };
+  return {
+    isRecipesFetching: state.isRecipesFetching,
+    recipes: state.recipes
+  };
 };
 const mapDispatchToProps = dispatch => {
-    return {
-        getRecipes: (excludes, includes) =>
-            dispatch(getRecipes(excludes, includes))
-    };
+  return {
+    getRecipes: (excludes, includes) => dispatch(getRecipes(excludes, includes))
+  };
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Recipes);
