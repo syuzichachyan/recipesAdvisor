@@ -7,6 +7,8 @@ import {
   recipesFetchingFailure,
   getRecipes
 } from './recipes';
+import isWideEnough from './isWideEnough';
+import collapse from './collapse';
 
 export {
   changeNoPreferences,
@@ -17,5 +19,7 @@ export {
   recipesFetching,
   recipesFetchingFailure,
   recipesFetchingSuccess,
-  getRecipes
+  getRecipes,
+  isWideEnough,
+  collapse
 };

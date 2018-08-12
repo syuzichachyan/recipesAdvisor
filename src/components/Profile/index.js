@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Recipes from '../../containers/recipes';
+import Header from '../../containers/Header';
 
 class Profile extends Component {
   render() {
@@ -7,6 +8,7 @@ class Profile extends Component {
     const excludes = ['chicken'];
     return (
       <React.Fragment>
+        <Header/>
         <Recipes includes={includes} excludes={excludes} />
       </React.Fragment>
     );
