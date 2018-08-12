@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Recipes from '../../containers/recipes';
 import Header from '../../containers/Header';
+import {BrowserRouter as Router,Route,Switch}  from 'react-router-dom'
 
 class Profile extends Component {
   render() {
@@ -9,7 +10,11 @@ class Profile extends Component {
     return (
       <React.Fragment>
         <Header/>
-        <Recipes includes={includes} excludes={excludes} />
+          <Router >
+              <Switch>
+                  <Route exact path="/profile" render={props=><Recipes includes={includes} excludes={excludes}/>}/>
+              </Switch>
+          </Router>
       </React.Fragment>
     );
   }
