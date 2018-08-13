@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Recipes from '../../containers/recipes';
 import Header from '../../containers/Header';
-import {BrowserRouter as Router,Route,Switch}  from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Profile extends Component {
   render() {
@@ -9,12 +9,18 @@ class Profile extends Component {
     const excludes = ['chicken'];
     return (
       <React.Fragment>
-        <Header/>
-          <Router >
-              <Switch>
-                  <Route exact path="/profile" render={props=><Recipes includes={includes} excludes={excludes}/>}/>
-              </Switch>
-          </Router>
+        <Header />
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/profile"
+              render={props => (
+                <Recipes includes={includes} excludes={excludes} />
+              )}
+            />
+          </Switch>
+        </Router>
       </React.Fragment>
     );
   }
