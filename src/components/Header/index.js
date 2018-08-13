@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand,NavbarToggler, Collapse,  NavbarNav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  NavbarNav,
+  NavItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'mdbreact';
+import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
 
 import styles from './styles';
@@ -12,34 +24,44 @@ class Header extends Component {
   }
 
   onClick() {
-    let { Collapsed } = this.props;
-    this.props.collapse(!Collapsed);
+    const { collapse, Collapsed } = this.props;
+    collapse(!Collapsed);
   }
 
   render() {
     const { classes, IsWideEnough, Collapsed } = this.props;
     return (
-      <Navbar className={classes.navBar} fixed={'top'} expand="sm" scrolling>
-        <NavbarBrand href="/profile">
-          <strong className={classes.colorBlack}>LOGO</strong>
+      <Navbar
+        className={classes.navBar}
+        dark
+        fixed={'top'}
+        expand={'sm'}
+        scrolling
+      >
+        <NavbarBrand href={'/profile'}>
+          <strong>LOGO</strong>
         </NavbarBrand>
-        { !IsWideEnough && <NavbarToggler onClick={ this.onClick }/>}
-        <Collapse isOpen = { Collapsed } navbar>
+        {!IsWideEnough && <NavbarToggler onClick={this.onClick} />}
+        <Collapse isOpen={Collapsed} navbar>
           <NavbarNav right>
             <NavItem>
               <Dropdown>
-              <DropdownToggle nav className={classes.colorBlack}>Profile</DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem href="/settings">Settings</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem href="/login">LogOut</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+                <DropdownToggle nav>Profile</DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <Link to={'/settings'}>Settings</Link>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    <Link to={'/login'}>LogOut</Link>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </NavItem>
           </NavbarNav>
         </Collapse>
       </Navbar>
-    )
+    );
   }
 }
 
