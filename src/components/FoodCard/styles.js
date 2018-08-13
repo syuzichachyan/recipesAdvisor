@@ -1,13 +1,11 @@
 export default {
   card: {
     width: '100%',
-    // height: '44px',
     display: 'flex',
     flexDirection: 'row'
   },
   removeButContainer: {
     width: '43px',
-    // height: '100%',
     border: '1px solid rgb(211, 211, 211)',
     borderRight: '0',
     borderTop: '0',
@@ -36,7 +34,6 @@ export default {
   text: {
     display: 'inline',
     width: 'calc(100% - 44px)',
-    // height: '100px',
     lineHeight: '43px',
     fontSize: '18px',
     border: '1px solid rgb(211, 211, 211)',
