@@ -12,7 +12,7 @@ class Recipe extends Component {
     const { recipe, classes } = this.props;
     return (
       <div className={classes.recipe}>
-        <img src={recipe.image} />
+        <img alt="Not Found" src={recipe.image} />
         <h3>{recipe.label}</h3>
       </div>
     );
