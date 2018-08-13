@@ -14,11 +14,11 @@ class Profile extends Component {
       <React.Fragment>
         <Router>
           <div>
-
-            <Link to={`${this.props.match.url}/health?label=dairy-free`}>
-              Dairy
+            <Header/>
+            <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+                Alcohol-Free
             </Link>
-            <Link to={`${this.props.match.url}/health?label=vegan`}>vegan</Link>
+            <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
             <Route
               exact
               path="/profile"

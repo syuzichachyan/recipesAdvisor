@@ -24,12 +24,13 @@ export const getHealthyRecipes = label => dispatch => {
     excludes = [];
   const arr = [];
   dispatch(healthyRecipesFetching());
-  let exludesFoods = `&health=${label}`;
+  let exludesFoods = '';
   excludes.forEach(food => (exludesFoods = exludesFoods + `&excluded=${food}`));
   includes.forEach(inclFoods => {
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=0&to=6&
-        ${excludes.length !== 0 ? exludesFoods : ''}`
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=0&to=6&health=${label}
+        ${exludesFoods}`
+        
     )
       .then(recipes => recipes.json())
       .then(recipes => {
