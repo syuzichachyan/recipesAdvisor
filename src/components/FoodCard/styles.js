@@ -1,17 +1,19 @@
 export default {
   card: {
     width: '100%',
-    height: '44px',
+    // height: '44px',
     display: 'flex',
     flexDirection: 'row'
   },
   removeButContainer: {
     width: '43px',
-    height: '43px',
+    // height: '100%',
     border: '1px solid rgb(211, 211, 211)',
     borderRight: '0',
     borderTop: '0',
-    display: 'inline-block',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
     overflow: 'hidden',
     cursor: 'pointer',
     '&:hover': {
@@ -28,12 +30,13 @@ export default {
     transform: 'rotate(45deg)',
     textAlign: 'center',
     lineHeight: '43px',
-    color: 'rgb(117, 117, 117)'
+    color: 'rgb(117, 117, 117)',
+    userSelect: 'none'
   },
   text: {
-    display: 'inline-block',
+    display: 'inline',
     width: 'calc(100% - 44px)',
-    height: '43px',
+    // height: '100px',
     lineHeight: '43px',
     fontSize: '18px',
     border: '1px solid rgb(211, 211, 211)',
@@ -41,6 +44,7 @@ export default {
     borderLeft: '0',
     borderTop: '0',
     cursor: 'default',
-    padding: '0 8px 0 8px'
+    padding: '0 8px 0 8px',
+    userSelect: 'none'
   }
 };
