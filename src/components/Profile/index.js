@@ -7,9 +7,6 @@ import { urlToProperty } from 'query-string-params';
 
 class Profile extends Component {
   render() {
-    const includes = ['fish', 'egg'];
-    const excludes = ['chicken'];
-
     return (
       <React.Fragment>
         <Router>
@@ -23,7 +20,7 @@ class Profile extends Component {
               exact
               path="/profile"
               render={props => (
-                <Recipes includes={includes} excludes={excludes} />
+                <Recipes {...props}/>
               )}
             />
             <Route
@@ -34,6 +31,10 @@ class Profile extends Component {
                 />
               )}
             />
+              <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+                  Alcohol-Free
+              </Link>
+              <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
           </div>
         </Router>
       </React.Fragment>

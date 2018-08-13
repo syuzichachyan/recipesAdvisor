@@ -19,16 +19,17 @@ const healthyRecipesFetchingFailure = () => {
   return { type: HEALTHY_RECIPES_FETCHING_FAILURE };
 };
 
-export const getHealthyRecipes = label => dispatch => {
+export const getHealthyRecipes = (label,page=0) => dispatch => {
   let includes = ['eggs', 'fish'],
     excludes = [];
+  const count= 24/includes.length;
   const arr = [];
   dispatch(healthyRecipesFetching());
   let exludesFoods = '';
   excludes.forEach(food => (exludesFoods = exludesFoods + `&excluded=${food}`));
   includes.forEach(inclFoods => {
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=0&to=6&health=${label}
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page*count}&to=${count*(page+1)}&health=${label}
         ${exludesFoods}`
         
     )

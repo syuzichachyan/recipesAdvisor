@@ -12,8 +12,8 @@ class Recipe extends Component {
     const { recipe, classes } = this.props;
     return (
       <div className={classes.recipe}>
-        <img src={recipe.image} />
-        <h3>{recipe.label}</h3>
+        <img src={recipe.image}  />
+        <p>{recipe.label}</p>
       </div>
     );
   }
