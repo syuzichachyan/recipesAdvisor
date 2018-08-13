@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import { getRecipes } from '../../actions';
 import Recipes from '../../components/Recipes';
 

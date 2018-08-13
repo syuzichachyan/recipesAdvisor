@@ -7,6 +7,7 @@
     "mdbreact": "^4.6.1",
     "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
+    "query-string-params": "^1.7.5",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.2",

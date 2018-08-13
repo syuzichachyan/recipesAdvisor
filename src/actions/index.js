@@ -1,12 +1,8 @@
 import { changeNoPreferences } from './changeNoPreferences';
 import { addIndifference, removeIndifference } from './indifference';
 import { addPreference, removePreference } from './preference';
-import {
-  recipesFetching,
-  recipesFetchingSuccess,
-  recipesFetchingFailure,
-  getRecipes
-} from './recipes';
+import { getRecipes } from './recipes';
+import { getHealthyRecipes } from './healthyRecipes';
 import isWideEnough from './isWideEnough';
 import collapse from './collapse';
 
@@ -16,10 +12,8 @@ export {
   removeIndifference,
   addPreference,
   removePreference,
-  recipesFetching,
-  recipesFetchingFailure,
-  recipesFetchingSuccess,
   getRecipes,
   isWideEnough,
-  collapse
+  collapse,
+  getHealthyRecipes
 };

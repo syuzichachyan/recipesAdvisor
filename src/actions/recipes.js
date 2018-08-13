@@ -4,20 +4,20 @@ import {
   RECIPES_FETCHING_SUCCESS
 } from '../constants';
 
-export function recipesFetching() {
+const recipesFetching = () => {
   return { type: RECIPES_FETCHING };
-}
+};
 
-export function recipesFetchingSuccess(recipes) {
+const recipesFetchingSuccess = recipes => {
   return {
     type: RECIPES_FETCHING_SUCCESS,
     payload: recipes
   };
-}
+};
 
-export function recipesFetchingFailure() {
+const recipesFetchingFailure = () => {
   return { type: RECIPES_FETCHING_FAILURE };
-}
+};
 
 export const getRecipes = (excludes, includes) => dispatch => {
   dispatch(recipesFetching());
@@ -27,7 +27,7 @@ export const getRecipes = (excludes, includes) => dispatch => {
       food => (exludecFoods = exludecFoods + `&excluded=${food}`)
     );
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=0&to=6&in` +
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=0&to=6&` +
         exludecFoods
     )
       .then(recipes => recipes.json())
