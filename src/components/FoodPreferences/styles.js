@@ -1,7 +1,7 @@
 export default {
   listsContainer: {
-    maxWidth: '500px',
-    width: '65%',
+    maxWidth: '560px',
+    width: '85%',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -11,7 +11,7 @@ export default {
   },
   list: {
     width: '50%',
-    minWidth: '228px',
+    minWidth: '255px',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column'

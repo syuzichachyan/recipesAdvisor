@@ -2,12 +2,13 @@ export default {
   paper: {
     width: '96%',
     backgroundColor: 'white',
-    minHeight: '300px',
-    margin: 'auto'
+    height: '320px',
+    margin: 'auto',
+    overflow: 'auto'
   },
   addFood: {
     width: 'calc(100% - 16px)',
-    padding: '2px 8px 0 8px',
+    margin: '2px 8px 0 8px',
     lineHeight: '40px',
     fontSize: '18px',
     outline: 'none',

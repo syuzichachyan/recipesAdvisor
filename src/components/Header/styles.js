@@ -3,14 +3,10 @@ export default {
     backgroundColor: 'rgb(71, 166, 47)'
   },
 
-  colorBlack: {
-    color: 'black',
+  colorWhite: {
+    color: 'white',
     '&:hover': {
-      color: 'black'
+      color: 'rgba(255, 255, 255, 0.75)'
     }
-  },
-
-  menu: {
-    marginTop: '50px'
   }
 };
