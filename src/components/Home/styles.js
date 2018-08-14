@@ -32,17 +32,17 @@ export default {
     }
   },
   faq: {
-    width: '100px',
+    width: '90px',
     backgroundColor: 'rgb(71, 166, 47)',
     borderBottomRightRadius: '14px',
-    lineHeight: '36px',
+    lineHeight: '32px',
     border: '2px solid rgb(71, 166, 47)'
   },
   profile: {
-    width: '120px',
+    width: '100px',
     backgroundColor: 'rgb(71, 166, 47)',
     borderBottomLeftRadius: '14px',
-    lineHeight: '36px',
+    lineHeight: '32px',
     border: '2px solid rgb(71, 166, 47)'
   },
   title: {
