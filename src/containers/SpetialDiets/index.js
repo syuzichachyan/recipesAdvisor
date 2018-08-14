@@ -1,25 +1,23 @@
 import { connect } from 'react-redux';
+import { getSpecialDiets } from '../../actions';
+import SpecialDiets from '../../components/SpecialDiets';
 import { bindActionCreators } from 'redux';
-
-import { getRecipes } from '../../actions';
-import Recipes from '../../components/Recipes';
 
 const mapStateToProps = state => {
   return {
-    isRecipesFetching: state.isRecipesFetching,
-    recipes: state.recipes
+    specialDiets: state.specialDiets,
+    isSpecialDietsFetching: state.isSpecialDietsFetching
   };
 };
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      getRecipes
+      getSpecialDiets
     },
     dispatch
   );
 };
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Recipes);
+)(SpecialDiets);

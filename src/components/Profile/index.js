@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Recipes from '../../containers/recipes';
 import Header from '../../containers/Header';
 import HealthyRecipes from '../../containers/HealthyRecipes';
+import SpecialDiets from '../../containers/SpetialDiets';
 import { urlToProperty } from 'query-string-params';
 
 class Profile extends Component {
   render() {
-    const includes = ['fish', 'egg'];
-    const excludes = ['chicken'];
-
     return (
       <React.Fragment>
         <Router>
           <div>
-
-            <Link to={`${this.props.match.url}/health?label=dairy-free`}>
-              Dairy
+            <Header />
+            <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+              Alcohol-Free
             </Link>
-            <Link to={`${this.props.match.url}/health?label=vegan`}>vegan</Link>
+            <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
             <Route
               exact
               path="/profile"
-              render={props => (
-                <Recipes includes={includes} excludes={excludes} />
-              )}
+              render={props => <Recipes {...props} />}
             />
             <Route
               path="/profile/health"
@@ -34,6 +30,19 @@ class Profile extends Component {
                 />
               )}
             />
+            <Route
+              path="/profile/diet"
+              render={({ location }) => (
+                <SpecialDiets label={urlToProperty(location.search).label[0]} />
+              )}
+            />
+            <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+              Alcohol-Free
+            </Link>
+            <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
+            <Link to={`${this.props.match.url}/diet?label=balanced`}>
+              Vegan
+            </Link>
           </div>
         </Router>
       </React.Fragment>

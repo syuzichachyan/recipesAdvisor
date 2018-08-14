@@ -6,6 +6,7 @@ import indifference from './indifference';
 import isWideEnough from './isWideEnough';
 import collapse from './collapse';
 import { healthyRecipes, isHealthyRecipesFetching } from './healthyRecipes';
+import { specialDiets, isSpecialDietsFetching } from './specialDiets';
 
 export default combineReducers({
   recipes,
@@ -16,5 +17,7 @@ export default combineReducers({
   isWideEnough,
   collapse,
   isHealthyRecipesFetching,
-  healthyRecipes
+  healthyRecipes,
+  specialDiets,
+  isSpecialDietsFetching
 });
