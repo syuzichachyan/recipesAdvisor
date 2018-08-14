@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  NavbarNav,
-  NavItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'mdbreact';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
 
@@ -32,42 +21,22 @@ class Header extends Component {
   render() {
     const { classes, IsWideEnough, Collapsed } = this.props;
     return (
-      <Router>
-        <Navbar
-          className={classes.navBar}
-          dark
-          fixed={'top'}
-          expand={'sm'}
-          scrolling
-        >
-          <NavbarBrand tag={'span'}>
-            <strong>
-              <Link to={'/profile'} className={classes.colorWhite}>
-                LOGO
-              </Link>
-            </strong>
-          </NavbarBrand>
-          {!IsWideEnough && <NavbarToggler onClick={this.onClick} />}
-          <Collapse isOpen={Collapsed} navbar>
-            <NavbarNav right>
-              <NavItem>
-                <Dropdown>
-                  <DropdownToggle nav>Profile</DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>
-                      <Link to={'/settings'}>Settings</Link>
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                      <Link to={'/login'}>LogOut</Link>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </NavItem>
-            </NavbarNav>
-          </Collapse>
-        </Navbar>
-      </Router>
+      <Navbar fixedTop>
+        <Navbar.Brand>
+          <Link to={'/profile'}>LOGO</Link>
+        </Navbar.Brand>
+        <Nav pullRight>
+          <NavDropdown eventKey={1} title={'Profile'}>
+            <MenuItem eventKey={1.1} header>
+              <Link to={'/settings'}>Settings</Link>
+            </MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={1.2} header>
+              <Link to={'/login'}>Log Out</Link>
+            </MenuItem>
+          </NavDropdown>
+        </Nav>
+      </Navbar>
     );
   }
 }
