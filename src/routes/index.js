@@ -8,7 +8,7 @@ class Routers extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/profile" render={props => <Profile {...props} />} />
+          <Route path="/profile" component={Profile} />} />
           <Route path="/home" component={Home} />
         </Switch>
       </Router>
