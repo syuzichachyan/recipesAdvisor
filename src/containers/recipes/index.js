@@ -11,9 +11,12 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {
-    getRecipes: (excludes, includes) => dispatch(getRecipes(excludes, includes))
-  };
+  return bindActionCreators(
+    {
+      getRecipes
+    },
+    dispatch
+  );
 };
 
 export default connect(

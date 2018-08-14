@@ -11,17 +11,15 @@ class Profile extends Component {
       <React.Fragment>
         <Router>
           <div>
-            <Header/>
+            <Header />
             <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
-                Alcohol-Free
+              Alcohol-Free
             </Link>
             <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
             <Route
               exact
               path="/profile"
-              render={props => (
-                <Recipes {...props}/>
-              )}
+              render={props => <Recipes {...props} />}
             />
             <Route
               path="/profile/health"
@@ -31,10 +29,10 @@ class Profile extends Component {
                 />
               )}
             />
-              <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
-                  Alcohol-Free
-              </Link>
-              <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
+            <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+              Alcohol-Free
+            </Link>
+            <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
           </div>
         </Router>
       </React.Fragment>
