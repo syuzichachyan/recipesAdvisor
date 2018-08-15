@@ -11,12 +11,14 @@ class Home extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.main}>
-        <Link className={classes.link} to="/faq">
-          <div className={classes.faq}>F.A.Q.</div>
-        </Link>
-        <Link className={classes.link} to="/profile">
-          <div className={classes.login}>Profile</div>
-        </Link>
+        <div className={classes.topButtonsContainer}>
+          <Link className={classes.link} to="/faq">
+            <div className={classes.faq}>F.A.Q.</div>
+          </Link>
+          <Link className={classes.link} to="/profile">
+            <div className={classes.profile}>Profile</div>
+          </Link>
+        </div>
         <h1 className={classes.title}>Recipes Adviser</h1>
         <FoodPreferences />
       </div>

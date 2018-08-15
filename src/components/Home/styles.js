@@ -2,34 +2,48 @@ import backgroundImg from '../../images/loginBack.jpg';
 
 export default {
   main: {
-    backgroundImage: `url(${backgroundImg})`,
-    minHeight: '100vh',
-    position: 'relative',
-    backgroundSize: 'cover'
+    background: `url(${backgroundImg}) no-repeat center center fixed`,
+    backgroundSize: 'cover',
+    minHeight: '100vh'
+  },
+  topButtonsContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    top: 0
   },
   link: {
     textDecoration: 'none',
     font: '25px arial, sans-serif',
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      '& $faq': {
+        color: 'rgb(71, 166, 47)',
+        backgroundColor: 'white'
+      },
+      '& $profile': {
+        color: 'rgb(71, 166, 47)',
+        backgroundColor: 'white'
+      }
+    },
+    '&:focus, &:hover, &:visited, &:link, &:active': {
+      textDecoration: 'none'
+    }
   },
   faq: {
-    width: '100px',
+    width: '90px',
     backgroundColor: 'rgb(71, 166, 47)',
     borderBottomRightRadius: '14px',
-    top: '0',
-    left: '0',
-    position: 'relative',
-    lineHeight: '40px'
+    lineHeight: '32px',
+    border: '2px solid rgb(71, 166, 47)'
   },
-  login: {
-    width: '120px',
+  profile: {
+    width: '100px',
     backgroundColor: 'rgb(71, 166, 47)',
     borderBottomLeftRadius: '14px',
-    top: '0',
-    right: '0',
-    position: 'absolute',
-    lineHeight: '40px'
+    lineHeight: '32px',
+    border: '2px solid rgb(71, 166, 47)'
   },
   title: {
     width: '100%',
