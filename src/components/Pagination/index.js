@@ -23,12 +23,12 @@ class Pagination extends Component {
     switch (type) {
       case 'healthy':
         if (curHealthyPage !== 0) {
-          prevHealthyPage(curHealthyPage-1);
+          prevHealthyPage(curHealthyPage - 1);
         }
         break;
       default:
         if (curPage !== 0) {
-          prevPage(curPage-1);
+          prevPage(curPage - 1);
         }
     }
   }
@@ -43,10 +43,10 @@ class Pagination extends Component {
     } = this.props;
     switch (type) {
       case 'healthy':
-        nextHealthyPage(curHealthyPage+1);
+        nextHealthyPage(curHealthyPage + 1);
         break;
       default:
-        nextPage(curPage+1);
+        nextPage(curPage + 1);
     }
   }
 
@@ -54,8 +54,12 @@ class Pagination extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.btnGroup}>
-        <Button onClick={this.handlePrevClick}>Prev</Button>
-        <Button onClick={this.handleNextClick}>Next</Button>
+        <Button className={classes.btn} onClick={this.handlePrevClick}>
+          Prev
+        </Button>
+        <Button className={classes.btn} onClick={this.handleNextClick}>
+          Next
+        </Button>
       </div>
     );
   }
