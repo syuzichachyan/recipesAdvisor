@@ -3,10 +3,9 @@ import { isRecipesFetching, recipes } from './recipes';
 import preference from './preference';
 import noPreferences from './noPreferences';
 import indifference from './indifference';
-import isWideEnough from './isWideEnough';
-import collapse from './collapse';
 import { healthyRecipes, isHealthyRecipesFetching } from './healthyRecipes';
 import { specialDiets, isSpecialDietsFetching } from './specialDiets';
+import { curPage, curHealthyPage } from './pagination';
 
 export default combineReducers({
   recipes,
@@ -14,10 +13,10 @@ export default combineReducers({
   preference,
   indifference,
   noPreferences,
-  isWideEnough,
-  collapse,
   isHealthyRecipesFetching,
   healthyRecipes,
   specialDiets,
-  isSpecialDietsFetching
+  isSpecialDietsFetching,
+  curPage,
+  curHealthyPage
 });

@@ -1,12 +1,23 @@
 export default {
   navBar: {
-    backgroundColor: 'rgb(71, 166, 47)'
+    background: 'rgba(0, 0, 0, 0.5)'
+  },
+
+  toggler: {
+    border: 'none'
+  },
+
+  navItem: {
+    color: 'white',
+    '&:active': {
+      backgroundColor: 'transparent'
+    }
   },
 
   colorWhite: {
     color: 'white',
     '&:hover': {
-      color: 'rgba(255, 255, 255, 0.75)'
+      color: 'rgba(255, 255, 255, 0.5)'
     }
   }
 };

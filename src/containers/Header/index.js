@@ -1,18 +1,10 @@
 import { connect } from 'react-redux';
 
 import Header from '../../components/Header';
-import { isWideEnough, collapse } from '../../actions';
-
-function mapStateToProps(state) {
-  return {
-    Collapsed: state.collapse,
-    IsWideEnough: state.isWideEnough
-  };
-}
+import { firstPage } from '../../actions';
 
 const mapDispatchToProps = (dispatch) => ({
-  isWideEnough: bool => dispatch(isWideEnough(bool)),
-  collapse: bool => dispatch(collapse(bool))
+  firstPage: () => dispatch(firstPage())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(undefined, mapDispatchToProps)(Header);

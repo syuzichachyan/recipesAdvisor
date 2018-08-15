@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavDropdown,
+  MenuItem
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
@@ -10,32 +16,37 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onClick() {
-    const { collapse, Collapsed } = this.props;
-    collapse(!Collapsed);
+  handleClick() {
+    const { firstPage } = this.props;
+    firstPage();
   }
 
   render() {
-    const { classes, IsWideEnough, Collapsed } = this.props;
+    const { classes } = this.props;
     return (
-      <Navbar fixedTop>
-        <Navbar.Brand>
-          <Link to={'/profile'}>LOGO</Link>
-        </Navbar.Brand>
-        <Nav pullRight>
-          <NavDropdown eventKey={1} title={'Profile'}>
-            <MenuItem eventKey={1.1} header>
-              <Link to={'/settings'}>Settings</Link>
-            </MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={1.2} header>
-              <Link to={'/login'}>Log Out</Link>
-            </MenuItem>
-          </NavDropdown>
-        </Nav>
+      <Navbar className={classes.navBar} inverse fixedTop collapseOnSelect>
+        <Navbar.Header>
+          <NavbarBrand>
+            <Link to={'/profile'} className={classes.colorWhite} onClick={this.handleClick}>LOGO</Link>
+          </NavbarBrand>
+          <Navbar.Toggle className={classes.toggler}/>
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav pullRight className={classes.navItem}>
+            <NavDropdown eventKey={1} title={'Profile'} id={'headerDropdown'} noCaret className={classes.navItem}>
+              <MenuItem eventKey={1.1} header>
+                <Link to={'/settings'}>Settings</Link>
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey={1.2} header>
+                <Link to={'/login'} onClick={this.handleClick}>Log Out</Link>
+              </MenuItem>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }
