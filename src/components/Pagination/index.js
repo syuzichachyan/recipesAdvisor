@@ -16,9 +16,11 @@ class Pagination extends Component {
     const {
       prevPage,
       prevHealthyPage,
+      prevSpecialPage,
       type,
-      curPage,
-      curHealthyPage
+      curProfilePage,
+      curHealthyPage,
+      curSpecialPage
     } = this.props;
     switch (type) {
       case 'healthy':
@@ -26,9 +28,14 @@ class Pagination extends Component {
           prevHealthyPage(curHealthyPage - 1);
         }
         break;
+      case 'special':
+        if (curSpecialPage !== 0) {
+          prevSpecialPage(curSpecialPage - 1);
+        }
+        break;
       default:
-        if (curPage !== 0) {
-          prevPage(curPage - 1);
+        if (curProfilePage !== 0) {
+          prevPage(curProfilePage - 1);
         }
     }
   }
@@ -37,16 +44,21 @@ class Pagination extends Component {
     const {
       nextPage,
       nextHealthyPage,
+      nextSpecialPage,
       type,
-      curPage,
-      curHealthyPage
+      curProfilePage,
+      curHealthyPage,
+      curSpecialPage
     } = this.props;
     switch (type) {
       case 'healthy':
         nextHealthyPage(curHealthyPage + 1);
         break;
+      case 'special':
+        nextSpecialPage(curSpecialPage + 1);
+        break;
       default:
-        nextPage(curPage + 1);
+        nextPage(curProfilePage + 1);
     }
   }
 

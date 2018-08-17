@@ -4,7 +4,15 @@ import { addPreference, removePreference } from './preference';
 import { getRecipes } from './recipes';
 import { getHealthyRecipes } from './healthyRecipes';
 import { getSpecialDiets } from './specialDiets';
-import { firstPage, nextPage, nextHealthyPage, prevPage, prevHealthyPage } from './pagination';
+import {
+  firstPage,
+  nextPage,
+  nextHealthyPage,
+  nextSpecialPage,
+  prevPage,
+  prevHealthyPage,
+  prevSpecialPage
+} from './pagination';
 
 export {
   changeNoPreferences,
@@ -18,6 +26,8 @@ export {
   firstPage,
   nextPage,
   nextHealthyPage,
+  nextSpecialPage,
   prevPage,
-  prevHealthyPage
+  prevHealthyPage,
+  prevSpecialPage
 };

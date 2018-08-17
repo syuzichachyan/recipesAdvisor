@@ -5,7 +5,7 @@ import noPreferences from './noPreferences';
 import indifference from './indifference';
 import { healthyRecipes, isHealthyRecipesFetching } from './healthyRecipes';
 import { specialDiets, isSpecialDietsFetching } from './specialDiets';
-import { curPage, curHealthyPage } from './pagination';
+import curPage from './pagination';
 
 export default combineReducers({
   recipes,
@@ -17,6 +17,5 @@ export default combineReducers({
   healthyRecipes,
   specialDiets,
   isSpecialDietsFetching,
-  curPage,
-  curHealthyPage
+  curPage
 });

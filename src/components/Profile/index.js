@@ -7,7 +7,6 @@ import SpecialDiets from '../../containers/SpetialDiets';
 import { urlToProperty } from 'query-string-params';
 import styles from './styles';
 import injectSheet from 'react-jss';
-import Pagination from '../../containers/Pagination';
 
 class Profile extends Component {
   render() {
@@ -32,8 +31,6 @@ class Profile extends Component {
             <SpecialDiets label={urlToProperty(location.search).label[0]} />
           )}
         />
-        <Pagination/>
-        <Pagination type={'healthy'}/>
         <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
           Alcohol-Free
         </Link>
