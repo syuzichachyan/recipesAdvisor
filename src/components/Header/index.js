@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavDropdown,
-  MenuItem
-} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
@@ -27,26 +21,32 @@ class Header extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Navbar className={classes.navBar} inverse fixedTop collapseOnSelect>
+      <Navbar className={classes.navBar} inverse fixedTop>
         <Navbar.Header>
-          <NavbarBrand>
-            <Link to={'/profile'} className={classes.colorWhite} onClick={this.handleClick}>LOGO</Link>
-          </NavbarBrand>
-          <Navbar.Toggle className={classes.toggler}/>
+          <Link
+            to={'/profile'}
+            className={classes.navBarBrand}
+            onClick={this.handleClick}
+          >
+            LOGO
+          </Link>
         </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight className={classes.navItem}>
-            <NavDropdown eventKey={1} title={'Profile'} id={'headerDropdown'} noCaret className={classes.navItem}>
-              <MenuItem eventKey={1.1} header>
-                <Link to={'/settings'}>Settings</Link>
-              </MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={1.2} header>
-                <Link to={'/login'} onClick={this.handleClick}>Log Out</Link>
+        <Nav pullRight>
+          <div className={classes.dropDown}>
+            <NavDropdown
+              eventKey={1}
+              title={<Glyphicon glyph={'list'} />}
+              id={'headerDropDown'}
+              noCaret
+            >
+              <MenuItem header>
+                <Link to={'profile'}>Profile</Link>
+                <Link to={'/dietprogram'}>Start Diet</Link>
+                <Link to={'login'}>Log Out</Link>
               </MenuItem>
             </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+          </div>
+        </Nav>
       </Navbar>
     );
   }
