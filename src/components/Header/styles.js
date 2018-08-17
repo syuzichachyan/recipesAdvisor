@@ -100,5 +100,9 @@ export default {
         }
       }
     }
+  },
+
+  glyph: {
+    marginRight: '10px'
   }
 };

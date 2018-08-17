@@ -39,9 +39,18 @@ class Header extends Component {
             noCaret
           >
             <MenuItem header>
-              <Link to={'profile'}>Profile</Link>
-              <Link to={'/dietprogram'}>Start Diet</Link>
-              <Link to={'login'}>Log Out</Link>
+              <Link to={'/profile'}>
+                <Glyphicon glyph={'user'} className={classes.glyph} />
+                Profile
+              </Link>
+              <Link to={'/dietprogram'}>
+                <Glyphicon glyph={'cutlery'} className={classes.glyph} />
+                Start Diet
+              </Link>
+              <Link to={'/login'}>
+                <Glyphicon glyph={'log-out'} className={classes.glyph} />
+                Log Out
+              </Link>
             </MenuItem>
           </NavDropdown>
         </div>
