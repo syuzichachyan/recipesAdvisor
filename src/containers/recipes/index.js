@@ -7,7 +7,8 @@ import Recipes from '../../components/Recipes';
 const mapStateToProps = state => {
   return {
     isRecipesFetching: state.isRecipesFetching,
-    recipes: state.recipes
+    recipes: state.recipes,
+    curPage: state.curPage.profile
   };
 };
 const mapDispatchToProps = dispatch => {

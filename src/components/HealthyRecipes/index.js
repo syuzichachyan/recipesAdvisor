@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import Pagination from '../../containers/Pagination';
 import Recipe from '../Recipe';
 import styles from './style';
 
 class HealthyRecipes extends Component {
   componentDidMount() {
-    this.props.getHealthyRecipes(this.props.label);
+    const { curPage } = this.props;
+    this.props.getHealthyRecipes(this.props.label, curPage);
   }
   componentDidUpdate(prevProps) {
+    const { firstPage, curPage } = this.props;
     if (this.props.label !== prevProps.label) {
-      this.props.getHealthyRecipes(this.props.label);
+      firstPage();
+      this.props.getHealthyRecipes(this.props.label, curPage);
+    }
+
+    if (curPage !== prevProps.curPage) {
+      this.props.getHealthyRecipes(this.props.label, curPage);
     }
   }
   render() {
@@ -17,12 +25,17 @@ class HealthyRecipes extends Component {
       const healthyRecipes = this.props.healthyRecipes;
       const { classes } = this.props;
       return (
-        <div className={classes.recipes}>
-          {healthyRecipes.map(item =>
-            item.hits.map(recipe => {
-              return <Recipe recipe={recipe.recipe} key={recipe.recipe.url} />;
-            })
-          )}
+        <div>
+          <div className={classes.recipes}>
+            {healthyRecipes.map(item =>
+              item.hits.map(recipe => {
+                return (
+                  <Recipe recipe={recipe.recipe} key={recipe.recipe.url} />
+                );
+              })
+            )}
+          </div>
+          <Pagination type={'healthy'} />
         </div>
       );
     } else return <div>sd</div>;
