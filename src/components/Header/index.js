@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
+import { Navbar, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
@@ -31,22 +31,20 @@ class Header extends Component {
             LOGO
           </Link>
         </Navbar.Header>
-        <Nav pullRight>
-          <div className={classes.dropDown}>
-            <NavDropdown
-              eventKey={1}
-              title={<Glyphicon glyph={'list'} />}
-              id={'headerDropDown'}
-              noCaret
-            >
-              <MenuItem header>
-                <Link to={'profile'}>Profile</Link>
-                <Link to={'/dietprogram'}>Start Diet</Link>
-                <Link to={'login'}>Log Out</Link>
-              </MenuItem>
-            </NavDropdown>
-          </div>
-        </Nav>
+        <div className={classes.dropDown}>
+          <NavDropdown
+            eventKey={1}
+            title={<Glyphicon glyph={'list'} />}
+            id={'headerDropDown'}
+            noCaret
+          >
+            <MenuItem header>
+              <Link to={'profile'}>Profile</Link>
+              <Link to={'/dietprogram'}>Start Diet</Link>
+              <Link to={'login'}>Log Out</Link>
+            </MenuItem>
+          </NavDropdown>
+        </div>
       </Navbar>
     );
   }

@@ -3,20 +3,11 @@ export default {
     background: 'rgba(0, 0, 0, 0.5)',
     border: 0,
 
-    '& .navbar-nav .open .dropdown-menu>li': {
-      '@media (max-width: 767px)': {
-        background: 'rgba(0, 0, 0, 0.5)',
-        borderRadius: '4px'
-      }
-    },
+    '@media (max-width: 767px)': {
+      height: '50px',
 
-    '& .navbar-nav .open .dropdown-menu>li>a': {
-      '@media (max-width: 767px)': {
-        color: 'white'
-      },
-
-      '&:hover': {
-        color: 'rgba(255, 255, 255, 0.8)'
+      '&>div': {
+        height: 'inherit'
       }
     }
   },
@@ -36,23 +27,65 @@ export default {
 
     '&:focus': {
       color: 'white',
-      textDecoration: 'none'
-    },
+      textDecoration: 'none',
 
-    '&:focus:hover': {
-      color: 'rgba(255, 255, 255, 0.8)',
-      textDecoration: 'none'
+      '&:hover': {
+        color: 'rgba(255, 255, 255, 0.8)',
+        textDecoration: 'none'
+      }
     }
   },
 
   dropDown: {
+    float: 'right',
     padding: '15px',
 
-    '&>li>a': {
-      color: 'white',
+    '@media (max-width: 767px)': {
+      marginTop: '-50px'
+    },
 
-      '&:hover': {
-        color: 'rgba(255, 255, 255, 0.8)'
+    '&>li': {
+      display: 'block',
+
+      '&>a': {
+        color: 'white',
+
+        '&:hover': {
+          color: 'rgba(255, 255, 255, 0.8)'
+        }
+      },
+
+      '&>ul': {
+        background: 'rgba(0, 0, 0, 0.5)',
+        marginTop: '15px',
+        minWidth: '120px',
+        left: 'auto',
+        right: '-30px',
+
+        '&>li': {
+          width: '100%',
+          padding: 0,
+
+          '& a': {
+            width: '100%',
+            color: 'white',
+
+            '&:hover': {
+              background: 0,
+              color: 'rgba(255, 255, 255, 0.8)',
+
+              '&:focus': {
+                color: 'rgba(255, 255, 255, 0.8)'
+              }
+            },
+
+            '&:focus': {
+              outline: 0,
+              background: 0,
+              color: 'white'
+            }
+          }
+        }
       }
     },
 
@@ -64,37 +97,6 @@ export default {
         '&:focus': {
           background: 'none',
           border: 'none'
-        }
-      }
-    },
-
-    '&>li>ul': {
-      background: 'rgba(0, 0, 0, 0.5)',
-      marginTop: '15px',
-      minWidth: '120px',
-
-      '&>li': {
-        width: '100%',
-        padding: 0,
-
-        '& a': {
-          width: '100%',
-          color: 'white',
-
-          '&:hover': {
-            background: 0,
-            color: 'rgba(255, 255, 255, 0.8)'
-          },
-
-          '&:focus': {
-            outline: 0,
-            background: 0,
-            color: 'white'
-          },
-
-          '&:hover:focus': {
-            color: 'rgba(255, 255, 255, 0.8)'
-          }
         }
       }
     }
