@@ -1,23 +1,19 @@
 import { combineReducers } from 'redux';
 import { isRecipesFetching, recipes } from './recipes';
-import preference from './preference';
-import noPreferences from './noPreferences';
-import indifference from './indifference';
 import isWideEnough from './isWideEnough';
 import collapse from './collapse';
 import { healthyRecipes, isHealthyRecipesFetching } from './healthyRecipes';
 import { specialDiets, isSpecialDietsFetching } from './specialDiets';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 export default combineReducers({
   recipes,
   isRecipesFetching,
-  preference,
-  indifference,
-  noPreferences,
   isWideEnough,
   collapse,
   isHealthyRecipesFetching,
   healthyRecipes,
   specialDiets,
-  isSpecialDietsFetching
+  isSpecialDietsFetching,
+  form: reduxFormReducer
 });

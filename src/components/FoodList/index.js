@@ -16,30 +16,40 @@ class FoodList extends Component {
   handleInput = e => this.setState({ inputVal: e.target.value });
 
   handleKeyPress = e => {
-    if (e.key === 'Enter' && this.state.inputVal.trim().length !== 0) {
-      const inputVal = this.state.inputVal.trim();
-      this.props.addToArr(inputVal);
-      this.setState({ inputVal: '' });
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (this.state.inputVal.trim().length !== 0) {
+        this.props.fields.push({
+          text: this.state.inputVal.trim(),
+          id: this.idGen(this.props.fields.getAll())
+        });
+        this.setState({ inputVal: '' });
+      }
     }
   };
 
+  idGen = state => {
+    if (!state) state = [];
+    let id = 1;
+    state.forEach(v => {
+      if (v.id >= id) id = v.id + 1;
+    });
+    return id;
+  };
+
   render() {
-    const { classes, foodArray, inputPlaceholder } = this.props;
+    const { classes, inputPlaceholder, fields } = this.props;
     return (
       <div className={classes.paper}>
-        {foodArray.map(v => (
-          <FoodCard
-            key={v.id}
-            removeFromArr={this.props.removeFromArr}
-            foodObj={v}
-          />
+        {fields.map((a, i) => (
+          <FoodCard key={fields.get(i).id} fields={fields} index={i} />
         ))}
         <input
-          onChange={this.handleInput}
           onKeyPress={this.handleKeyPress}
+          value={this.state.inputVal}
+          onChange={this.handleInput}
           className={classes.addFood}
           placeholder={inputPlaceholder}
-          value={this.state.inputVal}
         />
       </div>
     );

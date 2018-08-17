@@ -4,16 +4,13 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 class FoodCard extends Component {
-  handleClick = () => {
-    const { foodObj, removeFromArr } = this.props;
-    removeFromArr(foodObj.id);
-  };
+  handleClick = () => this.props.fields.remove(this.props.index);
 
   render() {
-    const { classes, foodObj } = this.props;
+    const { classes, fields, index } = this.props;
     return (
       <div className={classes.card}>
-        <div className={classes.text}>{foodObj.text}</div>
+        <div className={classes.text}>{fields.get(index).text}</div>
         <div className={classes.removeButContainer} onClick={this.handleClick}>
           <div className={classes.removeBut}>+</div>
         </div>
@@ -23,8 +20,8 @@ class FoodCard extends Component {
 
   static propTypes = {
     classes: PropTypes.object,
-    foodObj: PropTypes.object,
-    removeFromArr: PropTypes.func
+    fields: PropTypes.object,
+    index: PropTypes.number
   };
 }
 

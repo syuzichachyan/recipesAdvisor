@@ -3,67 +3,54 @@ import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
+import { reduxForm, FieldArray } from 'redux-form';
 import FoodList from '../FoodList';
 import Checkbox from '../Checkbox';
-import { Link } from 'react-router-dom';
 
 class FoodPreferences extends Component {
   render() {
-    const {
-      classes,
-      preference,
-      indifference,
-      noPreferences,
-      addPreference,
-      removePreference,
-      addIndifference,
-      removeIndifference,
-      changeNoPreferences
-    } = this.props;
+    const { classes, handleSubmit } = this.props;
     return (
-      <div className={classes.listsContainer}>
+      <form
+        action="/somewhere"
+        onSubmit={handleSubmit}
+        className={classes.listsContainer}
+      >
         <div className={classes.list}>
           <h2 className={classes.listTitle}>Preferences</h2>
-          <FoodList
-            addToArr={addPreference}
-            removeFromArr={removePreference}
-            foodArray={preference}
+          <FieldArray
             inputPlaceholder="Food you prefer"
+            name="preference"
+            component={FoodList}
           />
         </div>
         <div className={classes.list}>
           <h2 className={classes.listTitle}>Indifferences</h2>
-          <FoodList
-            addToArr={addIndifference}
-            removeFromArr={removeIndifference}
-            foodArray={indifference}
+          <FieldArray
             inputPlaceholder="Food you dont like"
+            name="indifference"
+            component={FoodList}
           />
         </div>
         <div className={classes.noPrefsContainer}>
           <div className={classes.noPrefsText}>
             I dont have any preferences.
           </div>
-          <Checkbox checked={noPreferences} onClick={changeNoPreferences} />
+          <Checkbox />
         </div>
-        <Link className={classes.link} to="somewhere">
-          <button className={classes.submit}>SUBMIT</button>
-        </Link>
-      </div>
+        <button type="submit" className={classes.submit}>
+          SUBMIT
+        </button>
+      </form>
     );
   }
 
   static propTypes = {
     classes: PropTypes.object,
-    preference: PropTypes.array,
-    indifference: PropTypes.array,
-    noPreferences: PropTypes.bool,
-    addPreference: PropTypes.func,
-    removePreference: PropTypes.func,
-    addIndifference: PropTypes.func,
-    removeIndifference: PropTypes.func,
-    changeNoPreferences: PropTypes.func
+    handleSubmit: PropTypes.func
   };
 }
 
-export default injectSheet(styles)(FoodPreferences);
+export default reduxForm({ form: 'preferences' })(
+  injectSheet(styles)(FoodPreferences)
+);
