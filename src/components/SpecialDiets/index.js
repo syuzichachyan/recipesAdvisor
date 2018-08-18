@@ -6,25 +6,24 @@ import styles from './styles';
 
 class SpecialDiets extends Component {
   componentDidMount() {
-    const { curPage } = this.props;
-    this.props.getSpecialDiets(this.props.label, curPage);
+    const { curPage, getSpecialDiets, label } = this.props;
+    getSpecialDiets(label, curPage);
   }
 
   componentDidUpdate(prevProps) {
-    const { curPage } = this.props;
-    if (this.props.label !== prevProps.label) {
-      this.props.firstPage();
-      this.props.getSpecialDiets(this.props.label, curPage);
+    const { curPage, label, firstPage, getSpecialDiets } = this.props;
+    if (label !== prevProps.label) {
+      firstPage();
+      getSpecialDiets(label, curPage);
     }
     if (curPage !== prevProps.curPage) {
-      this.props.getSpecialDiets(this.props.label, curPage);
+      getSpecialDiets(label, curPage);
     }
   }
 
   render() {
     if (!this.props.isSpecialDietsFetching) {
-      const specialDiets = this.props.specialDiets;
-      const { classes } = this.props;
+      const { classes, specialDiets } = this.props;
       return (
         <div>
           <div className={classes.recipes}>

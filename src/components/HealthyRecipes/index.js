@@ -6,26 +6,25 @@ import styles from './styles';
 
 class HealthyRecipes extends Component {
   componentDidMount() {
-    const { curPage } = this.props;
-    this.props.getHealthyRecipes(this.props.label, curPage);
+    const { curPage, getHealthyRecipes, label } = this.props;
+    getHealthyRecipes(label, curPage);
   }
 
   componentDidUpdate(prevProps) {
-    const { firstPage, curPage } = this.props;
-    if (this.props.label !== prevProps.label) {
+    const { firstPage, curPage, label, getHealthyRecipes } = this.props;
+    if (label !== prevProps.label) {
       firstPage();
-      this.props.getHealthyRecipes(this.props.label, curPage);
+      getHealthyRecipes(label, curPage);
     }
 
     if (curPage !== prevProps.curPage) {
-      this.props.getHealthyRecipes(this.props.label, curPage);
+      getHealthyRecipes(label, curPage);
     }
   }
 
   render() {
     if (!this.props.isHealthyRecipesFetching) {
-      const healthyRecipes = this.props.healthyRecipes;
-      const { classes } = this.props;
+      const { classes, healthyRecipes } = this.props;
       return (
         <div>
           <div className={classes.recipes}>
