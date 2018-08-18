@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import Pagination from '../../containers/Pagination';
 import Recipe from '../Recipe';
-import styles from './style';
+import styles from './styles';
 
 class HealthyRecipes extends Component {
   componentDidMount() {
     const { curPage } = this.props;
     this.props.getHealthyRecipes(this.props.label, curPage);
   }
+
   componentDidUpdate(prevProps) {
     const { firstPage, curPage } = this.props;
     if (this.props.label !== prevProps.label) {
@@ -20,6 +21,7 @@ class HealthyRecipes extends Component {
       this.props.getHealthyRecipes(this.props.label, curPage);
     }
   }
+
   render() {
     if (!this.props.isHealthyRecipesFetching) {
       const healthyRecipes = this.props.healthyRecipes;

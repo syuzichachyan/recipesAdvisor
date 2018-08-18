@@ -1,4 +1,4 @@
-const styles = {
+export default {
   recipe: {
     padding: '20px'
   },
@@ -6,4 +6,3 @@ const styles = {
     width: '40%'
   }
 };
-export default styles;

@@ -10,6 +10,7 @@ const mapStateToProps = state => {
     curPage: state.curPage.healthyRecipes
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => {
     dispatch
   );
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

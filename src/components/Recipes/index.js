@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Pagination from '../../containers/Pagination';
 import Recipe from '../Recipe';
 import injectSheet from 'react-jss';
-import styles from './style';
+import styles from './styles';
 
 class Recipes extends Component {
   componentDidMount() {

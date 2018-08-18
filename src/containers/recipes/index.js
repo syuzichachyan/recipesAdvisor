@@ -11,6 +11,7 @@ const mapStateToProps = state => {
     curPage: state.curPage.profile
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {

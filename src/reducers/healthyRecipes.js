@@ -20,6 +20,7 @@ export const isHealthyRecipesFetching = (
       return state;
   }
 };
+
 const initialStateForHealthyRecipes = [];
 export const healthyRecipes = (
   state = initialStateForHealthyRecipes,

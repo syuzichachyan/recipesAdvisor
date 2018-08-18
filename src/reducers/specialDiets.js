@@ -20,6 +20,7 @@ export const isSpecialDietsFetching = (
       return state;
   }
 };
+
 const initialStateForSpecialDiets = [];
 export const specialDiets = (state = initialStateForSpecialDiets, action) => {
   switch (action.type) {

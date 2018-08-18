@@ -3,11 +3,13 @@ import {
   SPECIAL_DIETS_FETCHING_FAILURE,
   SPECIAL_DIETS_FETCHING_SUCCESS
 } from '../constants';
+
 const specialDietsFetching = () => {
   return {
     type: SPECIAL_DIETS_FETCHING
   };
 };
+
 const specialDietsFetchingSuccess = specialDiets => {
   return {
     type: SPECIAL_DIETS_FETCHING_SUCCESS,

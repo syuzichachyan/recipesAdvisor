@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import Recipe from '../Recipe';
 import Pagination from '../../containers/Pagination';
-import styles from './style';
+import styles from './styles';
 
 class SpecialDiets extends Component {
   componentDidMount() {
     const { curPage } = this.props;
     this.props.getSpecialDiets(this.props.label, curPage);
   }
+
   componentDidUpdate(prevProps) {
     const { curPage } = this.props;
     if (this.props.label !== prevProps.label) {
@@ -19,6 +20,7 @@ class SpecialDiets extends Component {
       this.props.getSpecialDiets(this.props.label, curPage);
     }
   }
+
   render() {
     if (!this.props.isSpecialDietsFetching) {
       const specialDiets = this.props.specialDiets;

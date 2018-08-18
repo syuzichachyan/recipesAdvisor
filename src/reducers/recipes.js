@@ -20,6 +20,7 @@ export const isRecipesFetching = (
       return state;
   }
 };
+
 const initialStateForRecipes = [];
 export const recipes = (state = initialStateForRecipes, action) => {
   switch (action.type) {
