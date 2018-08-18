@@ -8,6 +8,8 @@ import FoodPreferences from '../FoodPreferences';
 
 class Home extends Component {
   submit = val => {
+    debugger;
+    alert(val);
     console.log(val);
   };
 

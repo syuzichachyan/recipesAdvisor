@@ -57,10 +57,8 @@ class FoodList extends Component {
 
   static propTypes = {
     classes: PropTypes.object,
-    addToArr: PropTypes.func,
-    foodArray: PropTypes.array,
     inputPlaceholder: PropTypes.string,
-    removeFromArr: PropTypes.func
+    fields: PropTypes.object
   };
 }
 

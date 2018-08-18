@@ -23,22 +23,24 @@ export default {
     margin: '15px 0 10px 0'
   },
   link: {
-    minWidth: '226px',
-    width: '100%'
-  },
-  submit: {
+    minWidth: '265px',
+    margin: '0 20% 30px 20%',
     backgroundColor: 'rgb(71, 166, 47)',
-    border: '1px solid rgb(44, 99, 30)',
+    border: '2px solid rgb(71, 166, 47)',
     borderRadius: '10px',
-    minWidth: '226px',
-    width: '100%',
     font: '26px arial, sans-serif',
     color: 'white',
     padding: '5px 0 5px 0',
     outline: 'none',
     cursor: 'pointer',
+    textAlign: 'center',
+    '&:focus, &:hover, &:visited, &:link, &:active': {
+      textDecoration: 'none',
+      color: 'white'
+    },
     '&:hover': {
-      backgroundColor: 'rgb(71, 166, 47, 0.92)'
+      backgroundColor: 'white',
+      color: 'rgb(71, 166, 47)'
     }
   },
   noPrefsContainer: {
@@ -47,15 +49,14 @@ export default {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: 'auto',
     color: 'white',
+    margin: '2px auto',
     alignItems: 'center',
     lineHeight: '25px'
   },
   noPrefsText: {
     display: 'inline-block',
-    fontSize: '17px',
-    marginTop: '3px',
+    fontSize: '19px',
     marginRight: '10px'
   }
 };
