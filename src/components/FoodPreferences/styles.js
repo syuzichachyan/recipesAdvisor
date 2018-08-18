@@ -22,7 +22,7 @@ export default {
     textAlign: 'center',
     margin: '15px 0 10px 0'
   },
-  link: {
+  button: {
     minWidth: '265px',
     margin: '0 20% 30px 20%',
     backgroundColor: 'rgb(71, 166, 47)',

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 
 import { reduxForm, FieldArray } from 'redux-form';
 import FoodList from '../FoodList';
@@ -13,7 +11,7 @@ class FoodPreferences extends Component {
   render() {
     const { classes, handleSubmit } = this.props;
     return (
-      <form action="/somewhere" className={classes.listsContainer}>
+      <form onSubmit={handleSubmit} className={classes.listsContainer}>
         <div className={classes.list}>
           <h2 className={classes.listTitle}>Preferences</h2>
           <FieldArray
@@ -36,14 +34,9 @@ class FoodPreferences extends Component {
           </div>
           <Checkbox />
         </div>
-        <Link
-          onClick={handleSubmit}
-          to="/somewhere"
-          className={classes.link}
-          type="submit"
-        >
+        <button className={classes.button} type="submit">
           SUBMIT
-        </Link>
+        </button>
       </form>
     );
   }

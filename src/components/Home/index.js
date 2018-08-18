@@ -3,18 +3,25 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import FoodPreferences from '../FoodPreferences';
 
 class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      redirect: false
+    };
+  }
+
   submit = val => {
-    debugger;
-    alert(val);
     console.log(val);
+    this.setState({ redirect: true });
   };
 
   render() {
     const { classes } = this.props;
+    if (this.state.redirect) return <Redirect to="profile" />;
     return (
       <div className={classes.main}>
         <div className={classes.topButtonsContainer}>
