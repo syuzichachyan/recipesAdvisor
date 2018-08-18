@@ -4,9 +4,15 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 import { Link } from 'react-router-dom';
-import FoodPreferences from '../../containers/FoodPreferences';
+import FoodPreferences from '../FoodPreferences';
 
 class Home extends Component {
+  submit = val => {
+    debugger;
+    alert(val);
+    console.log(val);
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -20,7 +26,7 @@ class Home extends Component {
           </Link>
         </div>
         <h1 className={classes.title}>Recipes Adviser</h1>
-        <FoodPreferences />
+        <FoodPreferences onSubmit={this.submit} />
       </div>
     );
   }

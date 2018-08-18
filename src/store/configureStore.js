@@ -13,6 +13,6 @@ const store =
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )
       );
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
 
 export default store;

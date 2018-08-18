@@ -2,21 +2,20 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import styles from './styles';
+import { Field } from 'redux-form';
 
 function Checkbox(props) {
-  const { classes, onClick, checked } = props;
+  const { classes } = props;
   return (
     <label className={classes.container}>
-      <input checked={checked} onClick={onClick} type="checkbox" />
+      <Field name="noPreferences" component="input" type="checkbox" />
       <span className={classes.checkmark} />
     </label>
   );
 }
 
 Checkbox.propTypes = {
-  classes: PropTypes.object,
-  onClick: PropTypes.func,
-  checked: PropTypes.bool
+  classes: PropTypes.object
 };
 
 export default injectSheet(styles)(Checkbox);

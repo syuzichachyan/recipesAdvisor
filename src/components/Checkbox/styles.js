@@ -4,6 +4,7 @@ export default {
     position: 'relative',
     width: '25px',
     height: '25px',
+    marginBottom: '3px',
     cursor: 'pointer',
     fontSize: '22px',
     '-webkit-user-select': 'none',
