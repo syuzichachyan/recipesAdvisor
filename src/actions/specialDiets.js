@@ -1,8 +1,15 @@
 import {
+  FAVOURITE_RECIPE,
   SPECIAL_DIETS_FETCHING,
   SPECIAL_DIETS_FETCHING_FAILURE,
   SPECIAL_DIETS_FETCHING_SUCCESS
 } from '../constants';
+
+export const favouriteSpecialRecipe = (index, q) => ({
+  type: FAVOURITE_RECIPE,
+  payload: index,
+  q: q
+});
 
 const specialDietsFetching = () => {
   return {

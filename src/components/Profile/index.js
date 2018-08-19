@@ -4,6 +4,7 @@ import Recipes from '../../containers/recipes';
 import Header from '../../containers/Header';
 import HealthyRecipes from '../../containers/HealthyRecipes';
 import SpecialDiets from '../../containers/SpetialDiets';
+import Favourites from '../../containers/Favourites';
 import { urlToProperty } from 'query-string-params';
 import styles from './styles';
 import injectSheet from 'react-jss';
@@ -31,11 +32,13 @@ class Profile extends Component {
             <SpecialDiets label={urlToProperty(location.search).label[0]} />
           )}
         />
+        <Route path={'/profile/favourites'} component={() => <Favourites />} />
         <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
           Alcohol-Free
         </Link>
         <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
         <Link to={`${this.props.match.url}/diet?label=balanced`}>Vegan</Link>
+        <Link to={'/profile/favourites'}>Favourites</Link>
       </div>
     );
   }

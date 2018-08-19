@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import Recipe from '../Recipe';
+import Recipe from '../../containers/Recipe';
 import Pagination from '../../containers/Pagination';
 import styles from './styles';
 
@@ -28,13 +28,18 @@ class SpecialDiets extends Component {
         <div>
           <div className={classes.recipes}>
             {specialDiets.map(item =>
-              item.hits.map(recipe => {
+              item.hits.map((recipe, index) => {
                 return (
-                  <Recipe recipe={recipe.recipe} key={recipe.recipe.url} />
+                  <Recipe
+                    recipe={recipe.recipe}
+                    key={recipe.recipe.url}
+                    index={index}
+                    q={item.q}
+                    type={'special'}
+                  />
                 );
               })
             )}
-            {/*<Pagination type={'special'}/>*/}
           </div>
           <Pagination type={'special'} />
         </div>
