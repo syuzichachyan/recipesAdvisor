@@ -1,6 +1,6 @@
-import { getRecipes } from './recipes';
-import { getHealthyRecipes } from './healthyRecipes';
-import { getSpecialDiets } from './specialDiets';
+import { getRecipes, favouriteRecipe } from './recipes';
+import { getHealthyRecipes, favouriteHealthyRecipe } from './healthyRecipes';
+import { getSpecialDiets, favouriteSpecialRecipe } from './specialDiets';
 import {
   firstPage,
   nextPage,
@@ -10,16 +10,22 @@ import {
   prevHealthyPage,
   prevSpecialPage
 } from './pagination';
+import { addToFavourites, removeFromFavourites } from './favourites';
 
 export {
   getRecipes,
+  favouriteRecipe,
   getHealthyRecipes,
+  favouriteHealthyRecipe,
   getSpecialDiets,
+  favouriteSpecialRecipe,
   firstPage,
   nextPage,
   nextHealthyPage,
   nextSpecialPage,
   prevPage,
   prevHealthyPage,
-  prevSpecialPage
+  prevSpecialPage,
+  addToFavourites,
+  removeFromFavourites
 };
