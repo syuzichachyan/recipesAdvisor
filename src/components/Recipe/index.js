@@ -38,9 +38,9 @@ class Recipe extends Component {
       <div className={classes.recipe}>
         <button className={classes.glyph} onClick={this.handleClick}>
           {isFavourite ? (
-            <Glyphicon glyph={'star'} />
+            <Glyphicon glyph={'heart'} className={classes.glyphsIcon}/>
           ) : (
-            <Glyphicon glyph={'star-empty'} />
+            <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon}/>
           )}
         </button>
         <img alt="Not Found" src={recipe.image} />

@@ -34,7 +34,7 @@ class Header extends Component {
         <div className={classes.dropDown}>
           <NavDropdown
             eventKey={1}
-            title={<Glyphicon glyph={'list'} />}
+            title={<Glyphicon glyph={'list'} className={classes.ListGlyph}/>}
             id={'headerDropDown'}
             noCaret
           >
