@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from '../../containers/Pagination';
 import Recipe from '../../containers/Recipe';
+import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -55,7 +56,7 @@ class Recipes extends Component {
           <Pagination type={'profile'} />
         </div>
       );
-    } else return <div>loading</div>;
+    } else return <Loader/>;
   }
 }
 
