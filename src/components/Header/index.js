@@ -34,12 +34,12 @@ class Header extends Component {
         <div className={classes.dropDown}>
           <NavDropdown
             eventKey={1}
-            title={<Glyphicon glyph={'list'} className={classes.ListGlyph}/>}
+            title={<Glyphicon glyph={'list'} className={classes.ListGlyph} />}
             id={'headerDropDown'}
             noCaret
           >
             <MenuItem header>
-              <Link to={'/profile'}>
+              <Link to={'/settings'}>
                 <Glyphicon glyph={'user'} className={classes.glyph} />
                 Profile
               </Link>
