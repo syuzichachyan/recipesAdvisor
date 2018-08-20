@@ -7,8 +7,10 @@ import {
 
 export const favouriteRecipe = (index, q) => ({
   type: FAVOURITE_RECIPE,
-  payload: index,
-  q: q
+  payload: {
+    index,
+    q
+  }
 });
 
 const recipesFetching = () => {

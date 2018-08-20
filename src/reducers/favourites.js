@@ -17,11 +17,11 @@ export default favourites;
 
 export const checkFavourite = (state, action) => {
   return state.map(item => {
-    if (item.q === action.q) {
+    if (item.q === action.payload.q) {
       return {
         ...item,
         hits: item.hits.map((recipe, i) => {
-          if (i === action.payload) {
+          if (i === action.payload.index) {
             return {
               ...recipe,
               recipe: {

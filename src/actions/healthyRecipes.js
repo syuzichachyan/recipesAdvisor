@@ -7,8 +7,10 @@ import {
 
 export const favouriteHealthyRecipe = (index, q) => ({
   type: FAVOURITE_RECIPE,
-  payload: index,
-  q: q
+  payload: {
+    index,
+    q
+  }
 });
 
 export function healthyRecipesFetching() {
