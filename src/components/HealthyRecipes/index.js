@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import Pagination from '../../containers/Pagination';
 import Recipe from '../../containers/Recipe';
+import Loader from '../Loader';
 import styles from './styles';
 
 class HealthyRecipes extends Component {
@@ -45,7 +46,7 @@ class HealthyRecipes extends Component {
           <Pagination type={'healthy'} />
         </div>
       );
-    } else return <div>sd</div>;
+    } else return <Loader/>;
   }
 }
 export default injectSheet(styles)(HealthyRecipes);

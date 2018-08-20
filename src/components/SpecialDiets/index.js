@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import Recipe from '../../containers/Recipe';
 import Pagination from '../../containers/Pagination';
+import Loader from '../Loader';
 import styles from './styles';
 
 class SpecialDiets extends Component {
@@ -44,7 +45,7 @@ class SpecialDiets extends Component {
           <Pagination type={'special'} />
         </div>
       );
-    } else return <div>sd</div>;
+    } else return <Loader/>;
   }
 }
 export default injectSheet(styles)(SpecialDiets);
