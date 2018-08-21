@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 import Pagination from '../../containers/Pagination';
 import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
@@ -46,7 +47,14 @@ class HealthyRecipes extends Component {
           <Pagination type={'healthy'} />
         </div>
       );
-    } else return <Loader/>;
+    } else return <Loader />;
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    firstPage: PropTypes.func,
+    curPage: PropTypes.number,
+    getHealthyRecipes: PropTypes.func,
+    label: PropTypes.string
+  };
 }
 export default injectSheet(styles)(HealthyRecipes);

@@ -56,7 +56,7 @@ class Recipes extends Component {
           <Pagination type={'profile'} />
         </div>
       );
-    } else return <Loader/>;
+    } else return <Loader />;
   }
 }
 
