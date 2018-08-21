@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Recipes from '../../containers/recipes';
+import Recipes from '../../containers/Recipes';
 import Header from '../../containers/Header';
 import HealthyRecipes from '../../containers/HealthyRecipes';
 import SpecialDiets from '../../containers/SpetialDiets';
