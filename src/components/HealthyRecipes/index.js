@@ -56,7 +56,8 @@ class HealthyRecipes extends Component {
     firstPage: PropTypes.func,
     curPage: PropTypes.number,
     getHealthyRecipes: PropTypes.func,
-    label: PropTypes.string
+    label: PropTypes.string,
+    healthyRecipes: PropTypes.array
   };
 }
 export default injectSheet(styles)(HealthyRecipes);
