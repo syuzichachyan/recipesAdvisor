@@ -1,46 +1,38 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import injectSheet from 'react-jss';
-import styles from './styles';
-
-import { Redirect, Link } from 'react-router-dom';
-import FoodPreferences from '../FoodPreferences';
+import { Route, Link } from 'react-router-dom';
+import Recipes from '../../containers/Recipes';
+import HealthyRecipes from '../../containers/HealthyRecipes';
+import SpecialDiets from '../../containers/SpetialDiets';
+import Favourites from '../../containers/Favourites';
+import { urlToProperty } from 'query-string-params';
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      redirect: false
-    };
-  }
-
-  submit = val => {
-    console.log(val);
-    this.setState({ redirect: true });
-  };
-
   render() {
-    const { classes } = this.props;
-    if (this.state.redirect) return <Redirect to="profile" />;
     return (
-      <div className={classes.main}>
-        <div className={classes.topButtonsContainer}>
-          <Link className={classes.link} to="/faq">
-            <div className={classes.faq}>F.A.Q.</div>
-          </Link>
-          <Link className={classes.link} to="/profile">
-            <div className={classes.profile}>Profile</div>
-          </Link>
-        </div>
-        <h1 className={classes.title}>Recipes Adviser</h1>
-        <FoodPreferences onSubmit={this.submit} />
+      <div >
+        <Route exact path="/home" render={props => <Recipes {...props} />} />
+        <Route
+          path="/home/health"
+          render={({ location }) => (
+            <HealthyRecipes label={urlToProperty(location.search).label[0]} />
+          )}
+        />
+        <Route
+          path="/home/diet"
+          render={({ location }) => (
+            <SpecialDiets label={urlToProperty(location.search).label[0]} />
+          )}
+        />
+        <Route path={'/home/favourites'} component={() => <Favourites />} />
+        <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
+          Alcohol-Free
+        </Link>
+        <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
+        <Link to={`${this.props.match.url}/diet?label=balanced`}>Vegan</Link>
+        <Link to={'/home/favourites'}>Favourites</Link>
       </div>
     );
   }
-
-  static propTypes = {
-    classes: PropTypes.object
-  };
 }
 
-export default injectSheet(styles)(Home);
+export default Home;

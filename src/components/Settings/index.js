@@ -21,7 +21,7 @@ class Settings extends Component {
   handlePasswordChange(changes) {
     console.log(changes);
     const { newPassword, coPassword } = changes;
-    if(newPassword !== coPassword) {
+    if (newPassword !== coPassword) {
       this.setState({
         hasError: true
       });
@@ -32,7 +32,7 @@ class Settings extends Component {
 
   render() {
     const { classes } = this.props;
-    const { hasError } =this.state;
+    const { hasError } = this.state;
     return (
       <div>
         <div className={classes.settings}>
@@ -43,7 +43,10 @@ class Settings extends Component {
             className={classes.tabs}
           >
             <Tab eventKey={1} title={'Change Password'}>
-              <ChangePassword onSubmit={this.handlePasswordChange} hasError={hasError}/>
+              <ChangePassword
+                onSubmit={this.handlePasswordChange}
+                hasError={hasError}
+              />
             </Tab>
             <Tab eventKey={2} title={'Change Preferences'}>
               <FoodPreferences />

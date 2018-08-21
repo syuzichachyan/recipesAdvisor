@@ -25,7 +25,7 @@ class Header extends Component {
       <Navbar className={classes.navBar} inverse fixedTop>
         <Navbar.Header>
           <Link
-            to={'/profile'}
+            to={'/home'}
             className={classes.navBarBrand}
             onClick={this.handleClick}
           >
