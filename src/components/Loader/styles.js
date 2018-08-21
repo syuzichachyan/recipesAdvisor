@@ -2,7 +2,8 @@ export default {
   container: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: '40% 0'
   },
 
   loading: {

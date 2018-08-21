@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { urlToProperty } from 'query-string-params';
+import injectSheet from 'react-jss';
 import Recipes from '../../containers/Recipes';
 import HealthyRecipes from '../../containers/HealthyRecipes';
 import SpecialDiets from '../../containers/SpetialDiets';
 import Favourites from '../../containers/Favourites';
-import { urlToProperty } from 'query-string-params';
+import styles from './styles';
 
 class Home extends Component {
   render() {
+      const { classes } = this.props;
     return (
-      <div >
+       <div className={classes.main}>
         <Route exact path="/home" render={props => <Recipes {...props} />} />
         <Route
           path="/home/health"
@@ -35,4 +38,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default injectSheet(styles)(Home);
