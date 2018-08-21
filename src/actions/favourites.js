@@ -1,7 +1,6 @@
 import {
   ADD_TO_FAVOURITES,
-  REMOVE_FROM_FAVOURITES,
-  FAVOURITE_RECIPE
+  REMOVE_FROM_FAVOURITES
 } from '../constants';
 
 export const addToFavourites = recipe => ({
