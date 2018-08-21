@@ -1,6 +1,6 @@
 export default {
   settings: {
-    marginTop: '80px'
+    marginTop: '65px'
   },
   title: {
     display: 'flex',

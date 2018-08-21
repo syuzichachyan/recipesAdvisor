@@ -34,7 +34,6 @@ class Settings extends Component {
     const { classes } = this.props;
     const { hasError } =this.state;
     return (
-      <div>
         <div className={classes.settings}>
           <h1 className={classes.title}>Settings</h1>
           <Tabs
@@ -50,7 +49,6 @@ class Settings extends Component {
             </Tab>
           </Tabs>
         </div>
-      </div>
     );
   }
   static propTypes = {
