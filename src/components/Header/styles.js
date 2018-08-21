@@ -31,7 +31,7 @@ export default {
   },
   dropDown: {
     float: 'right',
-    padding: '15px',
+    padding: '12px',
     '@media (max-width: 767px)': {
       marginTop: '-50px'
     },
@@ -45,7 +45,7 @@ export default {
       },
       '&>ul': {
         background: 'rgba(0, 0, 0, 0.5)',
-        marginTop: '15px',
+        marginTop: '13px',
         minWidth: '120px',
         left: 'auto',
         right: '-30px',
@@ -84,5 +84,9 @@ export default {
   },
   glyph: {
     marginRight: '10px'
+  },
+
+  ListGlyph: {
+    fontSize: '20px'
   }
 };

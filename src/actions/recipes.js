@@ -1,8 +1,17 @@
 import {
+  FAVOURITE_RECIPE,
   RECIPES_FETCHING,
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS
 } from '../constants';
+
+export const favouriteRecipe = (index, q) => ({
+  type: FAVOURITE_RECIPE,
+  payload: {
+    index,
+    q
+  }
+});
 
 const recipesFetching = () => {
   return { type: RECIPES_FETCHING };
@@ -20,10 +29,11 @@ const recipesFetchingFailure = () => {
 };
 
 export const getRecipes = (page = 0) => dispatch => {
-  const excludes = ['fish'],
-    includes = ['eggs'];
+  const excludes = [],
+    includes = ['eggs', 'fish'];
   let count = 24;
   if (includes.length) count = 24 / includes.length;
+  const arr = [];
   dispatch(recipesFetching());
   let exludecFoods = '';
   includes.forEach(inclFoods => {
@@ -36,7 +46,8 @@ export const getRecipes = (page = 0) => dispatch => {
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        dispatch(recipesFetchingSuccess(recipes));
+        arr.push(recipes);
+        return dispatch(recipesFetchingSuccess(arr));
       })
       .catch(error => {
         console.log(error);

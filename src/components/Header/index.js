@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import injectSheet from 'react-jss';
 
@@ -34,12 +35,12 @@ class Header extends Component {
         <div className={classes.dropDown}>
           <NavDropdown
             eventKey={1}
-            title={<Glyphicon glyph={'list'} />}
+            title={<Glyphicon glyph={'list'} className={classes.ListGlyph} />}
             id={'headerDropDown'}
             noCaret
           >
             <MenuItem header>
-              <Link to={'/profile'}>
+              <Link to={'/settings'}>
                 <Glyphicon glyph={'user'} className={classes.glyph} />
                 Profile
               </Link>
@@ -57,6 +58,10 @@ class Header extends Component {
       </Navbar>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    firstPage: PropTypes.func
+  };
 }
 
 export default injectSheet(styles)(Header);

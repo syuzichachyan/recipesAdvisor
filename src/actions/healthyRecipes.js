@@ -1,8 +1,17 @@
 import {
+  FAVOURITE_RECIPE,
   HEALTHY_RECIPES_FETCHING,
   HEALTHY_RECIPES_FETCHING_FAILURE,
   HEALTHY_RECIPES_FETCHING_SUCCESS
 } from '../constants';
+
+export const favouriteHealthyRecipe = (index, q) => ({
+  type: FAVOURITE_RECIPE,
+  payload: {
+    index,
+    q
+  }
+});
 
 export function healthyRecipesFetching() {
   return { type: HEALTHY_RECIPES_FETCHING };

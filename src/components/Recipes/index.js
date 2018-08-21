@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from '../../containers/Pagination';
-import Recipe from '../Recipe';
+import Recipe from '../../containers/Recipe';
+import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -11,10 +12,12 @@ class Recipes extends Component {
     getRecipes(curPage, excludes, includes);
   }
 
-  componentDidUpdate(prevProps) {
-    const { curPage, getRecipes, excludes, includes } = this.props;
-    if (curPage !== prevProps.curPage) {
-      getRecipes(curPage, excludes, includes);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { curPage, getRecipes, excludes, includes } = this.props;
+      if (curPage !== prevProps.curPage) {
+        getRecipes(curPage, excludes, includes);
+      }
     }
   }
 
@@ -39,9 +42,15 @@ class Recipes extends Component {
         <div>
           <div className={classes.recipes}>
             {recipes.map(item =>
-              item.hits.map(recipe => {
+              item.hits.map((recipe, index) => {
                 return (
-                  <Recipe recipe={recipe.recipe} key={recipe.recipe.url} />
+                  <Recipe
+                    recipe={recipe.recipe}
+                    key={recipe.recipe.url}
+                    index={index}
+                    q={item.q}
+                    type={'profile'}
+                  />
                 );
               })
             )}
@@ -49,7 +58,7 @@ class Recipes extends Component {
           <Pagination type={'profile'} />
         </div>
       );
-    } else return <div>loading</div>;
+    } else return <Loader />;
   }
 }
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import Recipe from '../Recipe';
+import PropTypes from 'prop-types';
+import Recipe from '../../containers/Recipe';
 import Pagination from '../../containers/Pagination';
+import Loader from '../Loader';
 import styles from './styles';
 
 class SpecialDiets extends Component {
@@ -10,14 +12,16 @@ class SpecialDiets extends Component {
     getSpecialDiets(label, curPage);
   }
 
-  componentDidUpdate(prevProps) {
-    const { curPage, label, firstPage, getSpecialDiets } = this.props;
-    if (label !== prevProps.label) {
-      firstPage();
-      getSpecialDiets(label, curPage);
-    }
-    if (curPage !== prevProps.curPage) {
-      getSpecialDiets(label, curPage);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { curPage, label, firstPage, getSpecialDiets } = this.props;
+      if (label !== prevProps.label) {
+        firstPage();
+        getSpecialDiets(label, curPage);
+      }
+      if (curPage !== prevProps.curPage) {
+        getSpecialDiets(label, curPage);
+      }
     }
   }
 
@@ -28,18 +32,31 @@ class SpecialDiets extends Component {
         <div>
           <div className={classes.recipes}>
             {specialDiets.map(item =>
-              item.hits.map(recipe => {
+              item.hits.map((recipe, index) => {
                 return (
-                  <Recipe recipe={recipe.recipe} key={recipe.recipe.url} />
+                  <Recipe
+                    recipe={recipe.recipe}
+                    key={recipe.recipe.url}
+                    index={index}
+                    q={item.q}
+                    type={'special'}
+                  />
                 );
               })
             )}
-            {/*<Pagination type={'special'}/>*/}
           </div>
           <Pagination type={'special'} />
         </div>
       );
-    } else return <div>sd</div>;
+    } else return <Loader />;
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    specialDiets: PropTypes.array,
+    curPage: PropTypes.number,
+    label: PropTypes.string,
+    firstPage: PropTypes.func,
+    getSpecialDiets: PropTypes.func
+  };
 }
 export default injectSheet(styles)(SpecialDiets);
