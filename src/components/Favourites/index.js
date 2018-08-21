@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 
 import Recipe from '../../containers/Recipe';
 import styles from './styles';
@@ -20,6 +21,10 @@ class Favourites extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    favourites: PropTypes.array
+  };
 }
 
 export default injectSheet(styles)(Favourites);
