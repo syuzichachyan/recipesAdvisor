@@ -13,7 +13,13 @@ class Recipe extends Component {
 
   static propTypes = {
     recipe: PropTypes.object.isRequired,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    addToFavourites: PropTypes.func,
+    removeFromFavourites: PropTypes.func,
+    favouriteRecipe: PropTypes.func,
+    q: PropTypes.string,
+    index: PropTypes.number,
+    type: PropTypes.string
   };
 
   handleClick() {
@@ -38,9 +44,9 @@ class Recipe extends Component {
       <div className={classes.recipe}>
         <button className={classes.glyph} onClick={this.handleClick}>
           {isFavourite ? (
-            <Glyphicon glyph={'heart'} className={classes.glyphsIcon}/>
+            <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
           ) : (
-            <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon}/>
+            <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon} />
           )}
         </button>
         <img alt="Not Found" src={recipe.image} />
