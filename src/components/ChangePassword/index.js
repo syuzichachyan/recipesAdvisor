@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Field, reduxForm } from 'redux-form';
 import { Glyphicon } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+
 import styles from './styles';
 
 class ChangePassword extends Component {
@@ -43,6 +45,10 @@ class ChangePassword extends Component {
       </Form>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    handleSubmit: PropTypes.func
+  };
 }
 
 export default reduxForm({ form: 'changePassword' })(

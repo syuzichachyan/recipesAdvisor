@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import injectSheet from 'react-jss';
 
@@ -57,6 +58,10 @@ class Header extends Component {
       </Navbar>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    firstPage: PropTypes.func
+  };
 }
 
 export default injectSheet(styles)(Header);

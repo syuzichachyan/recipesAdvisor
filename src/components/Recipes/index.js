@@ -12,10 +12,12 @@ class Recipes extends Component {
     getRecipes(curPage, excludes, includes);
   }
 
-  componentDidUpdate(prevProps) {
-    const { curPage, getRecipes, excludes, includes } = this.props;
-    if (curPage !== prevProps.curPage) {
-      getRecipes(curPage, excludes, includes);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { curPage, getRecipes, excludes, includes } = this.props;
+      if (curPage !== prevProps.curPage) {
+        getRecipes(curPage, excludes, includes);
+      }
     }
   }
 
@@ -56,7 +58,7 @@ class Recipes extends Component {
           <Pagination type={'profile'} />
         </div>
       );
-    } else return <Loader/>;
+    } else return <Loader />;
   }
 }
 

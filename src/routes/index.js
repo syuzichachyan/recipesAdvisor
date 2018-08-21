@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Profile from '../components/Profile';
 import Home from '../components/Home';
 import Settings from '../components/Settings';
+import RouteWithHeaderAndFooter from './routeWithHeaderAndFooter';
 
 class Routers extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/profile" component={Profile} />
           <Route path="/home" component={Home} />
-          <Route path={'/settings'} component={Settings} />
+          <RouteWithHeaderAndFooter path="/profile" component={Profile} />
+          <RouteWithHeaderAndFooter path={'/settings'} component={Settings} />
         </Switch>
       </Router>
     );

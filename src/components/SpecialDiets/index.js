@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 import Recipe from '../../containers/Recipe';
 import Pagination from '../../containers/Pagination';
 import Loader from '../Loader';
@@ -11,14 +12,16 @@ class SpecialDiets extends Component {
     getSpecialDiets(label, curPage);
   }
 
-  componentDidUpdate(prevProps) {
-    const { curPage, label, firstPage, getSpecialDiets } = this.props;
-    if (label !== prevProps.label) {
-      firstPage();
-      getSpecialDiets(label, curPage);
-    }
-    if (curPage !== prevProps.curPage) {
-      getSpecialDiets(label, curPage);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { curPage, label, firstPage, getSpecialDiets } = this.props;
+      if (label !== prevProps.label) {
+        firstPage();
+        getSpecialDiets(label, curPage);
+      }
+      if (curPage !== prevProps.curPage) {
+        getSpecialDiets(label, curPage);
+      }
     }
   }
 
@@ -45,7 +48,15 @@ class SpecialDiets extends Component {
           <Pagination type={'special'} />
         </div>
       );
-    } else return <Loader/>;
+    } else return <Loader />;
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    specialDiets: PropTypes.array,
+    curPage: PropTypes.number,
+    label: PropTypes.string,
+    firstPage: PropTypes.func,
+    getSpecialDiets: PropTypes.func
+  };
 }
 export default injectSheet(styles)(SpecialDiets);

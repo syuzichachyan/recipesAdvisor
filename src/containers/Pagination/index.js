@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Pagination from '../../components/Pagination';
 import {
@@ -16,14 +17,19 @@ const mapStateToProps = state => ({
   curSpecialPage: state.curPage.specialDiets
 });
 
-const mapDispatchToProps = dispatch => ({
-  nextPage: page => dispatch(nextPage(page)),
-  prevPage: page => dispatch(prevPage(page)),
-  nextHealthyPage: page => dispatch(nextHealthyPage(page)),
-  prevHealthyPage: page => dispatch(prevHealthyPage(page)),
-  nextSpecialPage: page => dispatch(nextSpecialPage(page)),
-  prevSpecialPage: page => dispatch(prevSpecialPage(page))
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      nextPage,
+      prevPage,
+      nextHealthyPage,
+      prevHealthyPage,
+      nextSpecialPage,
+      prevSpecialPage
+    },
+    dispatch
+  );
+};
 
 export default connect(
   mapStateToProps,
