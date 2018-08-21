@@ -12,15 +12,17 @@ class HealthyRecipes extends Component {
     getHealthyRecipes(label, curPage);
   }
 
-  componentDidUpdate(prevProps) {
-    const { firstPage, curPage, label, getHealthyRecipes } = this.props;
-    if (label !== prevProps.label) {
-      firstPage();
-      getHealthyRecipes(label, curPage);
-    }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { firstPage, curPage, label, getHealthyRecipes } = this.props;
+      if (label !== prevProps.label) {
+        firstPage();
+        getHealthyRecipes(label, curPage);
+      }
 
-    if (curPage !== prevProps.curPage) {
-      getHealthyRecipes(label, curPage);
+      if (curPage !== prevProps.curPage) {
+        getHealthyRecipes(label, curPage);
+      }
     }
   }
 
