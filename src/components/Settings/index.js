@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import Header from '../../containers/Header';
 import ChangePassword from '../ChangePassword';
@@ -43,6 +44,9 @@ class Settings extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(Settings);
