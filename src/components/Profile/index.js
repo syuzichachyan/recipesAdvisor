@@ -13,10 +13,6 @@ class Profile extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.main}>
-        <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
-          Alcohol-Free
-        </Link>
-        <Link to={`${this.props.match.url}/health?label=vegan`}>Vegan</Link>
         <Route exact path="/profile" render={props => <Recipes {...props} />} />
         <Route
           path="/profile/health"
