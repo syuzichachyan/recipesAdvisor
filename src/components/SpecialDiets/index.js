@@ -12,14 +12,16 @@ class SpecialDiets extends Component {
     getSpecialDiets(label, curPage);
   }
 
-  componentDidUpdate(prevProps) {
-    const { curPage, label, firstPage, getSpecialDiets } = this.props;
-    if (label !== prevProps.label) {
-      firstPage();
-      getSpecialDiets(label, curPage);
-    }
-    if (curPage !== prevProps.curPage) {
-      getSpecialDiets(label, curPage);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const { curPage, label, firstPage, getSpecialDiets } = this.props;
+      if (label !== prevProps.label) {
+        firstPage();
+        getSpecialDiets(label, curPage);
+      }
+      if (curPage !== prevProps.curPage) {
+        getSpecialDiets(label, curPage);
+      }
     }
   }
 
