@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Recipes from '../../containers/Recipes';
-import Header from '../../containers/Header';
 import HealthyRecipes from '../../containers/HealthyRecipes';
 import SpecialDiets from '../../containers/SpetialDiets';
 import Favourites from '../../containers/Favourites';
@@ -14,7 +13,6 @@ class Profile extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.main}>
-        <Header />
         <Link to={`${this.props.match.url}/health?label=alcohol-free`}>
           Alcohol-Free
         </Link>
