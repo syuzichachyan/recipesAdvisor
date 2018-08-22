@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Pager } from 'react-bootstrap';
 import injectSheet from 'react-jss';
 
 import styles from './styles';
@@ -65,14 +65,14 @@ class Pagination extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.btnGroup}>
-        <Button className={classes.btn} onClick={this.handlePrevClick}>
-          Prev
-        </Button>
-        <Button className={classes.btn} onClick={this.handleNextClick}>
-          Next
-        </Button>
-      </div>
+      <Pager className={classes.pager}>
+        <Pager.Item previous onClick={this.handlePrevClick}>
+          &larr; Previous
+        </Pager.Item>
+        <Pager.Item next onClick={this.handleNextClick}>
+          Next &rarr;
+        </Pager.Item>
+      </Pager>
     );
   }
 }
