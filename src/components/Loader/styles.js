@@ -3,7 +3,7 @@ export default {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '40% 0'
+    margin: '220px 0'
   },
 
   loading: {
