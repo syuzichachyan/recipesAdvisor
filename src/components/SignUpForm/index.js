@@ -5,7 +5,7 @@ import styles from './styles';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-import renderField from './renderField';
+import renderField from '../AuthHelpers/renderField';
 
 class SignUp extends Component {
   render() {
