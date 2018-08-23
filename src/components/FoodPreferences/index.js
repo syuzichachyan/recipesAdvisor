@@ -1,52 +1,30 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './styles';
+import { Link } from 'react-router-dom';
 
-import { reduxForm, FieldArray } from 'redux-form';
-import FoodList from '../FoodList';
-import Checkbox from '../Checkbox';
+import FoodList from '../../containers/FoodList';
 
 class FoodPreferences extends Component {
   render() {
-    const { classes, handleSubmit } = this.props;
+    const { classes } = this.props;
     return (
-      <form onSubmit={handleSubmit} className={classes.listsContainer}>
+      <div className={classes.listsContainer}>
         <div className={classes.list}>
-          <h2 className={classes.listTitle}>Preferences</h2>
-          <FieldArray
-            inputPlaceholder="Food you prefer"
-            name="preference"
-            component={FoodList}
-          />
+          <h2 className={classes.listTitle}>Preffered Products</h2>
+          <FoodList inputPlaceholder="Food you prefer" type />
         </div>
         <div className={classes.list}>
-          <h2 className={classes.listTitle}>Indifferences</h2>
-          <FieldArray
-            inputPlaceholder="Food you dont like"
-            name="indifference"
-            component={FoodList}
-          />
+          <h2 className={classes.listTitle}>Products to Avoid</h2>
+          <FoodList inputPlaceholder="Food you dont like" type={false} />
         </div>
-        <div className={classes.noPrefsContainer}>
-          <div className={classes.noPrefsText}>
-            I dont have any preferences.
-          </div>
-          <Checkbox />
-        </div>
-        <button className={classes.button} type="submit">
-          SUBMIT
-        </button>
-      </form>
+        <Link to="home" className={classes.button}>
+          Show Recipes
+        </Link>
+      </div>
     );
   }
-
-  static propTypes = {
-    classes: PropTypes.object,
-    handleSubmit: PropTypes.func
-  };
 }
 
-export default reduxForm({ form: 'preferences' })(
-  injectSheet(styles)(FoodPreferences)
-);
+export default injectSheet(styles)(FoodPreferences);
