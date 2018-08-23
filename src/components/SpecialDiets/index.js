@@ -8,19 +8,19 @@ import styles from './styles';
 
 class SpecialDiets extends Component {
   componentDidMount() {
-    const { curPage, getSpecialDiets, label } = this.props;
-    getSpecialDiets(label, curPage);
+    const { curPage, getSpecialDiets, labels } = this.props;
+    getSpecialDiets(labels, curPage);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState === this.state) {
-      const { curPage, label, firstPage, getSpecialDiets } = this.props;
-      if (label !== prevProps.label) {
+      const { curPage, labels, firstPage, getSpecialDiets } = this.props;
+      if (labels !== prevProps.label) {
         firstPage();
-        getSpecialDiets(label, curPage);
+        getSpecialDiets(labels, curPage);
       }
       if (curPage !== prevProps.curPage) {
-        getSpecialDiets(label, curPage);
+        getSpecialDiets(labels, curPage);
       }
     }
   }

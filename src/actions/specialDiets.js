@@ -32,8 +32,10 @@ const specialDietsFetchingFailure = () => {
   };
 };
 
-export const getSpecialDiets = (label, page = 0) => dispatch => {
-  let includes = ['eggs', 'fish'],
+export const getSpecialDiets = (labels, page = 0) => dispatch => {
+    labels=['low-carb','vegan'];//must me deleted
+    const connectedLabels=labels.join('&diet=');
+  let includes = ['eggs'],
     excludes = [];
   const count = 24 / includes.length;
   const arr = [];
@@ -43,7 +45,7 @@ export const getSpecialDiets = (label, page = 0) => dispatch => {
   includes.forEach(inclFoods => {
     fetch(
       `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
-      count}&to=${count * (page + 1)}&diet=${label}
+      count}&to=${count * (page + 1)}&diet=${connectedLabels}
         ${exludesFoods}`
     )
       .then(recipes => recipes.json())

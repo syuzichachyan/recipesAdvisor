@@ -30,7 +30,7 @@ const recipesFetchingFailure = () => {
 
 export const getRecipes = (page = 0) => dispatch => {
   const excludes = [],
-    includes = ['eggs', 'fish'];
+    includes = ['eggs'];
   let count = 24;
   if (includes.length) count = 24 / includes.length;
   const arr = [];
