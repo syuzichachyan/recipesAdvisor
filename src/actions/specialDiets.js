@@ -32,19 +32,18 @@ const specialDietsFetchingFailure = () => {
   };
 };
 
-export const getSpecialDiets = (labels, page = 0) => dispatch => {
-    labels=['low-carb','vegan'];//must me deleted
+export const getSpecialDiets = (labels, page = 0,q) => dispatch => {
+    labels=['vegan'];//must me deleted
     const connectedLabels=labels.join('&diet=');
-  let includes = ['eggs'],
-    excludes = [];
-  const count = 24 / includes.length;
+   const excludes = [];
+  const count = 24 ;
   const arr = [];
   dispatch(specialDietsFetching());
   let exludesFoods = '';
   excludes.forEach(food => (exludesFoods = exludesFoods + `&excluded=${food}`));
-  includes.forEach(inclFoods => {
+
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
+      `https://api.edamam.com/search?q=${q}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
       count}&to=${count * (page + 1)}&diet=${connectedLabels}
         ${exludesFoods}`
     )
@@ -57,6 +56,6 @@ export const getSpecialDiets = (labels, page = 0) => dispatch => {
         console.log(error);
         dispatch(specialDietsFetchingFailure());
       });
-  });
+
 };
 
