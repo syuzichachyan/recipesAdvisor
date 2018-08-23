@@ -1,13 +1,11 @@
-import React, { Component } from "react";
-import injectSheet from "react-jss";
-import styles from "./styles";
+import React, { Component } from 'react';
+import injectSheet from 'react-jss';
+import styles from './styles';
 
+import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
-import { Field } from "redux-form";
-import { Link } from "react-router-dom";
-
-
-import  renderField from "./renderField";
+import renderField from './renderField';
 
 class SignUp extends Component {
   render() {
@@ -23,15 +21,18 @@ class SignUp extends Component {
                   <h2>What Are We?</h2>
                   <div className={classes.slider}>
                     <div className={classes.callbacksContainer}>
-                      <ul className={`${classes.rslides} ${classes.callbacks}`} id="slider4">
+                      <ul
+                        className={`${classes.rslides} ${classes.callbacks}`}
+                        id="slider4"
+                      >
                         <li>
                           <div className={classes.descriptionBanner}>
                             <h3>A Simple Recipes Website</h3>
                             <p>
-                              Recipes Advisor is a website that will help you to get
-                              interesting recipes based on the products you like
-                              and avoid the recipes that might be potentially
-                              harmful for you.{" "}
+                              Recipes Advisor is a website that will help you to
+                              get interesting recipes based on the products you
+                              like and avoid the recipes that might be
+                              potentially harmful for you.{' '}
                             </p>
                           </div>
                         </li>
@@ -49,7 +50,10 @@ class SignUp extends Component {
                   </div>
                   <div className={classes.signIn}>
                     <h4>
-                      Already have an account <Link to="Login" className = {classes.a}>Login</Link>
+                      Already have an account{' '}
+                      <Link to="Login" className={classes.a}>
+                        Login
+                      </Link>
                     </h4>
                   </div>
                 </div>
@@ -65,7 +69,7 @@ class SignUp extends Component {
                       type="text"
                       placeholder="First Name"
                     />
-                    
+
                     <Field
                       className={classes.text}
                       name="lastName"
@@ -94,7 +98,9 @@ class SignUp extends Component {
                       type="password"
                       placeholder="Confirm Password"
                     />
-                    <button className={classes.button} type="submit">Sign Up</button>
+                    <button className={classes.button} type="submit">
+                      Sign Up
+                    </button>
                   </form>
                 </div>
               </div>
