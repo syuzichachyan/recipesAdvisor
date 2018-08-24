@@ -32,14 +32,16 @@ export const getHealthyRecipes = (labels, page = 0, q) => dispatch => {
   labels = []; //must me deleted
   let connectedLabels;
   if (labels.length) connectedLabels = '&health=' + labels.join('&health=');
-  let excludes = ['Beet'];
+  let excludes = ["curry"];
   const arr = [];
   dispatch(healthyRecipesFetching());
-  let excludesFoods = '&excluded=' + excludes.join('&excluded=');
+    let excludesFoods;
+  if(excludes.length)
+   excludesFoods = '&excluded=' + excludes.join('&excluded=');
   fetch(
     `https://api.edamam.com/search?q=${q}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
       24}&to=${24 * (page + 1)}${connectedLabels ? connectedLabels : ''}
-        ${excludesFoods}`
+        ${excludesFoods?excludesFoods:''}`
   )
     .then(recipes => recipes.json())
     .then(recipes => {

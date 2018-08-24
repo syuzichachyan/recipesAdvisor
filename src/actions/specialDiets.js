@@ -33,14 +33,16 @@ const specialDietsFetchingFailure = () => {
 };
 
 export const getSpecialDiets = (labels, page = 0, q) => dispatch => {
-  labels = ["balanced"]; //must me deleted
+  labels = ['balanced']; //must me deleted
   let connectedLabels;
   if (labels.length) connectedLabels = '&diet=' + labels.join('&diet=');
-  const excludes = [];
+  const excludes = ['curry'];
+  let excludesFoods;
+  if (excludes.length)
+    excludesFoods = '&excluded=' + excludes.join('&excluded=');
   const count = 24;
   const arr = [];
   dispatch(specialDietsFetching());
-  let excludesFoods = '&excluded=' + excludes.join('&excluded=');
 
   fetch(
     `https://api.edamam.com/search?q=${q}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
