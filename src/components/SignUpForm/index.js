@@ -51,7 +51,7 @@ class SignUp extends Component {
                   <div className={classes.signIn}>
                     <h4>
                       Already have an account{' '}
-                      <Link to="Login" className={classes.a}>
+                      <Link to="Login+" className={classes.a}>
                         Login
                       </Link>
                     </h4>
