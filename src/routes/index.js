@@ -5,15 +5,14 @@ import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 
-
 class Routers extends Component {
   render() {
     return (
       <Router>
         <Switch>
           <Route path="/preferences" component={Preferences} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/signUp" component={SignUpForm} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/signUp" component={SignUpForm} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
       </Router>

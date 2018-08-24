@@ -34,24 +34,20 @@ class Settings extends Component {
     const { classes } = this.props;
     const { hasError } = this.state;
     return (
-        <div className={classes.settings}>
-          <h1 className={classes.title}>Settings</h1>
-          <Tabs
-            defaultActiveKey={1}
-            id={'settingsTabs'}
-            className={classes.tabs}
-          >
-            <Tab eventKey={1} title={'Change Password'}>
-              <ChangePassword
-                onSubmit={this.handlePasswordChange}
-                hasError={hasError}
-              />
-            </Tab>
-            <Tab eventKey={2} title={'Change Preferences'}>
-              <FoodPreferences />
-            </Tab>
-          </Tabs>
-        </div>
+      <div className={classes.settings}>
+        <h1 className={classes.title}>Settings</h1>
+        <Tabs defaultActiveKey={1} id={'settingsTabs'} className={classes.tabs}>
+          <Tab eventKey={1} title={'Change Password'}>
+            <ChangePassword
+              onSubmit={this.handlePasswordChange}
+              hasError={hasError}
+            />
+          </Tab>
+          <Tab eventKey={2} title={'Change Preferences'}>
+            <FoodPreferences />
+          </Tab>
+        </Tabs>
+      </div>
     );
   }
   static propTypes = {
