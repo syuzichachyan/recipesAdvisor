@@ -295,28 +295,46 @@ export default {
       width: '85%'
     }
   },
+  '@media(max-width:800px)': {
+    contentInfo: {
+      '& h2': {
+        fontSize: '1.2em'
+      }
+    },
+    signUpForm: {
+      minHeight: '445px'
+    }
+  },
   '@media (max-width: 768px)': {
     wrap: {
       width: '90%'
     }
   },
+  '@media (max-width: 715px)': {
+    contentLeft: {
+      display: "none"
+    }
+  },
   '@media (max-width: 667px)': {
     contentLeft: {
       float: 'none',
-      width: '100%'
+      width: '100%',
     },
     contentMain: {
       float: 'none',
-      width: '100%'
-    },
-    callbacks_tabs: {
-      left: '45%'
+      width: '100%',
     },
     signUpForm: {
       minHeight: '425px'
     },
     wrap: {
       width: '85%'
+    },
+    h1: {
+      fontSize: '1.5em'
+    },
+    p: {
+      fontSize: '1em'
     }
   },
   '@media (max-width: 320px)': {
