@@ -11,7 +11,9 @@ class ChangePassword extends Component {
     const { handleSubmit, classes, reset, hasError } = this.props;
     return (
       <Form onSubmit={handleSubmit} className={classes.form}>
-        <label htmlFor={'oldPassword'} className={classes.field}>Old Password</label>
+        <label htmlFor={'oldPassword'} className={classes.field}>
+          Old Password
+        </label>
         <Field
           className={classes.field}
           component={'input'}
@@ -38,8 +40,12 @@ class ChangePassword extends Component {
           placeholder={'Repeat Password'}
           autoComplete={'coPassword'}
         />
-        {hasError ? <Glyphicon glyph={'remove-sign'}/> : ''}
-        <button className={classes.field} type={'submit'} onClick={() => setTimeout(reset)}>
+        {hasError ? <Glyphicon glyph={'remove-sign'} /> : ''}
+        <button
+          className={classes.field}
+          type={'submit'}
+          onClick={() => setTimeout(reset)}
+        >
           Save
         </button>
       </Form>

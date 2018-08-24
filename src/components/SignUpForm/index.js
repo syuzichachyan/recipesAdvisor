@@ -8,6 +8,37 @@ import { Link } from 'react-router-dom';
 import renderField from '../AuthHelpers/renderField';
 
 class SignUp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { fetchSignup } = this.props;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword
+    } = this.props;
+    fetchSignup({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword
+    });
+    console.log({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword
+    });
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -61,7 +92,7 @@ class SignUp extends Component {
               <div className={classes.contentMain}>
                 <div className={classes.signUpForm}>
                   <h4>New Customer?</h4>
-                  <form method="post">
+                  <form method="post" onSubmit={this.handleSubmit}>
                     <Field
                       className={classes.text}
                       name="firstName"
@@ -93,14 +124,12 @@ class SignUp extends Component {
                     />
                     <Field
                       className={classes.password}
-                      name="passwordRepeat"
+                      name="confirmPassword"
                       component={renderField}
                       type="password"
                       placeholder="Confirm Password"
                     />
-                    <button className={classes.button} type="submit">
-                      Sign Up
-                    </button>
+                    <button className={classes.button}>Sign Up</button>
                   </form>
                 </div>
               </div>
