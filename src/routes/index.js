@@ -10,8 +10,10 @@ class Routers extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/preferences" component={SignUpForm} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/preferences" component={Preferences} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/signUp" component={SignUpForm} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
       </Router>

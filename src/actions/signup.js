@@ -12,7 +12,7 @@ const receiveSignup = () => {
   };
 };
 
-export const fetchSignup = state => {
+export const fetchSignup = (state, prop) => {
   return dispatch => {
     dispatch(requestSignup());
     return fetch(`http://localhost:5003/v1/signup`, {
@@ -23,6 +23,9 @@ export const fetchSignup = state => {
       body: JSON.stringify(state)
     })
       .then(response => response.json())
-      .then(json => dispatch(receiveSignup()));
+      .then(json => {
+        prop;
+        dispatch(receiveSignup());
+      });
   };
 };

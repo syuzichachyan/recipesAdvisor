@@ -24,13 +24,16 @@ class SignUp extends Component {
       password,
       confirmPassword
     } = this.props;
-    fetchSignup({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword
-    });
+    fetchSignup(
+      {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword
+      },
+      this.props.history.push('/login')
+    );
     console.log({
       firstName: firstName,
       lastName: lastName,
