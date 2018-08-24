@@ -32,29 +32,31 @@ const specialDietsFetchingFailure = () => {
   };
 };
 
-export const getSpecialDiets = (label, page = 0) => dispatch => {
-  let includes = ['eggs', 'fish'],
-    excludes = [];
-  const count = 24 / includes.length;
+export const getSpecialDiets = (labels, page = 0, q) => dispatch => {
+  labels = ['balanced']; //must me deleted
+  let connectedLabels;
+  if (labels.length) connectedLabels = '&diet=' + labels.join('&diet=');
+  const excludes = ['curry'];
+  let excludesFoods;
+  if (excludes.length)
+    excludesFoods = '&excluded=' + excludes.join('&excluded=');
+  const count = 24;
   const arr = [];
   dispatch(specialDietsFetching());
-  let exludesFoods = '';
-  excludes.forEach(food => (exludesFoods = exludesFoods + `&excluded=${food}`));
-  includes.forEach(inclFoods => {
-    fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
-      count}&to=${count * (page + 1)}&diet=${label}
-        ${exludesFoods}`
-    )
-      .then(recipes => recipes.json())
-      .then(recipes => {
-        arr.push(recipes);
-        return dispatch(specialDietsFetchingSuccess(arr));
-      })
-      .catch(error => {
-        console.log(error);
-        dispatch(specialDietsFetchingFailure());
-      });
-  });
-};
 
+  fetch(
+    `https://api.edamam.com/search?q=${q}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
+      count}&to=${count * (page + 1)}${connectedLabels ? connectedLabels : ''}${
+      excludesFoods ? excludesFoods : ''
+    }`
+  )
+    .then(recipes => recipes.json())
+    .then(recipes => {
+      arr.push(recipes);
+      return dispatch(specialDietsFetchingSuccess(arr));
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch(specialDietsFetchingFailure());
+    });
+};

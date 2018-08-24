@@ -11,20 +11,20 @@ export default {
   },
   list: {
     width: '50%',
-    minWidth: '255px',
+    minWidth: '265px',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column'
   },
   listTitle: {
-    font: '40px arial, sans-serif',
+    font: '30px arial, sans-serif',
     color: 'white',
     textAlign: 'center',
-    margin: '15px 0 10px 0'
+    margin: '10px 0 10px 0'
   },
   button: {
     minWidth: '265px',
-    margin: '0 20% 30px 20%',
+    margin: '20px 20% 30px 20%',
     backgroundColor: 'rgb(71, 166, 47)',
     border: '2px solid rgb(71, 166, 47)',
     borderRadius: '10px',
@@ -42,21 +42,5 @@ export default {
       backgroundColor: 'white',
       color: 'rgb(71, 166, 47)'
     }
-  },
-  noPrefsContainer: {
-    minWidth: '251px',
-    height: '34px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    color: 'white',
-    margin: '2px auto',
-    alignItems: 'center',
-    lineHeight: '25px'
-  },
-  noPrefsText: {
-    display: 'inline-block',
-    fontSize: '19px',
-    marginRight: '10px'
   }
 };

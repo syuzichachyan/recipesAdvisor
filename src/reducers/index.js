@@ -5,6 +5,7 @@ import { specialDiets, isSpecialDietsFetching } from './specialDiets';
 import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import favourites from './favourites';
+import preferences from './preferences';
 
 export default combineReducers({
   recipes,
@@ -15,5 +16,6 @@ export default combineReducers({
   isSpecialDietsFetching,
   curPage,
   favourites,
+  preferences,
   form: reduxFormReducer
 });

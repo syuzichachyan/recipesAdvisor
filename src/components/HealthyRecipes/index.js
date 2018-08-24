@@ -8,20 +8,20 @@ import styles from './styles';
 
 class HealthyRecipes extends Component {
   componentDidMount() {
-    const { curPage, getHealthyRecipes, label } = this.props;
-    getHealthyRecipes(label, curPage);
+    const { curPage, getHealthyRecipes, labels, q } = this.props;
+    getHealthyRecipes(labels, curPage, q);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState === this.state) {
-      const { firstPage, curPage, label, getHealthyRecipes } = this.props;
-      if (label !== prevProps.label) {
+      const { firstPage, curPage, labels, getHealthyRecipes, q } = this.props;
+      if (labels !== prevProps.labels || q !== prevProps.q) {
         firstPage();
-        getHealthyRecipes(label, curPage);
+        getHealthyRecipes(labels, curPage, q);
       }
 
       if (curPage !== prevProps.curPage) {
-        getHealthyRecipes(label, curPage);
+        getHealthyRecipes(labels, curPage, q);
       }
     }
   }
