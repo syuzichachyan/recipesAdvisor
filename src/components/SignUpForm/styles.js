@@ -83,9 +83,6 @@ export default {
     display: 'flex',
     justifyContent: 'center'
   },
-  events: {
-    listStyle: 'none'
-  },
   callbacksContainer: {
     position: 'relative',
     float: 'left',
