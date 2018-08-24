@@ -2,6 +2,8 @@ import { getRecipes, favouriteRecipe } from './recipes';
 import { getHealthyRecipes, favouriteHealthyRecipe } from './healthyRecipes';
 import { getSpecialDiets, favouriteSpecialRecipe } from './specialDiets';
 import { addPreference, removePreference } from './preferences';
+import { addDiet, removeDiet } from './filterDiets';
+import { addHealth, removeHealth } from './filterHealths';
 import {
   firstPage,
   nextPage,
@@ -30,5 +32,9 @@ export {
   addToFavourites,
   removeFromFavourites,
   addPreference,
-  removePreference
+  removePreference,
+  addDiet,
+  removeDiet,
+  addHealth,
+  removeHealth
 };
