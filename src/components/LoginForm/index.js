@@ -9,7 +9,7 @@ import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, valid } = this.props;
     return (
       <div>
         <div>
@@ -68,7 +68,7 @@ class Login extends Component {
                       type="password"
                       placeholder="Password"
                     />
-                    <button className={classes.button} type="submit">
+                    <button className={classes.button} type="submit" disabled={!valid}>
                       Login
                     </button>
                   </form>
