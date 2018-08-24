@@ -134,10 +134,6 @@ export default {
       position: 'relative',
       display: 'block',
       float: 'left'
-    },
-    '& img': {
-      height: 'auto',
-      border: '0'
     }
   },
   contentLeft: {
