@@ -46,7 +46,7 @@ class HealthyRecipes extends Component {
               })
             )}
           </div>
-          <Pagination type={'healthy'} />
+          {healthyRecipes.length ? <Pagination type={'healthy'} /> : ''}
         </div>
       );
     } else return <Loader />;

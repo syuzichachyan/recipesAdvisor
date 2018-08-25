@@ -45,7 +45,7 @@ class SpecialDiets extends Component {
               })
             )}
           </div>
-          <Pagination type={'special'} />
+          {specialDiets.length ? <Pagination type={'special'} /> : ''}
         </div>
       );
     } else return <Loader />;
