@@ -13,9 +13,9 @@ class Routers extends Component {
         <Switch>
           <Route path="/login" component={LoginForm} />
           <AuthenticatedComponent />
-          <Route path="/preferences" component={Preferences} />
           <Route exact path="/" component={RoutesWithHeaderAndFooter} />
           <AuthenticatedComponent />
+          <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
         </Switch>
       </Router>
