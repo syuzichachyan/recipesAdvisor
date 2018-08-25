@@ -27,12 +27,14 @@ const receiveFavourites = () => {
   };
 };
 
-export const fetchFavourites = state => {
+export const fetchFavourites = (state, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
     return fetch(`http://localhost:5003/v1/favourites`, {
       headers: {
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`
       },
       method: 'POST',
       body: JSON.stringify(state)

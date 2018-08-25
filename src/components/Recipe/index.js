@@ -28,16 +28,22 @@ class Recipe extends Component {
       addToFavourites,
       removeFromFavourites,
       recipe,
+      fetchFavourites,
       favouriteRecipe,
+      history,
       index,
       q,
       type
     } = this.props;
     const { isFavourite } = recipe;
+    const jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      history.push('/Login');
+    }
     isFavourite ? removeFromFavourites(recipe.uri) : addToFavourites(recipe);
     favouriteRecipe(index, q, type);
-    const { fetchFavourites, favourites } = this.props;
-    fetchFavourites({ favoriteId: favourites.uri, recepte: favourites });
+
+    fetchFavourites({ favoriteId: recipe.uri, recepte: recipe }, jwt);
   }
 
   render() {
@@ -45,7 +51,7 @@ class Recipe extends Component {
     const { isFavourite } = recipe;
     return (
       <div className={classes.recipe}>
-        <form onSubmit={this.handleClick}>
+        <form method="post" onSubmit={this.handleClick}>
           <button className={classes.glyph}>
             {isFavourite ? (
               <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
