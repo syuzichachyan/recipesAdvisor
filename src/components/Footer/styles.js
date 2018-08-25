@@ -1,6 +1,5 @@
 export default {
   root: {
-    bottom: 0,
     background: '#3E4551',
     color: 'white'
   },
