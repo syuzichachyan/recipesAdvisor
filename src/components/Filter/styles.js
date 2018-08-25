@@ -1,8 +1,27 @@
+const green = 'rgb(0, 190, 0)';
+
 export default {
   main: {
     position: 'relative',
     height: '30px',
-    width: '100px'
+    width: '150px',
+    display: 'flex'
+  },
+  dropdownOpenButtonUp: {
+    width: 0,
+    height: 0,
+    borderLeft: '15px solid transparent',
+    borderRight: '15px solid transparent',
+    borderTop: `15px solid ${green}`,
+    borderBottom: 0,
+    backgroundColor: 'white',
+    padding: 0,
+    transition: '.2s',
+    outline: 0
+  },
+  dropdownOpenButtonDown: {
+    transform: 'rotate(180deg)',
+    transition: '.2s'
   },
   search: {
     width: '150px',
@@ -32,7 +51,7 @@ export default {
     backgroundColor: 'white',
     position: 'absolute',
     top: '100%',
-    right: '-50px'
+    right: 0
   },
   sectionTitle: {
     width: '100%',

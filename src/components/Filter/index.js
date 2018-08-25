@@ -23,12 +23,12 @@ class Filter extends Component {
   constructor() {
     super();
     this.state = {
-      show: false,
-      search: ''
+      search: '',
+      show: false
     };
   }
 
-  handleInputClick = () => this.setState({ show: !this.state.show });
+  filterShowChange = () => this.setState({ show: !this.state.show });
 
   handleDietClick = v => {
     const { filter, addDietLabel, removeLabel } = this.props;
@@ -60,16 +60,20 @@ class Filter extends Component {
 
   render() {
     const { classes, filter } = this.props;
-    const { show, search } = this.state;
+    const { search, show } = this.state;
     return (
       <div className={classes.main}>
         <input
           className={`${classes.search} ${show ? classes.searchActive : ''}`}
           type="text"
-          onFocus={this.handleInputClick}
-          onChange={this.handleSearchInput}
-          value={search}
           onKeyDown={this.handleEnter}
+          value={search}
+        />
+        <button
+          className={`${classes.dropdownOpenButtonUp} ${
+            show ? classes.dropdownOpenButtonDown : ''
+          }`}
+          onClick={this.filterShowChange}
         />
         <div
           className={classes.dropdown}
@@ -116,6 +120,7 @@ class Filter extends Component {
             >
               Search
             </button>
+            <button>back</button>
           </div>
         </div>
       </div>
