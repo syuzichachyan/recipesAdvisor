@@ -1,19 +1,17 @@
 import { connect } from 'react-redux';
-import { addDiet, removeDiet } from '../../actions';
-import { addHealth, removeHealth } from '../../actions';
+import { addHealthLabel, addDietLabel, removeLabel } from '../../actions';
 import Filter from '../../components/Filter';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => {
   return {
-    filterDiets: state.filterDiets,
-    filterHealths: state.filterHealths
+    filter: state.filter
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { addDiet, removeDiet, addHealth, removeHealth },
+    { addHealthLabel, addDietLabel, removeLabel },
     dispatch
   );
 };

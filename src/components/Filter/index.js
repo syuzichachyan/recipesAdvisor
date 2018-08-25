@@ -30,25 +30,26 @@ class Filter extends Component {
   handleClick = () => this.setState({ show: !this.state.show });
 
   handleDietClick = v => {
-    const { filterDiets, addDiet, removeDiet } = this.props;
-    if (filterDiets.includes(v)) {
-      removeDiet(v);
+    const { filter, addDietLabel, removeLabel } = this.props;
+    if (filter.labels.includes(v)) {
+      removeLabel(v);
     } else {
-      addDiet(v);
+      addDietLabel(v);
     }
   };
 
   handleHealthClick = v => {
-    const { filterHealths, addHealth, removeHealth } = this.props;
-    if (filterHealths.includes(v)) {
-      removeHealth(v);
+    const { filter, addHealthLabel, removeLabel } = this.props;
+    if (filter.labels.includes(v)) {
+      removeLabel(v);
     } else {
-      addHealth(v);
+      addHealthLabel(v);
     }
   };
 
   render() {
-    const { classes, filterDiets, filterHealths } = this.props;
+    const { classes, filter } = this.props;
+    console.log(filter.la);
     const { show } = this.state;
     return (
       <div className={classes.main}>
@@ -70,7 +71,7 @@ class Filter extends Component {
                 key={v}
                 onClick={() => this.handleDietClick(v)}
               >
-                {filterDiets.includes(v) ? `✓ ${v}` : `  ${v}`}
+                {filter.labels.includes(v) ? `✓ ${v}` : `  ${v}`}
               </div>
             ))}
           </div>
@@ -82,7 +83,7 @@ class Filter extends Component {
                 key={v}
                 onClick={() => this.handleHealthClick(v)}
               >
-                {filterHealths.includes(v) ? `✓ ${v}` : `  ${v}`}
+                {filter.labels.includes(v) ? `✓ ${v}` : `  ${v}`}
               </div>
             ))}
           </div>

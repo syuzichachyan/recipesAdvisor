@@ -6,8 +6,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import favourites from './favourites';
 import preferences from './preferences';
-import filterDiets from './filterDiets';
-import filterHealths from './filterHealths';
+import filter from './filter';
 
 export default combineReducers({
   recipes,
@@ -20,6 +19,5 @@ export default combineReducers({
   favourites,
   preferences,
   form: reduxFormReducer,
-  filterDiets,
-  filterHealths
+  filter
 });
