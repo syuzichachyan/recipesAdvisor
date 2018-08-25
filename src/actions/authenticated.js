@@ -51,9 +51,7 @@ export const fetchAuthenticated = (jwt, prop) => {
       .then(response => response.json())
       .then(json => dispatch(receiveAuthenticated(json)))
       .catch(e => {
-        localStorage.removeItem('jwt');
-        prop;
-        dispatch(errorAuthenticated());
+        console.log(e)
       });
   };
 };

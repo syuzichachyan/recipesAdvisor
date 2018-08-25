@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom';
 class AuthenticatedComponent extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
+    console.log(!jwt)
     const { fetchAuthenticated, history } = this.props;
     if (!jwt) {
-      this.props.history.push('/Login');
+      history.push('/Login');
     }
 
-    fetchAuthenticated(jwt, history.push('/'));
+    fetchAuthenticated(jwt);
   }
 
   logout = () => {
