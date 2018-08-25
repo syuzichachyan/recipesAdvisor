@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { urlToProperty } from 'query-string-params';
 import injectSheet from 'react-jss';
 import Recipes from '../../containers/Recipes';
