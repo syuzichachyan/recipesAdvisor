@@ -4,19 +4,19 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 const diets = [
-  'Balanced',
-  'High Protein',
-  'Vegan',
-  'Low Carb',
-  'Low Fat',
-  'Vegeterian'
+  'balanced',
+  'high-protein',
+  'vegan',
+  'low-carb',
+  'low-fat',
+  'vegeterian'
 ];
 
 const health = [
-  'Peanut Free',
-  'Tree Nut Free',
-  'Sugar Conscious',
-  'Alcohol Free'
+  'peanut-free',
+  'tree-nut-free',
+  'sugar-conscious',
+  'alcohol-free'
 ];
 
 class Filter extends Component {
@@ -101,11 +101,11 @@ class Filter extends Component {
             <p>Cal </p>
             <p>
               from:
-              <input type="text" className={classes.input} />
+              <input maxLength="5" type="text" className={classes.input} />
             </p>
             <p>
               to:
-              <input type="text" className={classes.input} />
+              <input maxLength="5" type="text" className={classes.input} />
             </p>
           </div>
         </div>
