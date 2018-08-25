@@ -1,11 +1,11 @@
 import { ADD_TO_FAVOURITES, REMOVE_FROM_FAVOURITES } from '../constants';
 
-const initialState = [];
+const initialState = {};
 
 const favourites = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_FAVOURITES:
-      return [...state, { ...action.payload, isFavourite: true }];
+      return { ...action.payload, isFavourite: true };
     case REMOVE_FROM_FAVOURITES:
       return state.filter(recipe => recipe.uri !== action.payload);
     default:

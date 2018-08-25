@@ -6,6 +6,8 @@ import Pagination from '../../containers/Pagination';
 import Loader from '../Loader';
 import styles from './styles';
 
+let count = 0;
+
 class SpecialDiets extends Component {
   componentDidMount() {
     const { curPage, getSpecialDiets, labels, q } = this.props;
@@ -33,6 +35,7 @@ class SpecialDiets extends Component {
           <div className={classes.recipes}>
             {specialDiets.map(item =>
               item.hits.map((recipe, index) => {
+                count++;
                 return (
                   <Recipe
                     recipe={recipe.recipe}
@@ -45,7 +48,15 @@ class SpecialDiets extends Component {
               })
             )}
           </div>
-          <Pagination type={'special'} />
+          {specialDiets.length ? (
+            count ? (
+              <Pagination type={'profile'} />
+            ) : (
+              <Loader />
+            )
+          ) : (
+            <Loader />
+          )}
         </div>
       );
     } else return <Loader />;
