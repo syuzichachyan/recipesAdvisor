@@ -6,10 +6,7 @@ import styles from './styles';
 
 export class MapContainer extends Component {
   render() {
-<<<<<<< HEAD
     const { classes } = this.props;
-=======
->>>>>>> Tigranuhi
     return (
       <Map
         google={this.props.google}
@@ -29,8 +26,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyB60RMlfliecFnXM-SNDJj4QjNVdSymk4w'
-<<<<<<< HEAD
+
 })(injectSheet(styles)(MapContainer));
-=======
-})(MapContainer);
->>>>>>> Tigranuhi
+
+
