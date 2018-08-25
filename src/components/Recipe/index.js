@@ -43,7 +43,6 @@ class Recipe extends Component {
     isFavourite ? removeFromFavourites(recipe.uri) : addToFavourites(recipe);
     favouriteRecipe(index, q, type);
     fetchFavourites({ favoriteId: recipe.uri, recepte: recipe }, jwt);
-
   }
 
   render() {
