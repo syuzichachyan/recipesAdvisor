@@ -8,6 +8,29 @@ import { Field } from 'redux-form';
 import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { fetchLogin } = this.props;
+    const { email, password } = this.props;
+    fetchLogin(
+      {
+        email: email,
+        password: password
+      },
+      this.props.history.push('/')
+    );
+    console.log({
+      email: email,
+      password: password
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -53,7 +76,7 @@ class Login extends Component {
               <div className={classes.contentMain}>
                 <div className={classes.signUpForm}>
                   <h4>Login to start the amazing recipes journey</h4>
-                  <form method="post">
+                  <form method="post" onSubmit={this.handleSubmit}>
                     <Field
                       className={classes.text}
                       name="email"
@@ -68,7 +91,7 @@ class Login extends Component {
                       type="password"
                       placeholder="Password"
                     />
-                    <button className={classes.button} type="submit">
+                    <button className={classes.button}>
                       Login
                     </button>
                   </form>
