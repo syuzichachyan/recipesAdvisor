@@ -1,6 +1,6 @@
 export default {
   container: {
-    margin: 'auto 150px'
+    margin: '80px 150px auto'
   },
   section: {
     margin: '0'

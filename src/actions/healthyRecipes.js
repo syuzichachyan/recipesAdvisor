@@ -39,7 +39,7 @@ export const getHealthyRecipes = (labels, page = 0, q) => dispatch => {
   if (excludes.length)
     excludesFoods = '&excluded=' + excludes.join('&excluded=');
   fetch(
-    `https://api.edamam.com/search?q=${q}&app_id=28fb7256&app_key=b3bccf42eb282f3b21740bf3fa472af3&from=${page *
+    `https://api.edamam.com/search?q=${q}&app_id=8d30ad7e&app_key=2e15423acdc14ff0c010ea43cd8c94e8&from=${page *
       24}&to=${24 * (page + 1)}${connectedLabels ? connectedLabels : ''}
         ${excludesFoods ? excludesFoods : ''}`
   )
