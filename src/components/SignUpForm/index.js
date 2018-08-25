@@ -16,13 +16,14 @@ class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { fetchSignup } = this.props;
     const {
       firstName,
       lastName,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      history,
+      fetchSignup
     } = this.props;
     fetchSignup(
       {
@@ -32,7 +33,7 @@ class SignUp extends Component {
         password: password,
         confirmPassword: confirmPassword
       },
-      this.props.history.push('/login')
+      history.push('/login')
     );
     console.log({
       firstName: firstName,

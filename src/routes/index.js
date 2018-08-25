@@ -4,6 +4,7 @@ import Preferences from '../components/Preferences';
 import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
+import AuthenticatedComponent from '../containers/Authenticated';
 
 class Routers extends Component {
   render() {
@@ -11,8 +12,9 @@ class Routers extends Component {
       <Router>
         <Switch>
           <Route path="/login" component={LoginForm} />
+          <AuthenticatedComponent />
           <Route path="/preferences" component={Preferences} />
-          <Route path="/login" component={LoginForm} />
+          <AuthenticatedComponent />
           <Route path="/signUp" component={SignUpForm} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
