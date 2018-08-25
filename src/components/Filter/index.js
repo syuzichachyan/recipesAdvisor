@@ -4,19 +4,19 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 const diets = [
-  'balanced',
-  'high-protein',
-  'vegan',
-  'low-carb',
-  'low-fat',
-  'vegeterian'
+  ['balanced', 'Balanced'],
+  ['high-protein', 'High Protein'],
+  ['vegan', 'Vegan'],
+  ['low-carb', 'Low Carb'],
+  ['low-fat', 'Low Fat'],
+  ['vegeterian', 'Vegeterian']
 ];
 
 const health = [
-  'peanut-free',
-  'tree-nut-free',
-  'sugar-conscious',
-  'alcohol-free'
+  ['peanut-free', 'Peanut Free'],
+  ['tree-nut-free', 'Tree Nut Free'],
+  ['sugar-conscious', 'Sugar Conscious'],
+  ['alcohol-free', 'Alcohol Free']
 ];
 
 class Filter extends Component {
@@ -78,10 +78,10 @@ class Filter extends Component {
             {diets.map(v => (
               <div
                 className={classes.dietSectionButton}
-                key={v}
-                onClick={() => this.handleDietClick(v)}
+                key={v[0]}
+                onClick={() => this.handleDietClick(v[0])}
               >
-                {filter.labels.includes(v) ? `✓ ${v}` : `  ${v}`}
+                {filter.labels.includes(v[0]) ? `✓ ${v[1]}` : `  ${v[1]}`}
               </div>
             ))}
           </div>
@@ -90,10 +90,10 @@ class Filter extends Component {
             {health.map(v => (
               <div
                 className={classes.healthSectionButton}
-                key={v}
-                onClick={() => this.handleHealthClick(v)}
+                key={v[0]}
+                onClick={() => this.handleHealthClick(v[0])}
               >
-                {filter.labels.includes(v) ? `✓ ${v}` : `  ${v}`}
+                {filter.labels.includes(v[0]) ? `✓ ${v[1]}` : `  ${v[1]}`}
               </div>
             ))}
           </div>
