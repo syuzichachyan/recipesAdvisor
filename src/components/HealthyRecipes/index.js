@@ -6,6 +6,8 @@ import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import styles from './styles';
 
+let count = 0;
+
 class HealthyRecipes extends Component {
   componentDidMount() {
     const { curPage, getHealthyRecipes, labels, q } = this.props;
@@ -34,6 +36,7 @@ class HealthyRecipes extends Component {
           <div className={classes.recipes}>
             {healthyRecipes.map(item =>
               item.hits.map((recipe, index) => {
+                count++;
                 return (
                   <Recipe
                     recipe={recipe.recipe}
@@ -46,7 +49,15 @@ class HealthyRecipes extends Component {
               })
             )}
           </div>
-          {healthyRecipes.length ? <Pagination type={'healthy'} /> : ''}
+          {healthyRecipes.length ? (
+            count ? (
+              <Pagination type={'profile'} />
+            ) : (
+              <Loader />
+            )
+          ) : (
+            <Loader />
+          )}
         </div>
       );
     } else return <Loader />;
