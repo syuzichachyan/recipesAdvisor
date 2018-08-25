@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { isRecipesFetching, recipes } from './recipes';
 import { healthyRecipes, isHealthyRecipesFetching } from './healthyRecipes';
 import { specialDiets, isSpecialDietsFetching } from './specialDiets';
+import { randomRecipes, isRandomRecipesFetching } from './randomRecipes';
 import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import favourites from './favourites';
@@ -15,6 +16,8 @@ export default combineReducers({
   healthyRecipes,
   specialDiets,
   isSpecialDietsFetching,
+  randomRecipes,
+  isRandomRecipesFetching,
   curPage,
   favourites,
   preferences,

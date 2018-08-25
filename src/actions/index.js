@@ -1,6 +1,7 @@
 import { getRecipes, favouriteRecipe } from './recipes';
 import { getHealthyRecipes, favouriteHealthyRecipe } from './healthyRecipes';
 import { getSpecialDiets, favouriteSpecialRecipe } from './specialDiets';
+import { getRandomRecipes } from './randomRecipes';
 import { addPreference, removePreference } from './preferences';
 import {
   firstPage,
@@ -20,6 +21,7 @@ export {
   favouriteHealthyRecipe,
   getSpecialDiets,
   favouriteSpecialRecipe,
+  getRandomRecipes,
   firstPage,
   nextPage,
   nextHealthyPage,
