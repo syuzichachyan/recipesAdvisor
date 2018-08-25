@@ -6,14 +6,18 @@ import Recipe from '../../containers/Recipe';
 import styles from './styles';
 
 class Favourites extends Component {
-  componentDidMount() {
-    const { fetchFavourites, favourites } = this.props;
-    fetchFavourites({ favoriteId: favourites.uri, recepte: favourites });
-  }
   render() {
     const { classes, favourites } = this.props;
     return (
-      <div>
+      <div className={classes.favourites}>
+        {favourites.map((recipe, index) => (
+          <Recipe
+            recipe={recipe}
+            index={index}
+            key={recipe.url}
+            isFavourite={true}
+          />
+        ))}
       </div>
     );
   }

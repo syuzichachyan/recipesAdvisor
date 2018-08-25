@@ -22,7 +22,8 @@ class Recipe extends Component {
     type: PropTypes.string
   };
 
-  handleClick() {
+  handleClick(e) {
+    e.preventDefault();
     const {
       addToFavourites,
       removeFromFavourites,
@@ -35,6 +36,8 @@ class Recipe extends Component {
     const { isFavourite } = recipe;
     isFavourite ? removeFromFavourites(recipe.uri) : addToFavourites(recipe);
     favouriteRecipe(index, q, type);
+    const { fetchFavourites, favourites } = this.props;
+    fetchFavourites({ favoriteId: favourites.uri, recepte: favourites });
   }
 
   render() {
@@ -42,13 +45,15 @@ class Recipe extends Component {
     const { isFavourite } = recipe;
     return (
       <div className={classes.recipe}>
-        <button className={classes.glyph} onClick={this.handleClick}>
-          {isFavourite ? (
-            <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
-          ) : (
-            <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon} />
-          )}
-        </button>
+        <form onSubmit={this.handleClick}>
+          <button className={classes.glyph}>
+            {isFavourite ? (
+              <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
+            ) : (
+              <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon} />
+            )}
+          </button>
+        </form>
         <img alt="Not Found" src={recipe.image} />
         <h3>{recipe.label}</h3>
       </div>

@@ -7,6 +7,11 @@ import {
   removeFromFavourites
 } from '../../actions';
 import Recipe from '../../components/Recipe';
+import { fetchFavourites } from '../../actions/favourites';
+
+const mapStateToProps = state => ({
+  favourites: state.favourites
+});
 
 const mapDispatchToProps = dispatch => ({
   favouriteRecipe: (index, q, type) => {
@@ -19,11 +24,12 @@ const mapDispatchToProps = dispatch => ({
         return dispatch(favouriteRecipe(index, q));
     }
   },
+  fetchFavourites: state => dispatch(fetchFavourites(state)),
   addToFavourites: recipe => dispatch(addToFavourites(recipe)),
   removeFromFavourites: uri => dispatch(removeFromFavourites(uri))
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(Recipe);
