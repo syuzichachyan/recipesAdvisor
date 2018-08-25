@@ -2,7 +2,8 @@ import {
   ADD_TO_FAVOURITES,
   REMOVE_FROM_FAVOURITES,
   REQUEST_FAVORITES,
-  RECEIVE_FAVORITES
+  RECEIVE_FAVORITES,
+  RECEIVE_ALL_FAVORITES
 } from '../constants';
 
 export const addToFavourites = recipe => ({
@@ -27,6 +28,13 @@ const receiveFavourites = () => {
   };
 };
 
+const allreceiveFavourites = json => {
+  return {
+    type: RECEIVE_ALL_FAVORITES,
+    payload: json.data
+  };
+};
+
 export const fetchFavourites = (state, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
@@ -43,6 +51,22 @@ export const fetchFavourites = (state, jwt) => {
       .then(response => {
         console.log(response);
         dispatch(receiveFavourites());
+      });
+  };
+};
+
+export const getfetchFavourites = jwt => {
+  return dispatch => {
+    dispatch(requestFavourites());
+    return fetch(`http://localhost:5003/v1/favourites`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`
+      }
+    })
+      .then(response => response.json())
+      .then(json => dispatch(allreceiveFavourites(json)))
+      .catch(e => {
+        console.log(e);
       });
   };
 };

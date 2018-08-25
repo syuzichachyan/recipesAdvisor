@@ -6,6 +6,8 @@ import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import AuthenticatedComponent from '../containers/Authenticated';
 
+import ProfilePage from '../containers/ProfileP'
+
 class Routers extends Component {
   render() {
     return (
