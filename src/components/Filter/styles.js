@@ -1,6 +1,5 @@
 export default {
   main: {
-    marginLeft: '500px',
     position: 'relative',
     height: '40px',
     width: '100px'
@@ -27,7 +26,7 @@ export default {
     display: 'flex',
     flexDirection: 'column',
     border: '1px solid rgb(226, 226, 226)',
-    width: '305px',
+    width: '335px',
     height: '224px',
     backgroundColor: 'white',
     position: 'absolute',
