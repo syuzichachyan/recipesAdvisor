@@ -4,40 +4,19 @@ import { urlToProperty } from 'query-string-params';
 import injectSheet from 'react-jss';
 import Recipes from '../../containers/Recipes';
 import FilteredRecipe from '../../containers/FilteredRecipe';
+import Filter from '../../containers/Filter';
 import Favourites from '../../containers/Favourites';
 import styles from './styles';
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      search: ''
-    };
-  }
-
-  handleInput = e => this.setState({ search: e.target.value });
-
-  handleEnter = e => {
-    if (e.key === 'Enter') {
-      this.runSearch();
-    }
-  };
-
-  runSearch = () =>
-    this.props.history.push(`home/search?q=${this.state.search}`);
+  runSearch = search =>
+    this.props.history.push(`${this.props.match.url}/search?q=${search}`);
 
   render() {
     const { classes } = this.props;
-    const { search } = this.state;
     return (
       <div className={classes.main}>
-        <input
-          type="text"
-          className={classes.search}
-          onChange={this.handleInput}
-          value={search}
-          onKeyDown={this.handleEnter}
-        />
+        <Filter runSearch={this.runSearch} />
         <Route exact path={'/home/'} render={props => <Recipes {...props} />} />
         <Route
           path="/home/search"
