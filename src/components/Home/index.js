@@ -24,7 +24,7 @@ class Home extends Component {
   };
 
   runSearch = () =>
-    this.props.history.push(`home/search?q=${this.state.search}`);
+    this.props.history.push(`${this.props.match.url}/search?q=${this.state.search}`);
 
   render() {
     const { classes } = this.props;
