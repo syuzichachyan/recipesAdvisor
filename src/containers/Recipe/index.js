@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
         return dispatch(favouriteRecipe(index, q));
     }
   },
+
   fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
   addToFavourites: recipe => dispatch(addToFavourites(recipe)),
   removeFromFavourites: uri => dispatch(removeFromFavourites(uri))
