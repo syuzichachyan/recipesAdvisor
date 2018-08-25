@@ -52,9 +52,11 @@ class Filter extends Component {
 
   handleEnter = e => {
     if (e.key === 'Enter') {
-      this.props.runSearch(e.target.value.trim());
+      this.handleSearch();
     }
   };
+
+  handleSearch = () => this.props.runSearch(this.state.search.trim());
 
   render() {
     const { classes, filter } = this.props;
@@ -62,7 +64,7 @@ class Filter extends Component {
     return (
       <div className={classes.main}>
         <input
-          className={`${classes.button} ${show ? classes.buttonActive : ''}`}
+          className={`${classes.search} ${show ? classes.searchActive : ''}`}
           type="text"
           onFocus={this.handleInputClick}
           onChange={this.handleSearchInput}
@@ -107,6 +109,13 @@ class Filter extends Component {
               to:
               <input maxLength="5" type="text" className={classes.input} />
             </p>
+            <button
+              className={classes.searchButton}
+              onClick={this.handleSearch}
+              type="submit"
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>
