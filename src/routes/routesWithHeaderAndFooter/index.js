@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import Home from '../../components/Home';
 import Settings from '../../components/Settings';
 import PrivateRoutes from '../privateRoutes';
+import AboutUs from '../../components/AboutUs';
 import ContactUs from '../../components/ContactUs';
 
 class RoutesWithHeaderAndFooter extends Component {
@@ -13,6 +14,7 @@ class RoutesWithHeaderAndFooter extends Component {
     return (
       <React.Fragment>
         <Header />
+        <Route path={'/aboutus'} component={AboutUs}/>
         <Route path="/contactUs" component={ContactUs} />
         <PrivateRoutes path="/home" component={Home} />
         <PrivateRoutes path="/settings" component={Settings} />
