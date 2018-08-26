@@ -33,7 +33,6 @@ const specialDietsFetchingFailure = () => {
 };
 
 export const getSpecialDiets = (labels, page = 0, q) => dispatch => {
-  labels = ['balanced']; //must me deleted
   let connectedLabels;
   if (labels.length) connectedLabels = '&diet=' + labels.join('&diet=');
   const excludes = ['curry'];
