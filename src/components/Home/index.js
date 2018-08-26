@@ -9,15 +9,13 @@ import Favourites from '../../containers/Favourites';
 import styles from './styles';
 
 class Home extends Component {
-  runSearch = search =>
-    this.props.history.push(`${this.props.match.url}/search?q=${search}`);
-
   render() {
     const { classes } = this.props;
+    console.log(this.props);
     return (
       <div className={classes.main}>
-        <Filter runSearch={this.runSearch} />
-        <Route exact path={'/home/'} render={props => <Recipes {...props} />} />
+        <Route path="/home" component={Filter} />
+        <Route exact path="/home/" render={props => <Recipes {...props} />} />
         <Route
           path="/home/search"
           render={({ location }) => (

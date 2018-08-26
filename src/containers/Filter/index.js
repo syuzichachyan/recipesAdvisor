@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { addHealthLabel, addDietLabel, removeLabel } from '../../actions';
+import {
+  addHealthLabel,
+  addDietLabel,
+  removeLabel,
+  getHealthyRecipes,
+  getSpecialDiets
+} from '../../actions';
 import Filter from '../../components/Filter';
 import { bindActionCreators } from 'redux';
 
@@ -11,7 +17,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { addHealthLabel, addDietLabel, removeLabel },
+    {
+      addHealthLabel,
+      addDietLabel,
+      removeLabel,
+      getHealthyRecipes,
+      getSpecialDiets
+    },
     dispatch
   );
 };

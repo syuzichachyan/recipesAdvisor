@@ -32,7 +32,10 @@ class Filter extends Component {
 
   filterShowChange = () => this.setState({ show: !this.state.show });
 
-  handleSearch = () => this.props.runSearch(this.state.search.trim());
+  runSearch = () => {
+    const { history, match } = this.props;
+    history.push(`${match.url}/search?q=${this.state.search.trim()}`);
+  };
 
   handleDietClick = v => {
     const { filter, addDietLabel, removeLabel } = this.props;
@@ -56,13 +59,13 @@ class Filter extends Component {
 
   handleEnter = e => {
     if (e.key === 'Enter') {
-      this.handleSearch();
+      this.runSearch();
     }
   };
 
   handleFilterSubmit = () => {
     this.filterShowChange();
-    this.handleSearch();
+    this.runSearch();
   };
 
   render() {
