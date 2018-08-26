@@ -100,28 +100,6 @@ export default {
       position: 'absolute',
       width: '100%'
     },
-    '& img': {
-      position: 'relative',
-      zIndex: '1',
-      height: 'auto',
-      border: '0'
-    },
-
-    '& caption': {
-      display: 'block',
-      position: 'absolute',
-      zIndex: '2',
-      fontSize: '20px',
-      textShadow: 'none',
-      color: '#fff',
-      left: '0',
-      right: '0',
-      padding: '10px 20px',
-      margin: '0',
-      maxWidth: 'none',
-      top: '10%',
-      textAlign: 'center'
-    }
   },
   rslides: {
     position: 'relative',
@@ -134,7 +112,8 @@ export default {
       position: 'relative',
       display: 'block',
       float: 'left'
-    }
+    },
+   
   },
   contentLeft: {
     float: 'left',

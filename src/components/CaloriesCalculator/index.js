@@ -23,7 +23,9 @@ class CaloriesCalculator extends Component {
       activity:'Sedentary lifestyle',
       activityDescription: 0,
       gender: 'male',
-      calories: 0
+      calories: 0,
+      isReady: false
+      
     };
     
     this.handleHeightInputChange = this.handleHeightInputChange.bind(this);
@@ -65,7 +67,7 @@ class CaloriesCalculator extends Component {
   
   handleCalculation(event) {
     event.preventDefault();
-    const {gender, ageInYears, weightInKilograms, heightInCentimeters } = this.state;
+    const {gender, ageInYears, weightInKilograms, heightInCentimeters, isReady } = this.state;
     
     // For men:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) + 5
     // For women:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) - 161
@@ -103,14 +105,23 @@ class CaloriesCalculator extends Component {
         });
     }
     
+    this.setState({ isReady: true});
+    
   }
   
   render() {
     const {classes} = this.props;
     const { activityDescription } = this.state;
+    let caloriesMessage = '';
+    let weightLossMessage = '';
+    if(this.state.isReady === true){
+      caloriesMessage = 'your amount of daily calories is ' + parseInt(this.state.calories);
+      weightLossMessage = "if you want to loose weight don't consume more than " + parseInt(this.state.calories - 500)
+    }
     
     return (
       <div>
+        <h1 className={classes.welcome}>Please Fill In The Form To Calculate The Calories</h1>
         <div className={classes.boxWrap}>
           <div className={classes.boxLeft}>
             <div className={classes.formsBox}>
@@ -135,19 +146,19 @@ class CaloriesCalculator extends Component {
                   <h2>
                     Age
                   </h2>
-                  <input className={classes.textInput} type="text" onChange={this.handleAgeInputChange}/>
+                  <input className={classes.textInput} type="number" min="12" onChange={this.handleAgeInputChange}/>
                 </div>
                 <div>
                   <h2>
                     Weight in kgs
                   </h2>
-                  <input className={classes.textInput} type="text" onChange={this.handleWeightInputChange} />
+                  <input className={classes.textInput} type="number" min="30" onChange={this.handleWeightInputChange} />
                 </div>
                 <div className>
                   <h2>
                     Height in cms
                   </h2>
-                  <input className={classes.textInput} type="text" onChange={this.handleHeightInputChange}/>
+                  <input className={classes.textInput} type="number" min="100" onChange={this.handleHeightInputChange}/>
                 </div>
                 <button  className={classes.button} type="submit" onSubmit={this.handleCalculation}>
                   Calculate
@@ -157,14 +168,44 @@ class CaloriesCalculator extends Component {
           
           </div>
           <div className={classes.boxRight}>
-            <p className={classes.result}>{activityDescriptions[activityDescription]}</p>
+            <div className={classes.contentLeft}>
+              <div className={classes.contentInfo}>
+                <h2> Is this your level ?</h2>
+                <div className={classes.slider}>
+                  <div className={classes.callbacksContainer}>
+                    <ul
+                      className={`${classes.rslides} ${classes.callbacks}`}
+                      id="slider4"
+                    >
+                      <li>
+                        <div className={classes.descriptionBanner}>
+                          <p>
+                            <p className={classes.result}>{activityDescriptions[activityDescription]}</p>
+                          </p>
+                        </div>
+                      </li>
+                      <li>
+                        <div className={classes.descriptionBanner}>
+                          <h2>What You Do ?</h2>
+                         
+                          <p>
+                            {caloriesMessage}
+                          </p>
+                          <p>
+                            {weightLossMessage}
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className={classes.signIn}>
+                </div>
+              </div>
+            </div>
+           
+          
           </div>
-        </div>
-        <div className={classes.boxWrap}>
-          <h1 className={classes.result}>
-            your amount of daily calories is --- {this.state.calories}
-            if you want to loose weight don't consume more than --- {this.state.calories - 500}
-          </h1>
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
-//import backgroundImg from '../../images/loginBack.jpg';
+import backgroundImg from '../../images/loginBack.jpg';
 export default {
   '@global': {
     'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video': {
@@ -28,7 +28,8 @@ export default {
       borderSpacing: 0
     },
     body: {
-      //  background: `url(${backgroundImg}) no-repeat center center fixed`,
+      background: `url(${backgroundImg}) no-repeat center center fixed`,
+//      background: 'red',
       backgroundSize: 'cover',
       minHeight: '100vh',
       fontFamily: "'Open Sans', sans-serif",
@@ -51,7 +52,6 @@ export default {
       color: '#FFFFFF'
     }
   },
-  
   welcome: {
     fontSize: '3em',
     color: '#FFFFFF',
@@ -59,21 +59,8 @@ export default {
     fontWeight: '600',
     textTransform: 'uppercase'
   },
-  
-  a: {
-    textDecoration: 'none',
-    transition: '0.5s all',
-    WebkitTransition: '0.5s all',
-    MozTransition: '0.5s all',
-    OTransition: '0.5s all',
-    '&:hover': {
-      transition: '0.5s all',
-      WebkitTransition: '0.5s all',
-      MozTransition: '0.5s all',
-      OTransition: '0.5s all'
-    }
-  },
   boxWrap: {
+    height: '680.656px',
     width: '50%',
     margin: '2em auto 0'
   },
@@ -86,7 +73,7 @@ export default {
     position: 'relative',
     float: 'left',
     width: '100%',
-    backgroundColor: 'red'
+    backgroundColor: 'blue'
   },
   callbacks: {
     position: 'relative',
@@ -99,28 +86,6 @@ export default {
       position: 'absolute',
       width: '100%'
     },
-    '& img': {
-      position: 'relative',
-      zIndex: '1',
-      height: 'auto',
-      border: '0'
-    },
-    
-    '& caption': {
-      display: 'block',
-      position: 'absolute',
-      zIndex: '2',
-      fontSize: '20px',
-      textShadow: 'none',
-      color: '#fff',
-      left: '0',
-      right: '0',
-      padding: '10px 20px',
-      margin: '0',
-      maxWidth: 'none',
-      top: '10%',
-      textAlign: 'center'
-    }
   },
   rslides: {
     position: 'relative',
@@ -134,22 +99,17 @@ export default {
       display: 'block',
       float: 'left'
     },
-    '& img': {
-      height: 'auto',
-      border: '0'
-    }
   },
   boxLeft: {
     float: 'left',
     width: '50%',
-    background: '#FFFFFF'
   },
   boxRight: {
     float: 'left',
-    width: '50%'
-  },
-  contentInfo: {
-    padding: '5em 3em',
+    width: '50%',
+    height: '658.666px',
+    padding: '5em',
+    background: '#FFFFFF',
     textAlign: 'center',
     '& h2': {
       color: '#212121',
@@ -169,29 +129,12 @@ export default {
       letterSpacing: '1px'
     },
     '& p': {
-      color: '#999999',
+      color: '#51585e',
       margin: '1em 0 0 0',
-      fontSize: '.9em',
+      fontSize: '1em',
       lineHeight: '1.8em'
     }
   },
-  
-  signIn: {
-    '& h4': {
-      textAlign: 'center',
-      color: '#212121',
-      fontSize: '.9em',
-      margin: '1em 0 0 0',
-      '& a': {
-        color: '#f44336',
-        textDecoration: 'none',
-        '&:hover': {
-          color: '#212121'
-        }
-      }
-    }
-  },
-  
   formsBox: {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
@@ -210,7 +153,8 @@ export default {
     padding: '1em',
     background: 'none',
     border: '1px solid white',
-    color: '#181035',
+    //color: '#181035',
+    color: '#faa96a',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
     width: '100%',
@@ -224,10 +168,10 @@ export default {
     padding: '1em',
     background: 'none',
     border: '1px solid white',
-    color: '#black',
+    color: '#faa96a',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
-    width: '93%'
+    width: '100%'
   },
   
   button: {
