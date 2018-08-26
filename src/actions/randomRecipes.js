@@ -70,7 +70,7 @@ const includes = [
   'pistachios'
 ];
 
-const count = 50;
+const count = 48;
 
 export const getRandomRecipes = () => {
   return dispatch => {

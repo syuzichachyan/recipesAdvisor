@@ -32,6 +32,7 @@ class Login extends Component {
   }
 
   render() {
+    localStorage.clear();
     const { classes } = this.props;
     return (
       <div>

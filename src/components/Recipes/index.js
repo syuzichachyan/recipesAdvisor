@@ -61,12 +61,8 @@ class Recipes extends Component {
                   : ''
             )}
           </div>
-          {recipes.length ? (
-            count ? (
-              <Pagination type={'profile'} />
-            ) : (
-              <Loader />
-            )
+          {recipes.length && count ? (
+            <Pagination type={'profile'} />
           ) : (
             <Loader />
           )}

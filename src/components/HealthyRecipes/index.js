@@ -49,12 +49,8 @@ class HealthyRecipes extends Component {
               })
             )}
           </div>
-          {healthyRecipes.length ? (
-            count ? (
-              <Pagination type={'profile'} />
-            ) : (
-              <Loader />
-            )
+          {healthyRecipes.length && count ? (
+            <Pagination type={'profile'} />
           ) : (
             <Loader />
           )}
