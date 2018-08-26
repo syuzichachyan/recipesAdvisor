@@ -32,6 +32,8 @@ class Filter extends Component {
 
   filterShowChange = () => this.setState({ show: !this.state.show });
 
+  handleSearch = () => this.props.runSearch(this.state.search.trim());
+
   handleDietClick = v => {
     const { filter, addDietLabel, removeLabel } = this.props;
     if (filter.labels.includes(v)) {
@@ -58,7 +60,10 @@ class Filter extends Component {
     }
   };
 
-  handleSearch = () => this.props.runSearch(this.state.search.trim());
+  handleFilterSubmit = () => {
+    this.filterShowChange();
+    this.handleSearch();
+  };
 
   render() {
     const { classes, filter } = this.props;
@@ -87,10 +92,12 @@ class Filter extends Component {
           />
         </div>
         <div
-          className={classes.dropdown}
-          style={{ display: show ? 'flex' : 'none' }}
+          className={`${classes.dropdownClose} ${
+            show ? classes.dropdownActive : ''
+          }`}
         >
           <div className={classes.sectionTitle}>Diets</div>
+          <hr style={{ marginBottom: '5px' }} className={classes.hr} />
           <div className={classes.dietSection}>
             {diets.map(v => (
               <div
@@ -102,7 +109,9 @@ class Filter extends Component {
               </div>
             ))}
           </div>
+          <hr style={{ marginTop: '5px' }} className={classes.hr} />
           <div className={classes.sectionTitle}>Healthy</div>
+          <hr style={{ marginBottom: '5px' }} className={classes.hr} />
           <div className={classes.healthSection}>
             {health.map(v => (
               <div
@@ -110,28 +119,31 @@ class Filter extends Component {
                 key={v[0]}
                 onClick={() => this.handleHealthClick(v[0])}
               >
-                {filter.labels.includes(v[0]) ? `✓ ${v[1]}` : `  ${v[1]}`}
+                {filter.labels.includes(v[0]) ? `${v[1]} ✓` : `${v[1]}`}
               </div>
             ))}
           </div>
+          <hr
+            style={{ marginTop: '5px', marginBottom: '5px' }}
+            className={classes.hr}
+          />
           <div className={classes.calSection}>
-            <p>Cal </p>
-            <p>
+            <p className={classes.cal}>Cal </p>
+            <p className={classes.fromTo}>
               from:
-              <input maxLength="5" type="text" className={classes.input} />
+              <input maxLength="5" type="number" className={classes.calInput} />
             </p>
-            <p>
+            <p className={classes.fromTo}>
               to:
-              <input maxLength="5" type="text" className={classes.input} />
+              <input maxLength="5" type="number" className={classes.calInput} />
             </p>
             <button
               className={classes.searchButton}
-              onClick={this.handleSearch}
+              onClick={this.handleFilterSubmit}
               type="submit"
             >
               Search
             </button>
-            <button>back</button>
           </div>
         </div>
       </div>
