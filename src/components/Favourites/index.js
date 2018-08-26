@@ -6,15 +6,24 @@ import Recipe from '../../containers/Recipe';
 import styles from './styles';
 
 class Favourites extends Component {
+  componentDidMount() {
+    const jwt = localStorage.getItem('jwt');
+    const { getfetchFavourites, history } = this.props;
+    if (!jwt) {
+      history.push('/login');
+    }
+    getfetchFavourites(jwt);
+  }
+
   render() {
-    const { classes, favourites } = this.props;
+    const { classes, allFetchFavourites } = this.props;
     return (
       <div className={classes.favourites}>
-        {favourites.map((recipe, index) => (
+        {allFetchFavourites.map((recipe, index) => (
           <Recipe
-            recipe={recipe}
+            recipe={recipe.recepte}
             index={index}
-            key={recipe.url}
+            key={recipe.recepte.url}
             isFavourite={true}
           />
         ))}

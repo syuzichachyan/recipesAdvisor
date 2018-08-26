@@ -8,6 +8,7 @@ import curPage from './pagination';
 import favourites from './favourites';
 import preferences from './preferences';
 import auth from './authenticated';
+import allFetchFavourites from './allFetchFavourites';
 
 export default combineReducers({
   recipes,
@@ -16,6 +17,7 @@ export default combineReducers({
   healthyRecipes,
   specialDiets,
   isSpecialDietsFetching,
+  allFetchFavourites,
   randomRecipes,
   isRandomRecipesFetching,
   curPage,
