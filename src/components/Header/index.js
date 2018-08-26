@@ -21,6 +21,7 @@ class Header extends Component {
 
   render() {
     const { classes } = this.props;
+    const isAuth=localStorage.getItem('jwt');
     return (
       <Navbar className={classes.navBar} inverse fixedTop>
         <Navbar.Header>
@@ -50,7 +51,7 @@ class Header extends Component {
               </Link>
               <Link to={'/login'}>
                 <Glyphicon glyph={'log-out'} className={classes.glyph} />
-                Log Out
+                  {isAuth?'Log Out':'Log In'}
               </Link>
             </MenuItem>
           </NavDropdown>

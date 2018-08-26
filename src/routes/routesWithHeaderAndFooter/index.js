@@ -9,6 +9,7 @@ import PrivateRoutes from '../privateRoutes';
 import AboutUs from '../../components/AboutUs';
 import ContactUs from '../../components/ContactUs';
 import RandomRecipes from '../../containers/RandomRecipes';
+import ProfilePage from '../../containers/Profile';
 
 class RoutesWithHeaderAndFooter extends Component {
   render() {
@@ -20,6 +21,7 @@ class RoutesWithHeaderAndFooter extends Component {
         <Route path="/contactUs" component={ContactUs} />
         <PrivateRoutes path="/home" component={Home} />
         <PrivateRoutes path="/settings" component={Settings} />
+        <PrivateRoutes path="/profile" component={ProfilePage} />
         <Footer />
       </React.Fragment>
     );
