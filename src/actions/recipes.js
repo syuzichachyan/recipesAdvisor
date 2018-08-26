@@ -50,7 +50,7 @@ export const getRecipes = (page = 0) => dispatch => {
   const count = 24 / include.length;
   const arr = [];
   dispatch(recipesFetching());
-  includes.forEach(inclFoods => {
+  include.forEach(inclFoods => {
     let excludesFoods;
     if (excludes.length)
       excludesFoods = '&excluded=' + excludes.join('&excluded=');
