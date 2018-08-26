@@ -3,8 +3,8 @@ import { Redirect, Route } from 'react-router-dom';
 
 class PrivateRoute extends Component {
   render() {
-    let { component: Component, isAuth, ...rest } = this.props;
-    isAuth = true;
+    let { component: Component, ...rest } = this.props;
+    const isAuth = localStorage.getItem('jwt');
     return (
       <Route
         {...rest}
@@ -14,7 +14,7 @@ class PrivateRoute extends Component {
           ) : (
             <Redirect
               to={{
-                pathname: '/',
+                pathname: '/login',
                 state: { from: props.location }
               }}
             />
