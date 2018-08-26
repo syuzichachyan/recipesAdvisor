@@ -67,6 +67,7 @@ class Filter extends Component {
           className={`${classes.search} ${show ? classes.searchActive : ''}`}
           type="text"
           onKeyDown={this.handleEnter}
+          onChange={this.handleSearchInput}
           value={search}
         />
         <button
