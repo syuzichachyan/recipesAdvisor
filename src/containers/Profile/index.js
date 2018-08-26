@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
+import ProfilePage from '../../components/Profile';
 import { getfetchFavourites } from '../../actions/favourites';
-import Favourites from '../../components/Favourites';
 
 const mapStateToProps = state => ({
   allFetchFavourites: state.allFetchFavourites
 });
 
 const mapDispatchToProps = dispatch => ({
-  getfetchFavourites: state => dispatch(getfetchFavourites(state))
+  getfetchFavourites: jwt => dispatch(getfetchFavourites(jwt))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Favourites);
+)(ProfilePage);

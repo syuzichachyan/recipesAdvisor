@@ -50,14 +50,13 @@ export const getRecipes = (page = 0) => dispatch => {
   const count = 24 / include.length;
   const arr = [];
   dispatch(recipesFetching());
-  let exludecFoods = '';
-  include.forEach(inclFoods => {
-    excludes.forEach(
-      food => (exludecFoods = exludecFoods + `&excluded=${food}`)
-    );
+  includes.forEach(inclFoods => {
+    let excludesFoods;
+    if (excludes.length)
+      excludesFoods = '&excluded=' + excludes.join('&excluded=');
     fetch(
       `https://api.edamam.com/search?q=${inclFoods}&app_id=8d30ad7e&app_key=2e15423acdc14ff0c010ea43cd8c94e8&from=${page *
-        count}&to=${(page + 1) * count}&` + exludecFoods
+        count}&to=${(page + 1) * count}&${excludesFoods}`
     )
       .then(recipes => recipes.json())
       .then(recipes => {
