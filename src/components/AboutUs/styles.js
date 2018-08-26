@@ -23,10 +23,6 @@ export default {
       margin: 'auto auto 50px'
     }
   },
-  h3: {
-    marginBottom: '30px',
-    padding: 0
-  },
   food: {
     color: green,
     fontWeight: 'bold',
@@ -44,5 +40,9 @@ export default {
   },
   hr: {
     margin: '40px 10px'
+  },
+  h3: {
+    marginBottom: '30px',
+    padding: 0
   }
 };

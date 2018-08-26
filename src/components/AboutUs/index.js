@@ -21,7 +21,7 @@ class AboutUs extends Component {
               <Glyphicon glyph="cutlery" className={classes.glyph} />
               Food
             </h6>
-            <p className={classes.description}>
+            <p>
               Recipes Advisor has been at the forefront of the healthy-eating
               movement for more than 25 years. Through our award-winning
               bimonthly magazine and high-quality, content-rich website, we
@@ -59,7 +59,7 @@ class AboutUs extends Component {
             <h3 className={classes.h3}>
               <strong>What We Stand For</strong>
             </h3>
-            <p className={classes.description}>
+            <p>
               At Recipes Advisor, our mission is to help make healthy happen
               every day. We provide the inspiration and information people need
               to make healthy eating a way of life. Our experts offer delicious
