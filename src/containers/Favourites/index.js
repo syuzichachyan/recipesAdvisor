@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { fetchFavourites } from '../../actions/favourites';
+import { getfetchFavourites } from '../../actions/favourites';
 import Favourites from '../../components/Favourites';
 
 const mapStateToProps = state => ({
-  favourites: state.favourites
+  allFetchFavourites: state.allFetchFavourites
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchFavourites: state => fetchFavourites(state)
+  getfetchFavourites: state => dispatch(getfetchFavourites(state))
 });
 
 export default connect(
