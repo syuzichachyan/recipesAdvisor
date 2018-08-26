@@ -6,8 +6,6 @@ import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
-let count = 0;
-
 class Recipes extends Component {
   componentDidMount() {
     const { curPage, includes, excludes, getRecipes } = this.props;
@@ -43,26 +41,22 @@ class Recipes extends Component {
       return (
         <div>
           <div className={classes.recipes}>
-            {recipes.map(
-              item =>
-                item.count
-                  ? item.hits.map((recipe, index) => {
-                      count++;
-                      return (
-                        <Recipe
-                          recipe={recipe.recipe}
-                          key={recipe.recipe.url}
-                          index={index}
-                          q={item.q}
-                          type={'profile'}
-                        />
-                      );
-                    })
-                  : ''
+            {recipes.map(item =>
+              item.hits.map((recipe, index) => {
+                return (
+                  <Recipe
+                    recipe={recipe.recipe}
+                    key={recipe.recipe.url}
+                    index={index}
+                    q={item.q}
+                    type={'profile'}
+                  />
+                );
+              })
             )}
           </div>
           {recipes.length ? (
-            count ? (
+            recipes.some(item => item.count > 0) ? (
               <Pagination type={'profile'} />
             ) : (
               <Loader />

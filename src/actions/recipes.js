@@ -29,14 +29,29 @@ const recipesFetchingFailure = () => {
 };
 
 export const getRecipes = (page = 0) => dispatch => {
-  const excludes = [],
-    includes = ['eggs'];
-  let count = 24;
-  if (includes.length) count = 24 / includes.length;
+  const excludes = [];
+  let includes = [
+    'eggs',
+    'fish',
+    'cauliflower',
+    'saffron',
+    'milk',
+    'polenta',
+    'bittman',
+    'chocolate',
+    'blackberry',
+    'hfdghdj',
+    'dsfhsdkh',
+    'udshfihdsjfio',
+    'dsguhdsig'
+  ];
+  includes.sort(() => 0.5 - Math.random());
+  const include = includes.splice(0, 2);
+  const count = 24 / include.length;
   const arr = [];
   dispatch(recipesFetching());
   let exludecFoods = '';
-  includes.forEach(inclFoods => {
+  include.forEach(inclFoods => {
     excludes.forEach(
       food => (exludecFoods = exludecFoods + `&excluded=${food}`)
     );
