@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
+import { Glyphicon } from 'react-bootstrap';
+
 const diets = [
   ['balanced', 'Balanced'],
   ['high-protein', 'High Protein'],
@@ -64,18 +66,26 @@ class Filter extends Component {
     return (
       <div className={classes.main}>
         <input
+          spellCheck="false"
           className={`${classes.search} ${show ? classes.searchActive : ''}`}
           type="text"
           onKeyDown={this.handleEnter}
           onChange={this.handleSearchInput}
           value={search}
         />
-        <button
-          className={`${classes.dropdownOpenButtonUp} ${
-            show ? classes.dropdownOpenButtonDown : ''
+        <div
+          className={`${classes.dropdownButtonContainer} ${
+            show ? classes.dropdownButtonContainerActive : ''
           }`}
           onClick={this.filterShowChange}
-        />
+        >
+          <Glyphicon
+            glyph="glyphicon glyphicon-filter"
+            className={`${classes.dropdownOpenButton} ${
+              show ? classes.dropdownOpenButtonActive : ''
+            }`}
+          />
+        </div>
         <div
           className={classes.dropdown}
           style={{ display: show ? 'flex' : 'none' }}
@@ -88,7 +98,7 @@ class Filter extends Component {
                 key={v[0]}
                 onClick={() => this.handleDietClick(v[0])}
               >
-                {filter.labels.includes(v[0]) ? `✓ ${v[1]}` : `  ${v[1]}`}
+                {filter.labels.includes(v[0]) ? `${v[1]} ✓` : `${v[1]}`}
               </div>
             ))}
           </div>
