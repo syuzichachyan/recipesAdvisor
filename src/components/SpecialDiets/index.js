@@ -48,12 +48,8 @@ class SpecialDiets extends Component {
               })
             )}
           </div>
-          {specialDiets.length ? (
-            count ? (
-              <Pagination type={'profile'} />
-            ) : (
-              <Loader />
-            )
+          {specialDiets.length && count ? (
+            <Pagination type={'profile'} />
           ) : (
             <Loader />
           )}
