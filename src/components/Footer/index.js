@@ -57,7 +57,6 @@ class FooterPage extends Component {
               </Link>
             </p>
           </Col>
-          <hr className="w-100 clearfix d-md-none" />
           <Col className={classes.contact}>
             <h5 className={`text-uppercase ${classes.title}`}>Contact</h5>
             <p className={classes.lightGray}>

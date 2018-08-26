@@ -5,6 +5,7 @@ export default {
   },
   components: {
     display: 'flex',
+    justifyContent: 'space-around',
     '&>div:nth-of-type(1)': {
       flexBasis: '60%'
     },
@@ -19,7 +20,10 @@ export default {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginLeft: '15px'
+    marginLeft: '15px',
+    '@media (max-width: 690px)': {
+      display: 'none'
+    }
   },
   title: {
     fontWeight: 600
