@@ -27,7 +27,7 @@ const allreceiveFavourites = json => {
 export const fetchFavourites = (state, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`http://localhost:5003/v1/favourites`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -46,7 +46,7 @@ export const fetchFavourites = (state, jwt) => {
 export const getFetchFavourites = jwt => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`http://localhost:5003/v1/favourites`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export const getFetchFavourites = jwt => {
 export const deleteFetchFavourites = (id, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`http://localhost:5003/v1/favourite/${id}`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/favourite/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
