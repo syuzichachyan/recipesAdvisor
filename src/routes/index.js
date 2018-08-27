@@ -5,20 +5,48 @@ import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import AuthenticatedComponent from '../containers/Authenticated';
+import ProfilePage from '../components/Profile';
+import  ReceptePage from '../components/Recepte';
 
-class Routers extends Component {
+class ModalSwitch extends Component {
+  previousLocation = this.props.location;
+
+  componentWillUpdate(nextProps) {
+    const { location } = this.props;
+    if (
+      nextProps.history.action !== 'POP' &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   render() {
+    const { location } = this.props;
+    const isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location
+    );
     return (
-      <Router>
-        <Switch>
+      <div>
+        <Switch location={isModal ? this.previousLocation : location}>
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
+          <Route path="/profile" component={ProfilePage} />
           <Route path="/signUp" component={SignUpForm} />
           <Route path="/" component={RoutesWithHeaderAndFooter} />
         </Switch>
-      </Router>
+        <Route path="/recepte/:id" component={ReceptePage} />
+      </div>
     );
   }
 }
+
+const Routers = () => (
+  <Router>
+    <Route component={ModalSwitch} />
+  </Router>
+);
 
 export default Routers;

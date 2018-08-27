@@ -40,7 +40,7 @@ export const logoutUser = prop => {
 export const fetchAuthenticated = (jwt, prop) => {
   return dispatch => {
     dispatch(requestAuthenticated());
-    return fetch(`http://localhost:5003/v1/me`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/me`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
