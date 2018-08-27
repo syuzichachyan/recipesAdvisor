@@ -1,20 +1,8 @@
 import {
-  ADD_TO_FAVOURITES,
-  REMOVE_FROM_FAVOURITES,
   REQUEST_FAVORITES,
   RECEIVE_FAVORITES,
   RECEIVE_ALL_FAVORITES
 } from '../constants';
-
-export const addToFavourites = recipe => ({
-  type: ADD_TO_FAVOURITES,
-  payload: recipe
-});
-
-export const removeFromFavourites = recipe => ({
-  type: REMOVE_FROM_FAVOURITES,
-  payload: recipe
-});
 
 const requestFavourites = () => {
   return {
@@ -84,7 +72,10 @@ export const deleteFetchFavourites = (id, jwt) => {
       method: 'DELETE'
     })
       .then(response => response.json())
-      .then(json => dispatch(receiveFavourites()))
+      .then(json => {
+        dispatch(receiveFavourites());
+        dispatch(getFetchFavourites(jwt));
+      })
       .catch(e => {
         console.log(e);
       });

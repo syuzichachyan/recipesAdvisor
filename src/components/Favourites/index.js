@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 
+import Loader from '../../components/Loader';
 import Recipe from '../../containers/Recipe';
 import styles from './styles';
 
@@ -16,15 +17,18 @@ class Favourites extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { allFetchFavourites, getfetchFavourites } = this.props;
+    const jwt = localStorage.getItem('jwt');
+    const { allFetchFavourites, getFetchFavourites } = this.props;
     if (allFetchFavourites.length !== prevProps.allFetchFavourites.length) {
-      getfetchFavourites(jwt);
+      getFetchFavourites(jwt);
     }
   }
 
   render() {
-    const { classes, allFetchFavourites } = this.props;
-    return (
+    const { classes, allFetchFavourites, isFavouritesFetching } = this.props;
+    return isFavouritesFetching ? (
+      <Loader />
+    ) : (
       <div className={classes.favourites}>
         {allFetchFavourites.map((recipe, index) => (
           <Recipe

@@ -1,17 +1,8 @@
 import {
-  FAVOURITE_RECIPE,
   RECIPES_FETCHING,
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS
 } from '../constants';
-
-export const favouriteRecipe = (index, q) => ({
-  type: FAVOURITE_RECIPE,
-  payload: {
-    index,
-    q
-  }
-});
 
 const recipesFetching = () => {
   return { type: RECIPES_FETCHING };

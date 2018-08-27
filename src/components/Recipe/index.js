@@ -25,27 +25,29 @@ class Recipe extends Component {
   handleClick(e) {
     e.preventDefault();
     const {
-
-      addToFavourites,
-      deleteFetchFavourites,
-      removeFromFavourites,
       recipe,
       fetchFavourites,
       deleteFetchFavourites,
-      favouriteRecipe,
-      history,
-      index,
-      q,
-      type
+      history
     } = this.props;
     const { isFavourite } = recipe;
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
       history.push('/Login');
     }
-    console.log({favoriteId: recipe.uri, recepte: recipe})
-    // fetchFavourites({ favoriteId: recipe.uri.slice(45), recepte: recipe }, jwt);
-    deleteFetchFavourites( recipe.uri.slice(45), jwt);
+    console.log({
+      favoriteId: recipe.uri,
+      recepte: { ...recipe, isFavourite: true }
+    });
+    isFavourite
+      ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
+      : fetchFavourites(
+          {
+            favoriteId: recipe.uri.slice(45),
+            recepte: { ...recipe, isFavourite: true }
+          },
+          jwt
+        );
   }
 
   render() {

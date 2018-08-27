@@ -1,10 +1,8 @@
 import {
   SPECIAL_DIETS_FETCHING_SUCCESS,
   SPECIAL_DIETS_FETCHING_FAILURE,
-  SPECIAL_DIETS_FETCHING,
-  FAVOURITE_RECIPE
+  SPECIAL_DIETS_FETCHING
 } from '../constants';
-import { checkFavourite } from './favourites';
 
 const initialStateIsSpecialDietsFetching = false;
 export const isSpecialDietsFetching = (
@@ -39,8 +37,6 @@ export const specialDiets = (state = initialStateForSpecialDiets, action) => {
       }));
     case SPECIAL_DIETS_FETCHING_FAILURE:
       return initialStateForSpecialDiets;
-    case FAVOURITE_RECIPE:
-      return checkFavourite(state, action);
     default:
       return state;
   }

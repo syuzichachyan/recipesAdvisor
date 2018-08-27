@@ -3,7 +3,8 @@ import { getFetchFavourites } from '../../actions/favourites';
 import Favourites from '../../components/Favourites';
 
 const mapStateToProps = state => ({
-  allFetchFavourites: state.allFetchFavourites
+  allFetchFavourites: state.allFetchFavourites,
+  isFavouritesFetching: state.isFavouriteRecipesFetching
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,10 +1,8 @@
 import {
   HEALTHY_RECIPES_FETCHING_SUCCESS,
   HEALTHY_RECIPES_FETCHING_FAILURE,
-  HEALTHY_RECIPES_FETCHING,
-  FAVOURITE_RECIPE
+  HEALTHY_RECIPES_FETCHING
 } from '../constants';
-import { checkFavourite } from './favourites';
 
 const initialStateIsHealthyRecipesFetching = false;
 export const isHealthyRecipesFetching = (
@@ -42,8 +40,6 @@ export const healthyRecipes = (
       }));
     case HEALTHY_RECIPES_FETCHING_FAILURE:
       return initialStateForHealthyRecipes;
-    case FAVOURITE_RECIPE:
-      return checkFavourite(state, action);
     default:
       return state;
   }

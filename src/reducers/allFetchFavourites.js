@@ -1,17 +1,23 @@
-import { RECEIVE_ALL_FAVORITES, RECEIVE_FAVORITES } from '../constants';
+import { RECEIVE_ALL_FAVORITES, REQUEST_FAVORITES } from '../constants';
 
-const allFetchFavourites = (state = [], action) => {
+export const isFavouriteRecipesFetching = (state = false, action) => {
+  switch (action.type) {
+    case REQUEST_FAVORITES:
+      return true;
+    case RECEIVE_ALL_FAVORITES:
+      return false;
+    default:
+      return false;
+  }
+};
+
+export const allFetchFavourites = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ALL_FAVORITES: {
       return action.payload;
-    }
-    case RECEIVE_FAVORITES: {
-      return [...state, action.payload];
     }
     default: {
       return state;
     }
   }
 };
-
-export default allFetchFavourites;
