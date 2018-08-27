@@ -5,28 +5,40 @@ import {
 } from '../constants';
 
 export default (state = { type: '', labels: [] }, action) => {
+  let temporaryState;
+
   switch (action.type) {
     case ADD_HEALTH_LABEL:
       if (state.type === 'health') {
-        state.labels.push(action.label);
+        temporaryState = { ...state };
+        state.labels = [];
+        state.labels.push(...temporaryState.labels, action.label);
       } else {
         state.type = 'health';
-        state.labels = [];
+          state.labels = [];
         state.labels.push(action.label);
       }
       return { ...state };
+
     case ADD_DIET_LABEL:
       if (state.type === 'diet') {
-        state.labels.push(action.label);
+        temporaryState = { ...state };
+        state.labels = [];
+        state.labels.push(...temporaryState.labels, action.label);
       } else {
         state.type = 'diet';
         state.labels = [];
         state.labels.push(action.label);
       }
       return { ...state };
+
     case REMOVE_FILTER_LABEL:
-      state.labels.splice(state.labels.indexOf(action.label), 1);
-      return { ...state };
+        temporaryState = { ...state };
+        state.labels = [];
+        temporaryState.labels.splice(temporaryState.labels.indexOf(action.label), 1);
+        state.labels.push(temporaryState.labels);
+
+        return { ...state };
     default:
       return state;
   }
