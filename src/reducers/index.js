@@ -7,8 +7,10 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import favourites from './favourites';
 import preferences from './preferences';
+
 import auth from './authenticated';
 import allFetchFavourites from './allFetchFavourites';
+import filter from './filter';
 
 export default combineReducers({
   recipes,
@@ -24,5 +26,6 @@ export default combineReducers({
   favourites,
   preferences,
   auth,
-  form: reduxFormReducer
+  form: reduxFormReducer,
+  filter
 });

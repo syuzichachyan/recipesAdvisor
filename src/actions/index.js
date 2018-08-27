@@ -3,6 +3,7 @@ import { getHealthyRecipes, favouriteHealthyRecipe } from './healthyRecipes';
 import { getSpecialDiets, favouriteSpecialRecipe } from './specialDiets';
 import { getRandomRecipes } from './randomRecipes';
 import { addPreference, removePreference } from './preferences';
+import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import {
   firstPage,
   nextPage,
@@ -32,5 +33,8 @@ export {
   addToFavourites,
   removeFromFavourites,
   addPreference,
-  removePreference
+  removePreference,
+  addHealthLabel,
+  addDietLabel,
+  removeLabel
 };

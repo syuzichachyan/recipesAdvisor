@@ -29,7 +29,6 @@ const healthyRecipesFetchingFailure = () => {
 };
 
 export const getHealthyRecipes = (labels, page = 0, q) => dispatch => {
-  labels = []; //must me deleted
   let connectedLabels;
   if (labels.length) connectedLabels = '&health=' + labels.join('&health=');
   let excludes = ['curry'];
