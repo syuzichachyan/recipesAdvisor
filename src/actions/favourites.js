@@ -22,9 +22,10 @@ const requestFavourites = () => {
   };
 };
 
-const receiveFavourites = () => {
+const receiveFavourites = json => {
   return {
-    type: RECEIVE_FAVORITES
+    type: RECEIVE_FAVORITES,
+    payload: json
   };
 };
 
@@ -50,7 +51,7 @@ export const fetchFavourites = (state, jwt) => {
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        dispatch(receiveFavourites());
+        dispatch(receiveFavourites(response.data));
       });
   };
 };
@@ -68,5 +69,19 @@ export const getfetchFavourites = jwt => {
       .catch(e => {
         console.log(e);
       });
+  };
+};
+
+export const deleteFetchFavourites = (id, jwt) => {
+  return dispatch => {
+    dispatch(requestFavourites());
+    return fetch(`http://localhost:5003/v1/favourite/${id}`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`
+      },
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => dispatch(receiveFavourites(id)));
   };
 };

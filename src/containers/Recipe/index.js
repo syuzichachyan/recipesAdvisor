@@ -7,7 +7,7 @@ import {
   removeFromFavourites
 } from '../../actions';
 import Recipe from '../../components/Recipe';
-import { fetchFavourites } from '../../actions/favourites';
+import { fetchFavourites, deleteFetchFavourites } from '../../actions/favourites';
 
 const mapStateToProps = state => ({
   favourites: state.favourites
@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
         return dispatch(favouriteRecipe(index, q));
     }
   },
-
+  deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt)),
   fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
   addToFavourites: recipe => dispatch(addToFavourites(recipe)),
   removeFromFavourites: uri => dispatch(removeFromFavourites(uri))

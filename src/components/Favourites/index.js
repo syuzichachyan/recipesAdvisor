@@ -5,14 +5,22 @@ import PropTypes from 'prop-types';
 import Recipe from '../../containers/Recipe';
 import styles from './styles';
 
+const jwt = localStorage.getItem('jwt');
+
 class Favourites extends Component {
   componentDidMount() {
-    const jwt = localStorage.getItem('jwt');
     const { getfetchFavourites, history } = this.props;
     if (!jwt) {
       history.push('/login');
     }
     getfetchFavourites(jwt);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { allFetchFavourites, getfetchFavourites } = this.props;
+    if (allFetchFavourites.length !== prevProps.allFetchFavourites.length) {
+      getfetchFavourites(jwt);
+    }
   }
 
   render() {
