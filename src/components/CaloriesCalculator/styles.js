@@ -1,5 +1,4 @@
 import backgroundImg from '../../images/loginBack.jpg';
-
 export default {
   '@global': {
     'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video': {
@@ -30,6 +29,7 @@ export default {
     },
     body: {
       background: `url(${backgroundImg}) no-repeat center center fixed`,
+//      background: 'red',
       backgroundSize: 'cover',
       minHeight: '100vh',
       fontFamily: "'Open Sans', sans-serif",
@@ -52,7 +52,6 @@ export default {
       color: '#FFFFFF'
     }
   },
-
   welcome: {
     fontSize: '3em',
     color: '#FFFFFF',
@@ -60,21 +59,8 @@ export default {
     fontWeight: '600',
     textTransform: 'uppercase'
   },
-
-  a: {
-    textDecoration: 'none',
-    transition: '0.5s all',
-    WebkitTransition: '0.5s all',
-    MozTransition: '0.5s all',
-    OTransition: '0.5s all',
-    '&:hover': {
-      transition: '0.5s all',
-      WebkitTransition: '0.5s all',
-      MozTransition: '0.5s all',
-      OTransition: '0.5s all'
-    }
-  },
-  wrap: {
+  boxWrap: {
+    height: '680.656px',
     width: '50%',
     margin: '2em auto 0'
   },
@@ -87,7 +73,7 @@ export default {
     position: 'relative',
     float: 'left',
     width: '100%',
-    backgroundColor: 'red'
+    backgroundColor: 'blue'
   },
   callbacks: {
     position: 'relative',
@@ -113,19 +99,17 @@ export default {
       display: 'block',
       float: 'left'
     },
-   
   },
-  contentLeft: {
+  boxLeft: {
     float: 'left',
     width: '50%',
-    background: '#FFFFFF'
   },
-  contentMain: {
+  boxRight: {
     float: 'left',
-    width: '50%'
-  },
-  contentInfo: {
-    padding: '5em 3em',
+    width: '50%',
+    height: '658.666px',
+    padding: '5em',
+    background: '#FFFFFF',
     textAlign: 'center',
     '& h2': {
       color: '#212121',
@@ -145,42 +129,17 @@ export default {
       letterSpacing: '1px'
     },
     '& p': {
-      color: '#999999',
+      color: '#51585e',
       margin: '1em 0 0 0',
-      fontSize: '.9em',
+      fontSize: '1em',
       lineHeight: '1.8em'
     }
   },
-
-  signIn: {
-    '& h4': {
-      textAlign: 'center',
-      color: '#212121',
-      fontSize: '.9em',
-      margin: '1em 0 0 0',
-      '& a': {
-        color: '#f44336',
-        textDecoration: 'none',
-        '&:hover': {
-          color: '#212121'
-        }
-      }
-    }
-  },
-
-  signUpForm: {
+  formsBox: {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
     minHeight: '426px',
-    '& h3': {
-      color: '#FFFFFF',
-      fontSize: '2em',
-      margin: '0 0 1em 0',
-      textTransform: 'uppercase',
-      fontWeight: '700',
-      letterSpacing: '2px'
-    },
-    '& h4': {
+    '& h2': {
       color: '#FFFFFF',
       fontSize: '1em',
       margin: '0 0 1em 0',
@@ -189,28 +148,32 @@ export default {
       letterSpacing: '2px'
     }
   },
-  text: {
+  selector: {
     outline: 'none',
     padding: '1em',
     background: 'none',
-    border: '1px solid #ffffff',
-    color: '#FFFFFF',
+    border: '1px solid white',
+    //color: '#181035',
+    color: '#faa96a',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
-    width: '93%'
+    width: '100%',
+    "& :hover": {
+      backgroundColor:'blue',
+      pointerEvents: "none",
+    }
   },
-
-  password: {
+  textInput: {
     outline: 'none',
     padding: '1em',
     background: 'none',
-    border: '1px solid #ffffff',
-    color: '#FFFFFF',
+    border: '1px solid white',
+    color: '#faa96a',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
-    width: '93%'
+    width: '100%'
   },
-
+  
   button: {
     color: '#ffffff',
     fontSize: '.9em',
@@ -232,86 +195,150 @@ export default {
       border: 'solid 1px #FFFFFF'
     }
   },
-
-  footer: {
-    margin: '2em 0 0 0',
-    textAlign: 'center',
-    '& p': {
-      fontSize: '.9em',
-      color: '#FFFFFF'
+  a: {
+    color: 'red',
+    '&:hover': {
+      backgroundColor: 'red'
     }
   },
-
+  
   '@media (max-width: 1440px)': {
-    wrap: {
+    boxWrap: {
       width: '55%'
     }
   },
   '@media (max-width: 1366px)': {
-    wrap: {
+    boxWrap: {
       width: '60%'
     }
   },
   '@media (max-width: 1080px)': {
-    wrap: {
+    boxWrap: {
       width: '75%'
     }
   },
   '@media (max-width: 991px)': {
-    wrap: {
+    boxWrap: {
       width: '80%'
     }
   },
   '@media (max-width: 900px)': {
-    wrap: {
+    boxWrap: {
       width: '85%'
-    }
-  },
-  '@media(max-width:800px)': {
-    contentInfo: {
-      '& h2': {
-        fontSize: '1.2em'
-      }
-    },
-    signUpForm: {
-      minHeight: '445px'
     }
   },
   '@media (max-width: 768px)': {
-    wrap: {
+    boxWrap: {
       width: '90%'
     }
   },
-  '@media (max-width: 715px)': {
-    contentLeft: {
-      display: "none"
-    }
-  },
   '@media (max-width: 667px)': {
-    contentLeft: {
+    boxLeft: {
       float: 'none',
-      width: '100%',
+      width: '100%'
     },
-    contentMain: {
+    boxRight: {
       float: 'none',
-      width: '100%',
+      width: '100%'
     },
-    signUpForm: {
+    callbacks_tabs: {
+      left: '45%'
+    },
+    formsBox: {
       minHeight: '425px'
     },
-    wrap: {
+    boxboxWrap: {
       width: '85%'
-    },
-    h1: {
-      fontSize: '1.5em'
-    },
-    p: {
-      fontSize: '1em'
     }
   },
   '@media (max-width: 320px)': {
-    wrap: {
+    boxWrap: {
       width: '90%'
     }
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//
+// export default {
+//   boxboxWrap: {
+//     width: '712px',
+//     display: 'flex',
+//     flexboxWrap: 'noboxWrap',
+//     margin: 'auto',
+//     border: '1px solid red'
+//   },
+//   box: {
+//     minWidth: '255px',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     flexDirection: 'column',
+//     border: '1px solid black',
+//     padding: '20px',
+//     width: '255px',
+//     height: '510px',
+//     margin: '0 30px'
+//   },
+//
+//   result: {
+//     textAlign: 'center'
+//   },
+//
+//   listTitle: {
+//     font: '40px arial, sans-serif',
+//     color: 'white',
+//     textAlign: 'center',
+//     margin: '15px 0 10px 0'
+//   },
+//   button: {
+//     minWidth: '265px',
+//     margin: '0 20% 30px 20%',
+//     backgroundColor: 'rgb(71, 166, 47)',
+//     border: '2px solid rgb(71, 166, 47)',
+//     borderRadius: '10px',
+//     font: '26px arial, sans-serif',
+//     color: 'white',
+//     padding: '5px 0 5px 0',
+//     outline: 'none',
+//     cursor: 'pointer',
+//     textAlign: 'center',
+//     '&:focus, &:hover, &:visited, &:link, &:active': {
+//       textDecoration: 'none',
+//       color: 'white'
+//     },
+//     '&:hover': {
+//       backgroundColor: 'white',
+//       color: 'rgb(71, 166, 47)'
+//     }
+//   },
+//   noPrefsContainer: {
+//     minWidth: '251px',
+//     height: '34px',
+//     display: 'flex',
+//     flexDirection: 'row',
+//     justifyContent: 'center',
+//     color: 'white',
+//     margin: '2px auto',
+//     alignItems: 'center',
+//     lineHeight: '25px'
+//   },
+//   noPrefsText: {
+//     display: 'inline-block',
+//     fontSize: '19px',
+//     marginRight: '10px'
+//   }
+// };

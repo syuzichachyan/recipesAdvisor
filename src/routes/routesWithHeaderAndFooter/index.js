@@ -9,19 +9,17 @@ import PrivateRoutes from '../privateRoutes';
 import AboutUs from '../../components/AboutUs';
 import ContactUs from '../../components/ContactUs';
 import RandomRecipes from '../../containers/RandomRecipes';
-import ProfilePage from '../../containers/Profile';
 
 class RoutesWithHeaderAndFooter extends Component {
   render() {
     return (
       <React.Fragment>
         <Header />
-        <Route path={'/aboutus'} component={AboutUs} />
-        <Route exact path={'/'} component={RandomRecipes} />
+        <Route path="/aboutUs" component={AboutUs} />
+        <Route exact path="/" component={RandomRecipes} />
         <Route path="/contactUs" component={ContactUs} />
         <PrivateRoutes path="/home" component={Home} />
         <PrivateRoutes path="/settings" component={Settings} />
-        <PrivateRoutes path="/profile" component={ProfilePage} />
         <Footer />
       </React.Fragment>
     );

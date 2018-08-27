@@ -44,7 +44,7 @@ class SignUp extends Component {
     });
   }
   render() {
-    const { classes } = this.props;
+    const { classes, valid } = this.props;
     return (
       <div>
         <div>
@@ -133,7 +133,14 @@ class SignUp extends Component {
                       type="password"
                       placeholder="Confirm Password"
                     />
-                    <button className={classes.button}>Sign Up</button>
+
+                    <button
+                      className={classes.button}
+                      type="submit"
+                      disabled={!valid}
+                    >
+                      Sign Up
+                    </button>
                   </form>
                 </div>
               </div>

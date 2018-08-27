@@ -4,9 +4,7 @@ import Preferences from '../components/Preferences';
 import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
-import AuthenticatedComponent from '../containers/Authenticated';
-
-import ProfilePage from '../containers/Profile';
+import CaloriesCalculator from '../components/CaloriesCalculator';
 
 class Routers extends Component {
   render() {
@@ -16,6 +14,7 @@ class Routers extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
+          <Route path="/calculator" component={CaloriesCalculator} />
           <Route path="/" component={RoutesWithHeaderAndFooter} />
         </Switch>
       </Router>

@@ -45,7 +45,7 @@ class Header extends Component {
                 <Glyphicon glyph={'user'} className={classes.glyph} />
                 Profile
               </Link>
-              <Link to={'/dietprogram'}>
+              <Link to={'/calculator'}>
                 <Glyphicon glyph={'cutlery'} className={classes.glyph} />
                 Start Diet
               </Link>
