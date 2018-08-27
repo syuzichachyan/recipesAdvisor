@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import { Col, Glyphicon } from 'react-bootstrap';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -29,6 +29,7 @@ class Recipe extends Component {
       removeFromFavourites,
       recipe,
       fetchFavourites,
+      deleteFetchFavourites,
       favouriteRecipe,
       history,
       index,
@@ -40,28 +41,46 @@ class Recipe extends Component {
     if (!jwt) {
       history.push('/Login');
     }
-    isFavourite ? removeFromFavourites(recipe.uri) : addToFavourites(recipe);
-    favouriteRecipe(index, q, type);
-    fetchFavourites({ favoriteId: recipe.uri, recepte: recipe }, jwt);
+    console.log('Recipe: ', recipe);
+    isFavourite
+      ? deleteFetchFavourites(recipe.uri, jwt)
+      : fetchFavourites(
+          { favoriteId: recipe.uri, recepte: { ...recipe, isFavourite: true } },
+          jwt
+        );
   }
 
   render() {
     const { recipe, classes } = this.props;
     const { isFavourite } = recipe;
     return (
-      <div className={classes.recipe}>
-        <form method="post" onSubmit={this.handleClick}>
-          <button className={classes.glyph}>
-            {isFavourite ? (
-              <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
-            ) : (
-              <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon} />
-            )}
-          </button>
-        </form>
-        <img alt="Not Found" src={recipe.image} />
-        <h3>{recipe.label}</h3>
-      </div>
+      <Col xs={6} md={4} className={classes.col}>
+        <img
+          id={'plus'}
+          className={classes.plus}
+          src={'../../images/plus.png'}
+        />
+        <div className={classes.imageWrapper}>
+          <form method="post" onSubmit={this.handleClick}>
+            <button className={classes.favBtn}>
+              {isFavourite ? (
+                <Glyphicon glyph={'heart'} className={classes.glyph} />
+              ) : (
+                <Glyphicon glyph={'heart-empty'} className={classes.glyph} />
+              )}
+            </button>
+          </form>
+          <img
+            id={'mainImage'}
+            className={classes.mainImage}
+            src={recipe.image}
+          />
+        </div>
+        <div className={classes.cline} />
+        <div className={classes.content}>
+          <h3 className={classes.title}>{recipe.label}</h3>
+        </div>
+      </Col>
     );
   }
 }

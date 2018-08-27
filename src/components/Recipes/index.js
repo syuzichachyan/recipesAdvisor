@@ -5,6 +5,7 @@ import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
+import { Grid, Row } from 'react-bootstrap';
 
 class Recipes extends Component {
   componentDidMount() {
@@ -39,8 +40,8 @@ class Recipes extends Component {
     const { isRecipesFetching, recipes, classes } = this.props;
     if (isRecipesFetching === false) {
       return (
-        <div>
-          <div className={classes.recipes}>
+        <Grid>
+          <Row className={classes.recipes}>
             {recipes.map(item =>
               item.hits.map((recipe, index) => {
                 return (
@@ -54,7 +55,7 @@ class Recipes extends Component {
                 );
               })
             )}
-          </div>
+          </Row>
           {recipes.length ? (
             recipes.some(item => item.count > 0) ? (
               <Pagination type={'profile'} />
@@ -64,7 +65,7 @@ class Recipes extends Component {
           ) : (
             <Loader />
           )}
-        </div>
+        </Grid>
       );
     } else return <Loader />;
   }
