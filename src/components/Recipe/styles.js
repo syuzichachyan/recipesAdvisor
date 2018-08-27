@@ -4,7 +4,7 @@ export default {
   },
   favBtn: {
     position: 'absolute',
-    margin: '10px 0 0 250px',
+    margin: '-105px 105px',
     border: 0,
     background: 0,
     zIndex: 100,
@@ -19,11 +19,41 @@ export default {
   img: {
     width: '40%'
   },
-  col: {
-    padding: 0,
-    overflow: 'hidden',
+  scene: {
     width: '300px',
     height: '450px',
+    perspective: '600px'
+  },
+  card: {
+    width: '100%',
+    height: '100%',
+    transition: 'transform 1s',
+    transformStyle: 'preserve-3d',
+    cursor: 'pointer',
+    position: 'relative'
+  },
+  isFlipped: {
+    transform: 'rotateY(180deg)',
+    '&>div>#imageWrapper': {
+      opacity: 0
+    }
+  },
+  cardFace: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    lineHeight: '260px',
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: '40px',
+    backfaceVisibility: 'hidden'
+  },
+  col: {
+    height: '450px',
+    width: '300px',
+    padding: 0,
+    overflow: 'hidden',
     marginTop: '40px',
     marginBottom: '30px',
     marginLeft: '30px',
@@ -35,13 +65,37 @@ export default {
       cursor: 'pointer',
       transition: '220ms ease-in',
       transform: 'translate(0, -5px)',
-      boxShadow: '0 0 13px grey',
+      boxShadow: '0 0 13px grey'
+    },
+    '&:focus': {
+      cursor: 'pointer',
+      transition: '220ms ease-in',
+      transform: 'translate(0, -5px)',
+      boxShadow: '0 0 13px grey'
+    }
+  },
+  cardFaceFront: {
+    color: 'red',
+    '&:hover': {
       '&>div>#mainImage': {
         transition: '190ms ease-in',
         transform: 'scale(1.15)',
         opacity: '.8'
       },
-      '&>#plus': {
+      '&>div>#plus': {
+        transition: '200ms ease-in',
+        transform: 'translate(0, 50px)',
+        opacity: 1,
+        zIndex: 2
+      }
+    },
+    '&:focus': {
+      '&>div>#mainImage': {
+        transition: '190ms ease-in',
+        transform: 'scale(1.15)',
+        opacity: '.8'
+      },
+      '&>div>#plus': {
         transition: '200ms ease-in',
         transform: 'translate(0, 50px)',
         opacity: 1,
@@ -49,12 +103,16 @@ export default {
       }
     }
   },
+  cardFaceBack: {
+    color: 'blue',
+    transform: 'rotateY(180deg)'
+  },
   plus: {
     display: 'inline-block',
     position: 'absolute',
     width: '30px',
     height: '30px',
-    top: '30px',
+    bottom: '500px',
     left: 'calc(50% - 15px)',
     transition: '200ms ease-in',
     transform: 'translate(0, -50px)',
@@ -66,6 +124,7 @@ export default {
     backgroundColor: 'black'
   },
   mainImage: {
+    marginTop: '-40px',
     width: '300px',
     height: '235px',
     transition: '190ms ease-in',

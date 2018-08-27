@@ -8,7 +8,12 @@ class Recipe extends Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      isRotated: false
+    };
+
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
+    this.handleRotateClick = this.handleRotateClick.bind(this);
   }
 
   static propTypes = {
@@ -22,7 +27,7 @@ class Recipe extends Component {
     type: PropTypes.string
   };
 
-  handleClick(e) {
+  handleFavouriteClick(e) {
     e.preventDefault();
     const {
       recipe,
@@ -50,35 +55,58 @@ class Recipe extends Component {
         );
   }
 
+  handleRotateClick() {
+    const { isRotated } = this.state;
+    this.setState({
+      isRotated: !isRotated
+    });
+  }
+
   render() {
     const { recipe, classes } = this.props;
     const { isFavourite } = recipe;
+    const { isRotated } = this.state;
     return (
       <Col xs={6} md={4} className={classes.col}>
-        <img
-          id={'plus'}
-          className={classes.plus}
-          src={'../../images/plus.png'}
-        />
-        <div className={classes.imageWrapper}>
-          <form method="post" onSubmit={this.handleClick}>
-            <button className={classes.favBtn}>
-              {isFavourite ? (
-                <Glyphicon glyph={'heart'} className={classes.glyph} />
-              ) : (
-                <Glyphicon glyph={'heart-empty'} className={classes.glyph} />
-              )}
-            </button>
-          </form>
-          <img
-            id={'mainImage'}
-            className={classes.mainImage}
-            src={recipe.image}
-          />
-        </div>
-        <div className={classes.cline} />
-        <div className={classes.content}>
-          <h3 className={classes.title}>{recipe.label}</h3>
+        <div className={classes.scene}>
+          <div
+            className={`${classes.card} ${isRotated ? classes.isFlipped : ''}`}
+            onClick={this.handleRotateClick}
+          >
+            <div className={`${classes.cardFace} ${classes.cardFaceFront}`}>
+              <div id={'imageWrapper'} className={classes.imageWrapper}>
+                <form method="post" onSubmit={this.handleFavouriteClick}>
+                  <button className={classes.favBtn}>
+                    {isFavourite ? (
+                      <Glyphicon glyph={'heart'} className={classes.glyph} />
+                    ) : (
+                      <Glyphicon
+                        glyph={'heart-empty'}
+                        className={classes.glyph}
+                      />
+                    )}
+                  </button>
+                </form>
+                {/*<img*/}
+                {/*id={'plus'}*/}
+                {/*className={classes.plus}*/}
+                {/*src={'../../images/plus.png'}*/}
+                {/*/>*/}
+                <img
+                  id={'mainImage'}
+                  className={classes.mainImage}
+                  src={recipe.image}
+                />
+                <div className={classes.cline} />
+              </div>
+              <div className={classes.content}>
+                <h3 className={classes.title}>{recipe.label}</h3>
+              </div>
+            </div>
+            <div className={`${classes.cardFace} ${classes.cardFaceBack}`}>
+              <h3 className={classes.title}>{recipe.label}</h3>
+            </div>
+          </div>
         </div>
       </Col>
     );
