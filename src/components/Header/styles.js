@@ -2,6 +2,9 @@ export default {
   navBar: {
     background: 'rgba(0, 0, 0, 0.5)',
     border: 0,
+    '&>div': {
+      marginTop: 0
+    },
     '@media (max-width: 767px)': {
       height: '50px',
       '&>div': {

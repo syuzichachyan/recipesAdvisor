@@ -5,8 +5,7 @@ import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
-
-let count = 0;
+import { Grid, Row } from 'react-bootstrap';
 
 class Recipes extends Component {
   componentDidMount() {
@@ -41,32 +40,32 @@ class Recipes extends Component {
     const { isRecipesFetching, recipes, classes } = this.props;
     if (isRecipesFetching === false) {
       return (
-        <div>
-          <div className={classes.recipes}>
-            {recipes.map(
-              item =>
-                item.count
-                  ? item.hits.map((recipe, index) => {
-                      count++;
-                      return (
-                        <Recipe
-                          recipe={recipe.recipe}
-                          key={recipe.recipe.url}
-                          index={index}
-                          q={item.q}
-                          type={'profile'}
-                        />
-                      );
-                    })
-                  : ''
+        <Grid>
+          <Row className={classes.recipes}>
+            {recipes.map(item =>
+              item.hits.map((recipe, index) => {
+                return (
+                  <Recipe
+                    recipe={recipe.recipe}
+                    key={recipe.recipe.url}
+                    index={index}
+                    q={item.q}
+                    type={'profile'}
+                  />
+                );
+              })
             )}
-          </div>
-          {recipes.length && count ? (
-            <Pagination type={'profile'} />
+          </Row>
+          {recipes.length ? (
+            recipes.some(item => item.count > 0) ? (
+              <Pagination type={'profile'} />
+            ) : (
+              <Loader />
+            )
           ) : (
             <Loader />
           )}
-        </div>
+        </Grid>
       );
     } else return <Loader />;
   }

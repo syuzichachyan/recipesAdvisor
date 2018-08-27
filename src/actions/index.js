@@ -13,7 +13,6 @@ import {
   prevHealthyPage,
   prevSpecialPage
 } from './pagination';
-import { addToFavourites, removeFromFavourites } from './favourites';
 
 export {
   getRecipes,
@@ -30,8 +29,6 @@ export {
   prevPage,
   prevHealthyPage,
   prevSpecialPage,
-  addToFavourites,
-  removeFromFavourites,
   addPreference,
   removePreference,
   addHealthLabel,

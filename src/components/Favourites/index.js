@@ -2,22 +2,33 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 
+import Loader from '../../components/Loader';
 import Recipe from '../../containers/Recipe';
 import styles from './styles';
 
 class Favourites extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
-    const { getfetchFavourites, history } = this.props;
+    const { getFetchFavourites, history } = this.props;
     if (!jwt) {
       history.push('/login');
     }
-    getfetchFavourites(jwt);
+    getFetchFavourites(jwt);
+  }
+
+  componentDidUpdate(prevProps) {
+    const jwt = localStorage.getItem('jwt');
+    const { allFetchFavourites, getFetchFavourites } = this.props;
+    if (allFetchFavourites.length !== prevProps.allFetchFavourites.length) {
+      getFetchFavourites(jwt);
+    }
   }
 
   render() {
-    const { classes, allFetchFavourites } = this.props;
-    return (
+    const { classes, allFetchFavourites, isFavouritesFetching } = this.props;
+    return isFavouritesFetching ? (
+      <Loader />
+    ) : (
       <div className={classes.favourites}>
         {allFetchFavourites.map((recipe, index) => (
           <Recipe
