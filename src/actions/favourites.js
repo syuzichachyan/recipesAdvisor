@@ -41,7 +41,6 @@ export const fetchFavourites = (state, jwt) => {
     dispatch(requestFavourites());
     return fetch(`http://localhost:5003/v1/favourites`, {
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
       },
@@ -56,11 +55,13 @@ export const fetchFavourites = (state, jwt) => {
   };
 };
 
-export const getfetchFavourites = jwt => {
+export const getFetchFavourites = jwt => {
   return dispatch => {
     dispatch(requestFavourites());
     return fetch(`http://localhost:5003/v1/favourites`, {
       headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
       }
     })
@@ -77,11 +78,15 @@ export const deleteFetchFavourites = (id, jwt) => {
     dispatch(requestFavourites());
     return fetch(`http://localhost:5003/v1/favourite/${id}`, {
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
       },
       method: 'DELETE'
     })
       .then(response => response.json())
-      .then(json => dispatch(receiveFavourites(id)));
+      .then(json => dispatch(receiveFavourites()))
+      .catch(e => {
+        console.log(e);
+      });
   };
 };
