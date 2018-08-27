@@ -8,11 +8,11 @@ import styles from './styles';
 class Favourites extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
-    const { getfetchFavourites, history } = this.props;
+    const { getFetchFavourites, history } = this.props;
     if (!jwt) {
       history.push('/login');
     }
-    getfetchFavourites(jwt);
+    getFetchFavourites(jwt);
   }
 
   render() {
