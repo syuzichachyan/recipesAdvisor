@@ -13,53 +13,15 @@ class Pagination extends Component {
   }
 
   handlePrevClick() {
-    const {
-      prevPage,
-      prevHealthyPage,
-      prevSpecialPage,
-      type,
-      curProfilePage,
-      curHealthyPage,
-      curSpecialPage
-    } = this.props;
-    switch (type) {
-      case 'healthy':
-        if (curHealthyPage !== 0) {
-          prevHealthyPage(curHealthyPage - 1);
-        }
-        break;
-      case 'special':
-        if (curSpecialPage !== 0) {
-          prevSpecialPage(curSpecialPage - 1);
-        }
-        break;
-      default:
-        if (curProfilePage !== 0) {
-          prevPage(curProfilePage - 1);
-        }
+    const { prevPage, curPage } = this.props;
+    if (curPage !== 0) {
+      prevPage(curPage - 1);
     }
   }
 
   handleNextClick() {
-    const {
-      nextPage,
-      nextHealthyPage,
-      nextSpecialPage,
-      type,
-      curProfilePage,
-      curHealthyPage,
-      curSpecialPage
-    } = this.props;
-    switch (type) {
-      case 'healthy':
-        nextHealthyPage(curHealthyPage + 1);
-        break;
-      case 'special':
-        nextSpecialPage(curSpecialPage + 1);
-        break;
-      default:
-        nextPage(curProfilePage + 1);
-    }
+    const { nextPage, curPage } = this.props;
+    nextPage(curPage + 1);
   }
 
   render() {
