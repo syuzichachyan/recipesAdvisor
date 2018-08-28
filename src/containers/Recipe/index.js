@@ -12,16 +12,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  favouriteRecipe: (index, q, type) => {
-    switch (type) {
-      case 'special':
-        return dispatch(favouriteSpecialRecipe(index, q));
-      case 'healthy':
-        return dispatch(favouriteSpecialRecipe(index, q));
-      default:
-        return dispatch(favouriteRecipe(index, q));
-    }
-  },
   fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
   deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt))
 });

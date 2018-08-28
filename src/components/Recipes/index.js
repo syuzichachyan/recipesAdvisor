@@ -8,16 +8,26 @@ import styles from './styles';
 import { Grid, Row } from 'react-bootstrap';
 
 class Recipes extends Component {
+  constructor(props) {
+    super(props);
+
+    this.qJoiner = this.qJoiner.bind(this);
+  }
+
   componentDidMount() {
-    const { curPage, includes, excludes, getRecipes } = this.props;
-    getRecipes(curPage, excludes, includes);
+    const { curPage, getRecipes, type, labels, q } = this.props;
+    getRecipes(curPage, labels, q, type);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState === this.state) {
-      const { curPage, getRecipes, excludes, includes } = this.props;
+      const { curPage, labels, firstPage, getRecipes, q, type } = this.props;
+      if (labels !== prevProps.labels || q !== prevProps.q) {
+        firstPage();
+        getRecipes(curPage, labels, q, type);
+      }
       if (curPage !== prevProps.curPage) {
-        getRecipes(curPage, excludes, includes);
+        getRecipes(curPage, labels, q, type);
       }
     }
   }
@@ -35,6 +45,15 @@ class Recipes extends Component {
     isRecipesFetching: false,
     recipes: []
   };
+
+  qJoiner() {
+    const { recipes } = this.props;
+    let labels = '';
+    recipes.map(elem => {
+      labels = labels + elem.q + ', ';
+    });
+    return labels.substring(0, labels.length - 2);
+  }
 
   render() {
     const { isRecipesFetching, recipes, classes } = this.props;
@@ -60,7 +79,10 @@ class Recipes extends Component {
             recipes.some(item => item.count > 0) ? (
               <Pagination type={'profile'} />
             ) : (
-              <Loader />
+              <h1>
+                Sorry! There aren`t '{this.qJoiner()}'{' '}
+                {recipes.length === 1 ? 'recipe' : 'recipes'}
+              </h1>
             )
           ) : (
             <Loader />

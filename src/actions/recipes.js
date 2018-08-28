@@ -15,40 +15,46 @@ const recipesFetchingSuccess = recipes => {
   };
 };
 
-const recipesFetchingFailure = () => {
-  return { type: RECIPES_FETCHING_FAILURE };
+const recipesFetchingFailure = recipes => {
+  return {
+    type: RECIPES_FETCHING_FAILURE,
+    payload: recipes
+  };
 };
 
-export const getRecipes = (page = 0) => dispatch => {
-  const excludes = [];
-  let includes = [
-    'eggs',
-    'fish',
-    'cauliflower',
-    'saffron',
-    'milk',
-    'polenta',
-    'bittman',
-    'chocolate',
-    'blackberry',
-    'hfdghdj',
-    'dsfhsdkh',
-    'udshfihdsjfio',
-    'dsguhdsig'
-  ];
-  includes.sort(() => 0.5 - Math.random());
-  const include = includes.splice(0, 2);
-  const count = 24 / include.length;
-  const arr = [];
+const joiner = (arr, type) => {
+  return `&${type}` + arr.join(`&${type}`);
+};
+
+export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
+  console.log(page);
   dispatch(recipesFetching());
+  const excludes = [],
+    includes = ['eggs', 'fish'],
+    random = ['soy', 'chocolate'];
+  let count = 24;
+  const arr = [];
+  let excludesFoods = '',
+    connectedLabels = '';
+  if (labels.length) connectedLabels = joiner(labels, type);
+  let include = [];
+  if (q !== undefined) {
+    include.push(q);
+    if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
+  } else {
+    if (includes.length) {
+      if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
+      include = includes;
+      count = count / include.length;
+    } else {
+      include = random;
+      count = count / random.length;
+    }
+  }
   include.forEach(inclFoods => {
-    let excludesFoods;
-    if (excludes.length)
-      excludesFoods = '&excluded=' + excludes.join('&excluded=');
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=8d30ad7e&app_key=2e15423acdc14ff0c010ea43cd8c94e8&from=${page *
-        count}&to=${(page + 1) * count}${
-          excludesFoods ? excludesFoods : ''}`
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=3db55968&app_key=bc9ab2f54295ce6e82c5fa5164ac0ca0&from=${page *
+        count}&to=${count * (page + 1)}${connectedLabels}${excludesFoods}`
     )
       .then(recipes => recipes.json())
       .then(recipes => {
@@ -57,7 +63,7 @@ export const getRecipes = (page = 0) => dispatch => {
       })
       .catch(error => {
         console.log(error);
-        dispatch(recipesFetchingFailure());
+        dispatch(recipesFetchingFailure(arr));
       });
   });
 };

@@ -36,7 +36,16 @@ export const recipes = (state = initialStateForRecipes, action) => {
         }))
       }));
     case RECIPES_FETCHING_FAILURE:
-      return initialStateForRecipes;
+      return action.payload.map(item => ({
+        ...item,
+        hits: item.hits.map(recipe => ({
+          ...recipe,
+          recipe: {
+            ...recipe.recipe,
+            isFavourite: false
+          }
+        }))
+      }));
     default:
       return state;
   }
