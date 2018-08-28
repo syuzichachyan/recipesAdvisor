@@ -4,6 +4,8 @@ import injectSheet from 'react-jss';
 import styles from '../SignUpForm/styles';
 
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
+
 
 import renderField from '../AuthHelpers/renderField';
 
@@ -47,6 +49,14 @@ class Login extends Component {
                         </li>
                       </ul>
                     </div>
+                  </div>
+                  <div className={classes.signIn}>
+                    <h4>
+                      Already have an account{' '}
+                      <Link to="login" className={classes.a}>
+                        Login
+                      </Link>
+                    </h4>
                   </div>
                 </div>
               </div>
