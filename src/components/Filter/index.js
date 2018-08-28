@@ -60,6 +60,7 @@ class Filter extends Component {
   handleEnter = e => {
     if (e.key === 'Enter') {
       this.runSearch();
+      this.props.firstPage();
     }
   };
 

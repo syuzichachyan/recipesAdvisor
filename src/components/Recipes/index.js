@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Pagination from '../../containers/Pagination';
+import InfiniteScroll from 'react-infinite-scroll-component';
+// import Pagination from '../../containers/Pagination';
 import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
 import { Grid, Row } from 'react-bootstrap';
 
+let curPage = 0;
+
 class Recipes extends Component {
   constructor(props) {
     super(props);
 
     this.qJoiner = this.qJoiner.bind(this);
+    this.fetchMoreData = this.fetchMoreData.bind(this);
   }
 
   componentDidMount() {
-    const { curPage, getRecipes, type, labels, q } = this.props;
+    const { getRecipes, nextPage, curPage, type, labels, q } = this.props;
     getRecipes(curPage, labels, q, type);
+    nextPage(curPage + 1);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState === this.state) {
-      const { curPage, labels, firstPage, getRecipes, q, type } = this.props;
+      const { labels, firstPage, getRecipes, q, type } = this.props;
       if (labels !== prevProps.labels || q !== prevProps.q) {
+        curPage = 0;
         firstPage();
-        getRecipes(curPage, labels, q, type);
-      }
-      if (curPage !== prevProps.curPage) {
         getRecipes(curPage, labels, q, type);
       }
     }
@@ -49,17 +52,35 @@ class Recipes extends Component {
   qJoiner() {
     const { recipes } = this.props;
     let labels = '';
-    recipes.map(elem => {
-      labels = labels + elem.q + ', ';
-    });
+    recipes.map(elem => (labels = labels + elem.q + ', '));
     return labels.substring(0, labels.length - 2);
+  }
+
+  fetchMoreData() {
+    let time = 15000;
+    const { getRecipes, type, labels, q, curPage, nextPage } = this.props;
+    //   curPage ? (time = 15000) : (time = 500);
+    setTimeout(() => getRecipes(curPage, labels, q, type), time);
+    nextPage(curPage + 1);
   }
 
   render() {
     const { isRecipesFetching, recipes, classes } = this.props;
-    if (isRecipesFetching === false) {
-      return (
-        <Grid>
+    // if (isRecipesFetching === false) {
+    return (
+      <Grid>
+        <InfiniteScroll
+          style={{ overflow: 'hidden' }}
+          dataLength={recipes.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
           <Row className={classes.recipes}>
             {recipes.map(item =>
               item.hits.map((recipe, index) => {
@@ -75,21 +96,24 @@ class Recipes extends Component {
               })
             )}
           </Row>
-          {recipes.length ? (
-            recipes.some(item => item.count > 0) ? (
-              <Pagination type={'profile'} />
-            ) : (
-              <h1>
-                Sorry! There aren`t '{this.qJoiner()}'{' '}
-                {recipes.length === 1 ? 'recipe' : 'recipes'}
-              </h1>
-            )
+        </InfiniteScroll>
+        {recipes.length ? (
+          recipes.some(item => item.count > 0) ? (
+            ''
           ) : (
-            <Loader />
-          )}
-        </Grid>
-      );
-    } else return <Loader />;
+            <h1>
+              Sorry! There are not '{this.qJoiner()}'{' '}
+              {recipes.length === 1 ? 'recipe' : 'recipes'}
+            </h1>
+          )
+        ) : (
+          <Loader />
+        )}
+      </Grid>
+    );
+    // } else {
+    // return <Loader />;
+    // }
   }
 }
 

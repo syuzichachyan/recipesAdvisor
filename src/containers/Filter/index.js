@@ -3,7 +3,8 @@ import {
   addHealthLabel,
   addDietLabel,
   removeLabel,
-  getRecipes
+  getRecipes,
+  firstPage
 } from '../../actions';
 import Filter from '../../components/Filter';
 import { bindActionCreators } from 'redux';
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => {
       addHealthLabel,
       addDietLabel,
       removeLabel,
-      getRecipes
+      getRecipes,
+      firstPage
     },
     dispatch
   );

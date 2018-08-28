@@ -8,17 +8,16 @@ const recipesFetching = () => {
   return { type: RECIPES_FETCHING };
 };
 
-const recipesFetchingSuccess = recipes => {
+const recipesFetchingSuccess = recipe => {
   return {
     type: RECIPES_FETCHING_SUCCESS,
-    payload: recipes
+    payload: recipe
   };
 };
 
-const recipesFetchingFailure = recipes => {
+const recipesFetchingFailure = () => {
   return {
-    type: RECIPES_FETCHING_FAILURE,
-    payload: recipes
+    type: RECIPES_FETCHING_FAILURE
   };
 };
 
@@ -33,7 +32,6 @@ export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
     includes = ['eggs', 'fish'],
     random = ['soy', 'chocolate'];
   let count = 24;
-  const arr = [];
   let excludesFoods = '',
     connectedLabels = '';
   if (labels.length) connectedLabels = joiner(labels, type);
@@ -53,17 +51,16 @@ export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
   }
   include.forEach(inclFoods => {
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=3db55968&app_key=bc9ab2f54295ce6e82c5fa5164ac0ca0&from=${page *
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=a37bb1eb&app_key=3f704a5ce747891ed2b8978661054585&from=${page *
         count}&to=${count * (page + 1)}${connectedLabels}${excludesFoods}`
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        arr.push(recipes);
-        return dispatch(recipesFetchingSuccess(arr));
+        return dispatch(recipesFetchingSuccess(recipes));
       })
       .catch(error => {
         console.log(error);
-        dispatch(recipesFetchingFailure(arr));
+        dispatch(recipesFetchingFailure());
       });
   });
 };

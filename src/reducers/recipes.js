@@ -1,7 +1,8 @@
 import {
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS,
-  RECIPES_FETCHING
+  RECIPES_FETCHING,
+  FIRST_PAGE
 } from '../constants';
 
 const initialStateIsRecipesFetching = false;
@@ -23,29 +24,26 @@ export const isRecipesFetching = (
 
 const initialStateForRecipes = [];
 export const recipes = (state = initialStateForRecipes, action) => {
+  const recipe = action.payload;
   switch (action.type) {
     case RECIPES_FETCHING_SUCCESS:
-      return action.payload.map(item => ({
-        ...item,
-        hits: item.hits.map(recipe => ({
+      return [
+        ...state,
+        {
           ...recipe,
-          recipe: {
-            ...recipe.recipe,
-            isFavourite: false
-          }
-        }))
-      }));
+          hits: recipe.hits.map(item => ({
+            ...item,
+            recipe: {
+              ...item.recipe,
+              isFavourite: false
+            }
+          }))
+        }
+      ];
     case RECIPES_FETCHING_FAILURE:
-      return action.payload.map(item => ({
-        ...item,
-        hits: item.hits.map(recipe => ({
-          ...recipe,
-          recipe: {
-            ...recipe.recipe,
-            isFavourite: false
-          }
-        }))
-      }));
+      return [...state];
+    case FIRST_PAGE:
+      return initialStateForRecipes;
     default:
       return state;
   }

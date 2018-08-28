@@ -13,6 +13,7 @@
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.2",
+    "react-infinite-scroll-component": "^4.2.0",
     "react-jss": "^8.6.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

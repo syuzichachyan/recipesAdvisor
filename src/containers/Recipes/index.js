@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getRecipes, firstPage } from '../../actions';
+import { getRecipes, firstPage, nextPage } from '../../actions';
 import Recipes from '../../components/Recipes';
 
 const mapStateToProps = state => {
@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       getRecipes,
-      firstPage
+      firstPage,
+      nextPage
     },
     dispatch
   );
