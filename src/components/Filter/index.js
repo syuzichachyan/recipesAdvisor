@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
-import { Glyphicon } from 'react-bootstrap';
+//import { Glyphicon } from 'react-bootstrap';
 
 const diets = [
   ['balanced', 'Balanced'],
@@ -88,12 +88,11 @@ class Filter extends Component {
           }`}
           onClick={this.filterShowChange}
         >
-          <Glyphicon
-            glyph="glyphicon glyphicon-filter"
-            className={`${classes.dropdownOpenButton} ${
-              show ? classes.dropdownOpenButtonActive : ''
-            }`}
-          />
+          {/*<Glyphicon*/}
+          {/*glyph="glyphicon glyphicon-filter"*/}
+          {/*className={`${classes.dropdownOpenButton} ${*/}
+          // show ? classes.dropdownOpenButtonActive : '' // }`}
+          {/*/>*/}
         </div>
         <div
           className={`${classes.dropdownClose} ${

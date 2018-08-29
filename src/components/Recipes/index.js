@@ -6,7 +6,7 @@ import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
-import { Grid, Row } from 'react-bootstrap';
+//import { Grid, Row } from 'react-bootstrap';
 
 let curPage = 0;
 
@@ -68,7 +68,7 @@ class Recipes extends Component {
     const { isRecipesFetching, recipes, classes } = this.props;
     // if (isRecipesFetching === false) {
     return (
-      <Grid>
+      <div>
         <InfiniteScroll
           style={{ overflow: 'hidden' }}
           dataLength={recipes.length}
@@ -81,7 +81,7 @@ class Recipes extends Component {
             </p>
           }
         >
-          <Row className={classes.recipes}>
+          <div className={classes.recipes}>
             {recipes.map(item =>
               item.hits.map((recipe, index) => {
                 return (
@@ -95,7 +95,7 @@ class Recipes extends Component {
                 );
               })
             )}
-          </Row>
+          </div>
         </InfiniteScroll>
         {recipes.length ? (
           recipes.some(item => item.count > 0) ? (
@@ -109,7 +109,7 @@ class Recipes extends Component {
         ) : (
           <Loader />
         )}
-      </Grid>
+      </div>
     );
     // } else {
     // return <Loader />;

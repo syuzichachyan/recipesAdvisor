@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { PageHeader, Table } from 'react-bootstrap';
+//import { PageHeader, Table } from 'react-bootstrap';
 import './style.css';
 
 let recepte = [
@@ -156,45 +156,45 @@ class ProfilePage extends Component {
   render() {
     return (
       <div className="table-item">
-        <div className="table">
-          <div className="table-header">
-            <PageHeader>
-              Example page header <small>Subtext for header</small>
-            </PageHeader>
-          </div>
-          <Table hover responsive className="container">
-            <thead>
-              <tr>
-                <th style={{ color: 'rgb(0, 190, 0)' }}>day</th>
-                <th>Breakfast</th>
-                <th>Lunch</th>
-                <th>Dinner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recepte.map((el, i) => {
-                return (
-                  <tr key={i}>
-                    <td>
-                      <Link
-                        key={el.uri}
-                        to={{
-                          pathname: `/recepte/${el.uri.slice(51)}`,
-                          state: { modal: true }
-                        }}
-                      >
-                        {el.day}
-                      </Link>
-                    </td>
-                    {el.recepte.map((e, id) => {
-                      return <td>{e.label}</td>;
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
+        {/*<div className="table">*/}
+          {/*<div className="table-header">*/}
+            {/*<PageHeader>*/}
+              {/*Example page header <small>Subtext for header</small>*/}
+            {/*</PageHeader>*/}
+          {/*</div>*/}
+          {/*<Table hover responsive className="container">*/}
+            {/*<thead>*/}
+              {/*<tr>*/}
+                {/*<th style={{ color: 'rgb(0, 190, 0)' }}>day</th>*/}
+                {/*<th>Breakfast</th>*/}
+                {/*<th>Lunch</th>*/}
+                {/*<th>Dinner</th>*/}
+              {/*</tr>*/}
+            {/*</thead>*/}
+            {/*<tbody>*/}
+              {/*{recepte.map((el, i) => {*/}
+                {/*return (*/}
+                  {/*<tr key={i}>*/}
+                    {/*<td>*/}
+                      {/*<Link*/}
+                        {/*key={el.uri}*/}
+                        {/*to={{*/}
+                          {/*pathname: `/recepte/${el.uri.slice(51)}`,*/}
+                          {/*state: { modal: true }*/}
+                        {/*}}*/}
+                      {/*>*/}
+                        {/*{el.day}*/}
+                      {/*</Link>*/}
+                    {/*</td>*/}
+                    {/*{el.recepte.map((e, id) => {*/}
+                      {/*return <td>{e.label}</td>;*/}
+                    {/*})}*/}
+                  {/*</tr>*/}
+                {/*);*/}
+              {/*})}*/}
+            {/*</tbody>*/}
+          {/*</Table>*/}
+        {/*</div>*/}
       </div>
     );
   }
