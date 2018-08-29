@@ -127,13 +127,15 @@ export default {
     border: 'none'
   },
   collapsed: {
-    '@media (max-width: 768px)': {
+    '@media (max-width: 767px)': {
       backgroundColor: 'black',
       borderRadius: '2px',
       borderTop: '1px solid white'
     }
   },
   navLink: {
-    color: 'gray; !important'
+    '& > div': {
+      background: 'transparent'
+    }
   }
 };

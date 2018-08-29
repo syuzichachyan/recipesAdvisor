@@ -12,8 +12,9 @@ import {
 } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import injectSheet from 'react-jss';
+
+import Search from '../Search';
 
 import styles from './styles';
 
@@ -34,8 +35,12 @@ class Header extends Component {
       scrollPositionY: 0,
       isLogoAnimated: false
     };
-    this.onClick = this.onClick.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+
+    this.handleScroll = this.handleScroll.bind(this);
+    this.mouseEntered = this.mouseEntered.bind(this);
+    this.mouseLeaved = this.mouseLeaved.bind(this);
+    this.handleTogglerClick = this.handleTogglerClick.bind(this);
+    this.handleLogoClick = this.handleLogoClick.bind(this);
   }
 
   componentDidMount() {
@@ -46,28 +51,26 @@ class Header extends Component {
     return window.addEventListener('scroll', debounce(this.handleScroll, 32));
   }
 
-  handleScroll = () => {
+  handleScroll() {
     const scrollPositionY = +window.scrollY;
     return this.setState({ scrollPositionY });
-  };
+  }
 
-  mouseEntered = () => {
+  mouseEntered() {
     this.setState({ isLogoAnimated: true });
-    console.log('enter');
-  };
+  }
 
-  mouseLeaved = () => {
+  mouseLeaved() {
     this.setState({ isLogoAnimated: false });
-    console.log('leave');
-  };
+  }
 
-  onClick() {
+  handleTogglerClick() {
     this.setState({
       collapse: !this.state.collapse
     });
   }
 
-  handleClick() {
+  handleLogoClick() {
     const { firstPage } = this.props;
     firstPage();
   }
@@ -75,7 +78,8 @@ class Header extends Component {
   render() {
     const { classes } = this.props;
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
-    const isAuth = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('jwt');
+    const isAuth = jwt !== null;
     return (
       <React.Fragment>
         <header
@@ -102,21 +106,22 @@ class Header extends Component {
                     tag={'span'}
                     onMouseEnter={this.mouseEntered}
                     onMouseLeave={this.mouseLeaved}
+                    onClick={this.handleLogoClick}
                   >
                     {isLogoAnimated ? (
                       <Animation type="tada">
                         <Link to={'/'} className={classes.navBarBrand}>
-                          <strong>Navbar</strong>
+                          <strong>LOGO</strong>
                         </Link>
                       </Animation>
                     ) : (
                       <Link to={'/'} className={classes.navBarBrand}>
-                        <strong>Navbar</strong>
+                        <strong>LOGO</strong>
                       </Link>
                     )}
                   </NavbarBrand>
                   {!this.state.isWideEnough && (
-                    <NavbarToggler onClick={this.onClick} />
+                    <NavbarToggler onClick={this.handleTogglerClick} />
                   )}
                   <Collapse
                     isOpen={collapse}
@@ -124,7 +129,7 @@ class Header extends Component {
                     navbar
                   >
                     <NavbarNav right>
-                      <NavItem active>
+                      <NavItem>
                         <NavLink to="/home" className={classes.navLink}>
                           Home
                         </NavLink>
@@ -135,8 +140,22 @@ class Header extends Component {
                         </NavLink>
                       </NavItem>
                       <NavItem>
-                        <NavLink to="#">Pricing</NavLink>
+                        <NavLink to="/contactus">Contact</NavLink>
                       </NavItem>
+                      {isAuth ? (
+                        <NavItem>
+                          <NavLink to="/">Log Out</NavLink>
+                        </NavItem>
+                      ) : (
+                        <NavbarNav>
+                          <NavItem>
+                            <NavLink to="/login">Log In</NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink to="/signup">Sign Up</NavLink>
+                          </NavItem>
+                        </NavbarNav>
+                      )}
                     </NavbarNav>
                   </Collapse>
                 </Navbar>
@@ -144,7 +163,8 @@ class Header extends Component {
             </div>
           </Container>
         </header>
-        <div style={{ minHeight: '400px', backgroundColor: 'red' }} />
+        <div style={{ minHeight: '400px', backgroundColor: 'black' }} />
+        <Search />
       </React.Fragment>
     );
   }
