@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Preferences from '../components/Preferences';
-import LoginForm from '../containers/LoginForm';
-import SignUpForm from '../containers/SignUpForm';
+
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
-
-import CaloriesCalculator from '../components/CaloriesCalculator';
-import RecipeCard from '../components/Recipes/mdbCard';
-import WideRecipeCard from '../components/Recipes/mdbSmallCard';
-import MultiCarouselPage from '../components/Recipes/mdbAnimatedCards';
-
-import AuthenticatedComponent from '../containers/Authenticated';
+import Preferences from '../components/Preferences';
 import ProfilePage from '../components/Profile';
 import ReceptePage from '../components/Recepte';
+import CaloriesCalculator from '../components/CaloriesCalculator';
+import LoginForm from '../containers/LoginForm';
+import SignUpForm from '../containers/SignUpForm';
+import AuthenticatedComponent from '../containers/Authenticated';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -42,9 +38,6 @@ class ModalSwitch extends Component {
           <Route path="/signUp" component={SignUpForm} />
 
           <Route path="/calculator" component={CaloriesCalculator} />
-          <Route path="/card" component={RecipeCard} />
-          <Route path="/widecard" component={WideRecipeCard} />
-          <Route path="/anime" component={MultiCarouselPage} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />
