@@ -172,6 +172,7 @@ export default {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
     minHeight: '426px',
+    height: '482.72px',
     '& h3': {
       color: '#FFFFFF',
       fontSize: '2em',

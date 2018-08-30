@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import HealthyRecipes from '../../containers/HealthyRecipes';
-import SpecialDiets from '../../containers/SpetialDiets';
+import Recipes from '../../containers/Recipes';
 
 class FilteredRecipe extends Component {
   render() {
     const { type, labels } = this.props.filter;
     const { q } = this.props;
-    if (type === 'health') {
-      return <HealthyRecipes q={q} labels={labels} />;
-    }
-    return <SpecialDiets q={q} labels={labels} />;
+    return <Recipes q={q} labels={labels} type={type} />;
   }
 }
 export default FilteredRecipe;

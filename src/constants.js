@@ -1,34 +1,9 @@
 export const RECIPES_FETCHING = 'RECIPES_FETCHING';
 export const RECIPES_FETCHING_SUCCESS = 'RECIPES_FETCHING_SUCCESS';
 export const RECIPES_FETCHING_FAILURE = 'RECIPES_FETCHING_FAILURE';
-export const FAVOURITE_RECIPE = 'FAVOURITE_RECIPE';
-
-export const HEALTHY_RECIPES_FETCHING = 'HEALTHY_RECIPES_FETCHING';
-export const HEALTHY_RECIPES_FETCHING_SUCCESS =
-  'HEALTHY_RECIPES_FETCHING_SUCCESS';
-export const HEALTHY_RECIPES_FETCHING_FAILURE =
-  'HEALTHY_RECIPES_FETCHING_FAILURE';
-
-export const SPECIAL_DIETS_FETCHING = 'SPECIAL_DIETS_FETCHING';
-export const SPECIAL_DIETS_FETCHING_SUCCESS = 'SPECIAL_DIETS_FETCHING_SUCCESS';
-export const SPECIAL_DIETS_FETCHING_FAILURE = 'SPECIAL_DIETS_FETCHING_FAILURE';
-
-export const RANDOM_RECIPES_FETCHING = 'RANDOM_RECIPES_FETCHING';
-export const RANDOM_RECIPES_FETCHING_SUCCESS =
-  'RANDOM_RECIPES_FETCHING_SUCCESS';
-export const RANDOM_RECIPES_FETCHING_FAILURE =
-  'RANDOM_RECIPES_FETCHING_FAILURE';
 
 export const FIRST_PAGE = 'FIRST_PAGE';
 export const NEXT_PAGE = 'NEXT_PAGE';
-export const PREV_PAGE = 'PREV_PAGE';
-export const NEXT_HEALTHY_PAGE = 'NEXT_HEALTHY_PAGE';
-export const PREV_HEALTHY_PAGE = 'PREV_HEALTHY_PAGE';
-export const NEXT_SPECIAL_PAGE = 'NEXT_SPECIAL_PAGE';
-export const PREV_SPECIAL_PAGE = 'PREV_SPECIAL_PAGE';
-
-export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
-export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES';
 
 export const ADD_PREFERENCE = 'ADD_PREFERENCE';
 export const REMOVE_PREFERENCE = 'REMOVE_PREFERENCE';
@@ -51,3 +26,20 @@ export const RECEIVE_ALL_FAVORITES = ' RECEIVE_ALL_FAVORITES';
 export const ADD_HEALTH_LABEL = 'ADD_HEALTH_LABEL';
 export const ADD_DIET_LABEL = 'ADD_DIET_LABEL';
 export const REMOVE_FILTER_LABEL = 'REMOVE_FILTER_LABEL';
+export const minTime = new Date();
+minTime.setHours(7, 0, 0);
+export const maxTime = new Date();
+maxTime.setHours(20, 0, 0);
+export const calendarInitialState = {
+  events: [],
+  recipes: [],
+  modal: {
+    id: null,
+    name: null,
+    desc: null,
+    start: new Date(2018, 4, 4, 7, 0, 0),
+    end: new Date(2018, 4, 4, 8, 0, 0)
+  },
+  modalOpen: false,
+  recipesOpen: false
+};

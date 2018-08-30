@@ -19,7 +19,13 @@ class Home extends Component {
         <Route
           path="/home/search"
           render={({ location }) => (
-            <FilteredRecipe q={urlToProperty(location.search).q[0]} />
+            <FilteredRecipe
+              q={
+                urlToProperty(location.search).q
+                  ? urlToProperty(location.search).q[0]
+                  : ''
+              }
+            />
           )}
         />
         <Route path={'/home/favourites'} component={() => <Favourites />} />
