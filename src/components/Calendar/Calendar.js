@@ -34,7 +34,15 @@ class Dnd extends Component {
 
   componentDidMount() {
     const newEvents = [];
-    const newRecipes = [];
+    const newRecipes = []
+      // GetEvents().then(event => {
+      //     event.forEach(doc => {
+      //         newEvents.push(doc.data())
+      //         this.setState({
+      //             events: newEvents,
+      //         })
+      //     });
+      // })
   }
   moveEvent({ event, start, end }) {
     const { events } = this.state;
@@ -47,6 +55,13 @@ class Dnd extends Component {
       this.setState({
         events: nextEvents
       });
+        // UpdateEvents(event.id).update({start, end}).then(
+        //     this.setState({
+        //         events: nextEvents,
+        //     })
+        // ).catch(error => {
+        //     console.error('Update error', error);
+        // });
     } else {
       const newEventId = uuidV4();
       updatedEvent = {
@@ -75,6 +90,13 @@ class Dnd extends Component {
         ? { ...existingEvent, start, end }
         : existingEvent;
     });
+      // UpdateEvents(event.id).update({start, end}).then(
+      //     this.setState({
+      //         events: nextEvents,
+      //     })
+      // ).catch(error => {
+      //     console.error('Update error', error);
+      // });
 
     this.setState({
       events: nextEvents
@@ -107,7 +129,13 @@ class Dnd extends Component {
         ? { ...existingEvent, name, desc }
         : existingEvent;
     });
-
+      // UpdateEvents(id).update({title, desc}).then(
+      //     this.setState({
+      //         events: nextEvents,
+      //     })
+      // ).catch(error => {
+      //     console.error('Update Event error', error);
+      // });
     this.setState({
       events: nextEvents
     });
@@ -132,7 +160,13 @@ class Dnd extends Component {
     const nextEvents = events.filter(existingEvent => {
       return existingEvent.id !== id;
     });
-
+      // delete(id).then(
+      //     this.setState({
+      //         events: nextEvents,
+      //     })
+      // ).catch(error => {
+      //     console.error('Delete Event error', error);
+      // });
     this.setState({
       events: nextEvents
     });
