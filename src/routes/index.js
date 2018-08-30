@@ -1,3 +1,4 @@
+import Calendar from '../components/Calendar/Calendar';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -22,7 +23,6 @@ class ModalSwitch extends Component {
       this.previousLocation = this.props.location;
     }
   }
-
   render() {
     const { location } = this.props;
     const isModal = !!(
@@ -36,8 +36,8 @@ class ModalSwitch extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
-
           <Route path="/calculator" component={CaloriesCalculator} />
+          <Route path="/calendar" component={Calendar} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />

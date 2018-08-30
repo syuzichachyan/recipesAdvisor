@@ -19,9 +19,9 @@ class RoutesWithHeaderAndFooter extends Component {
         <Route path="/aboutUs" component={AboutUs} />
         <Route exact path="/" component={Recipes} />
         <Route path="/contactUs" component={ContactUs} />
-        <PrivateRoutes path="/home" component={Home} />
-        <PrivateRoutes path="/settings" component={Settings} />
-        <PrivateRoutes path="/favourites" component={Favourites} />
+        <Route path="/home" component={Home} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/favourites" component={Favourites} />
         <Footer />
       </React.Fragment>
     );
