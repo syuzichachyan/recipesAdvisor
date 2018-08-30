@@ -40,7 +40,6 @@ class Search extends Component {
   render() {
     const { classes } = this.props;
     const { isOpen, isSearchIconVisible, isCloseIconVisible } = this.state;
-    console.log(isOpen);
     return (
       <form className={`${classes.form}`}>
         <input

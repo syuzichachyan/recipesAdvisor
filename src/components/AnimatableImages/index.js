@@ -26,7 +26,6 @@ class AnimatableImages extends Component {
     } else {
       setTimeout(() => this.setState({ index: 0 }), 7000);
     }
-    console.log(index);
   }
 
   componentDidUpdate() {
@@ -36,7 +35,6 @@ class AnimatableImages extends Component {
     } else {
       setTimeout(() => this.setState({ index: 0 }), 7000);
     }
-    console.log(index);
   }
 
   render() {

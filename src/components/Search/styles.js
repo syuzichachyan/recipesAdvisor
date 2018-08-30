@@ -10,8 +10,11 @@ export default {
     height: '35px',
     border: '2px solid gray',
     borderRadius: '1000px',
-    transitionProperty: 'min-width, width, height, border-radius',
-    transitionDuration: '1s, 1s, .5s, 1s',
+    paddingLeft: '17px',
+    paddingRight: '25px',
+    transitionProperty:
+      'min-width, width, height, border-radius, padding-right',
+    transitionDuration: '1s, 1s, .5s, 1s, 1s',
     '&:focus': {
       outline: 0,
       borderColor: 'gray',
