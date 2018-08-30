@@ -6,6 +6,9 @@ import SignUpForm from '../containers/SignUpForm';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 
 import CaloriesCalculator from '../components/CaloriesCalculator';
+import RecipeCard from '../components/Recipes/mdbCard';
+import WideRecipeCard from '../components/Recipes/mdbSmallCard';
+import MultiCarouselPage from '../components/Recipes/mdbAnimatedCards';
 
 import AuthenticatedComponent from '../containers/Authenticated';
 import ProfilePage from '../components/Profile';
@@ -37,8 +40,12 @@ class ModalSwitch extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
+
           <Route path="/calculator" component={CaloriesCalculator} />
-          <Route path="/" component={RoutesWithHeaderAndFooter} />
+          <Route path="/card" component={RecipeCard} />
+          <Route path="/widecard" component={WideRecipeCard} />
+          <Route path="/anime" component={MultiCarouselPage} />
+          <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />
       </div>

@@ -52,7 +52,7 @@ export default {
       color: '#FFFFFF'
     }
   },
-
+  
   welcome: {
     fontSize: '3em',
     color: '#FFFFFF',
@@ -60,9 +60,14 @@ export default {
     fontWeight: '600',
     textTransform: 'uppercase'
   },
-
+  signUpMessage: {
+    marginTop: "5%",
+    color: '#FFFFFF'
+  },
   a: {
+    marginLeft: '5%',
     textDecoration: 'none',
+    color:'#f44336',
     transition: '0.5s all',
     WebkitTransition: '0.5s all',
     MozTransition: '0.5s all',
@@ -113,7 +118,7 @@ export default {
       display: 'block',
       float: 'left'
     },
-   
+    
   },
   contentLeft: {
     float: 'left',
@@ -151,7 +156,7 @@ export default {
       lineHeight: '1.8em'
     }
   },
-
+  
   signIn: {
     '& h4': {
       textAlign: 'center',
@@ -167,12 +172,12 @@ export default {
       }
     }
   },
-
+  
   signUpForm: {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
-    minHeight: '426px',
-    height: '482.72px',
+    // minHeight: '400px',
+    height: '400.72px',
     '& h3': {
       color: '#FFFFFF',
       fontSize: '2em',
@@ -200,7 +205,7 @@ export default {
     margin: '0 0 1.5em 0',
     width: '93%'
   },
-
+  
   password: {
     outline: 'none',
     padding: '1em',
@@ -211,7 +216,7 @@ export default {
     margin: '0 0 1.5em 0',
     width: '93%'
   },
-
+  
   button: {
     color: '#ffffff',
     fontSize: '.9em',
@@ -233,7 +238,6 @@ export default {
       border: 'solid 1px #FFFFFF'
     }
   },
-
   footer: {
     margin: '2em 0 0 0',
     textAlign: 'center',
@@ -242,20 +246,10 @@ export default {
       color: '#FFFFFF'
     }
   },
-
+  
   '@media (max-width: 1440px)': {
     wrap: {
-      width: '55%'
-    }
-  },
-  '@media (max-width: 1366px)': {
-    wrap: {
-      width: '60%'
-    }
-  },
-  '@media (max-width: 1080px)': {
-    wrap: {
-      width: '75%'
+      width: '70%'
     }
   },
   '@media (max-width: 991px)': {
@@ -295,7 +289,7 @@ export default {
     },
     contentMain: {
       float: 'none',
-      width: '100%',
+      width: '70%',
     },
     signUpForm: {
       minHeight: '425px'

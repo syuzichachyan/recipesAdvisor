@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 
-import styles from '../SignUpForm/styles';
+import styles from './styles';
 
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import renderField from '../AuthHelpers/renderField';
 
@@ -37,47 +38,12 @@ class Login extends Component {
     return (
       <div>
         <div>
-          <h1 className={classes.welcome}>Welcome To Recipes Advisor</h1>
           <div className={classes.wrap}>
             <div className={classes.grids}>
-              <div className={classes.contentLeft}>
-                <div className={classes.contentInfo}>
-                  <h2>What Are We?</h2>
-                  <div className={classes.slider}>
-                    <div className={classes.callbacksContainer}>
-                      <ul
-                        className={`${classes.rslides} ${classes.callbacks}`}
-                        id="slider4"
-                      >
-                        <li>
-                          <div className={classes.descriptionBanner}>
-                            <h3>A Simple Recipes Website</h3>
-                            <p>
-                              Recipes Advisor is a website that will help you to
-                              get interesting recipes based on the products you
-                              like and avoid the recipes that might be
-                              potentially harmful for you.{' '}
-                            </p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className={classes.descriptionBanner}>
-                            <h3>What You Do ?</h3>
-                            <p>
-                              Set up your food prefferences once and get
-                              interesting recipes daily.
-                            </p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div className={classes.contentMain}>
                 <div className={classes.signUpForm}>
-                  <h4>Login to start the amazing recipes journey</h4>
-                  <form method="post" onSubmit={this.handleSubmit}>
+                  <h4>Login to start the journey of amazing recipes</h4>
+                  <form method="post">
                     <Field
                       className={classes.text}
                       name="email"
@@ -100,6 +66,12 @@ class Login extends Component {
                     >
                       Login
                     </button>
+                    <div className={classes.signUpMessage}>
+                      Not a member ?
+                      <Link to="signup" className={classes.a}>
+                        Sign Up
+                      </Link>
+                    </div>
                   </form>
                 </div>
               </div>
