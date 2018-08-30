@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Animation,
   Container,
+  Fa,
   Navbar,
   NavbarBrand,
   Collapse,
@@ -16,6 +17,7 @@ import injectSheet from 'react-jss';
 
 import AnimatableImages from '../AnimatableImages';
 import Search from '../Search';
+import ScrollButton from './ScrollButton';
 
 import styles from './styles';
 
@@ -166,6 +168,7 @@ class Header extends Component {
         </header>
         <AnimatableImages />
         <Search />
+        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
       </React.Fragment>
     );
   }
