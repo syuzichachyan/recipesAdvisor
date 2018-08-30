@@ -8,7 +8,7 @@ class WideRecipeCard extends Component {
     <Container style={{maxWidth: '30%'}}>
         <div style={newsStyle}>
           <Row>
-            <Col  style={{width: '200px'}} md="3">
+            <Col  md="3">
               <View hover rounded className="z-depth-1-half mb-4">
                 <img className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Sample image"/>
                 <a>

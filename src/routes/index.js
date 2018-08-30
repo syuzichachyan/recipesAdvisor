@@ -7,6 +7,7 @@ import LoginForm  from '../containers/LoginForm';
 import CaloriesCalculator from '../components/CaloriesCalculator';
 import RecipeCard from '../components/Recipes/mdbCard';
 import WideRecipeCard from '../components/Recipes/mdbSmallCard';
+import ReversedCascade from '../components/mdbReversedCascade'
 import MultiCarouselPage from '../components/Recipes/mdbAnimatedCards'
 
 class Routers extends Component {
@@ -21,6 +22,7 @@ class Routers extends Component {
           <Route path="/card" component={RecipeCard}/>
           <Route path="/widecard" component={WideRecipeCard}/>
           <Route path="/anime" component={MultiCarouselPage}/>
+          <Route path="/cascade" component={ReversedCascade}/>
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
       </Router>
