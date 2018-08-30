@@ -10,6 +10,7 @@ import CaloriesCalculator from '../components/CaloriesCalculator';
 import ReversedCascade from '../components/mdbReversedCascade'
 import LoginForm from '../containers/LoginForm';
 import SignUpForm from '../containers/SignUpForm';
+import RecipeCard from '../components/Recipe/Card'
 import AuthenticatedComponent from '../containers/Authenticated';
 
 class ModalSwitch extends Component {
@@ -42,6 +43,7 @@ class ModalSwitch extends Component {
           <Route path="/cascade" component={ReversedCascade}/>
           <Route path="/calculator" component={CaloriesCalculator} />
           <Route path="/calendar" component={Calendar} />
+          <Route path='/card' component={RecipeCard}/>
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />
