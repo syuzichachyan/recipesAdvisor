@@ -1,9 +1,9 @@
-import thunk from 'redux-thunk';
-import { applyMiddleware, createStore, compose } from 'redux';
-import rootReducer from '../reducers';
+import thunk from "redux-thunk";
+import { applyMiddleware, createStore, compose } from "redux";
+import rootReducer from "../reducers";
 
 const store =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === "production"
     ? createStore(rootReducer, applyMiddleware(thunk))
     : createStore(
         rootReducer,
@@ -13,6 +13,6 @@ const store =
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )
       );
-// store.subscribe(() => console.log(store.getState()));
+ store.subscribe(() => console.log(store.getState()));
 
 export default store;

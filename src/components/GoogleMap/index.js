@@ -26,4 +26,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyB60RMlfliecFnXM-SNDJj4QjNVdSymk4w'
+
 })(injectSheet(styles)(MapContainer));
+
+

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import SmallCard from './SmallCard';
+import Card from './Card';
+import AnimatedCard from './AnimatedCard';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -8,7 +10,7 @@ class Recipe extends Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
   }
 
   static propTypes = {
@@ -22,37 +24,34 @@ class Recipe extends Component {
     type: PropTypes.string
   };
 
-  handleClick() {
+  handleFavouriteClick(e) {
+    e.preventDefault();
     const {
-      addToFavourites,
-      removeFromFavourites,
       recipe,
-      favouriteRecipe,
-      index,
-      q,
-      type
+      fetchFavourites,
+      deleteFetchFavourites,
+      history
     } = this.props;
     const { isFavourite } = recipe;
-    isFavourite ? removeFromFavourites(recipe.uri) : addToFavourites(recipe);
-    favouriteRecipe(index, q, type);
+    const jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      history.push('/Login');
+    }
+    isFavourite
+      ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
+      : fetchFavourites(
+          {
+            favoriteId: recipe.uri.slice(45),
+            recepte: { ...recipe, isFavourite: true }
+          },
+          jwt
+        );
   }
 
   render() {
     const { recipe, classes } = this.props;
     const { isFavourite } = recipe;
-    return (
-      <div className={classes.recipe}>
-        <button className={classes.glyph} onClick={this.handleClick}>
-          {isFavourite ? (
-            <Glyphicon glyph={'heart'} className={classes.glyphsIcon} />
-          ) : (
-            <Glyphicon glyph={'heart-empty'} className={classes.glyphsIcon} />
-          )}
-        </button>
-        <img alt="Not Found" src={recipe.image} />
-        <h3>{recipe.label}</h3>
-      </div>
-    );
+    return <Card />;
   }
 }
 

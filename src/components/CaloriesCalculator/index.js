@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import styles from './styles';
+import Header from '../../containers/Header';
 
 const activities = ['Sedentary lifestyle', 'Slightly active', 'Moderately active', 'Active lifestyle', 'Very active lifestyle'];
 const genders = ['male', 'female'];
@@ -121,6 +122,7 @@ class CaloriesCalculator extends Component {
     
     return (
       <div>
+         <Header/>
         <h1 className={classes.welcome}>Please Fill In The Form To Calculate The Calories</h1>
         <div className={classes.boxWrap}>
           <div className={classes.boxLeft}>

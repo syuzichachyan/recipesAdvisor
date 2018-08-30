@@ -1,20 +1,25 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import Routes from "./routes";
+import "./index.css";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import Routers from './routes';
-import store from './store/configureStore';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import Routers from "./routes";
+import store from "./store/configureStore";
+import "./index.css";
 
-import 'font-awesome/css/font-awesome.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
+import "font-awesome/css/font-awesome.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
-render(
+ReactDOM.render(
   <Provider store={store}>
-    <Routers />
+    <MuiThemeProvider>
+      <Routes />
+    </MuiThemeProvider>
   </Provider>,
-  document.getElementById('root')
-);
-registerServiceWorker();
+
+  document.getElementById("root")
+)

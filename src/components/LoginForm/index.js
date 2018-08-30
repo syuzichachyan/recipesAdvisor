@@ -6,11 +6,34 @@ import styles from './styles';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-
 import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { fetchLogin } = this.props;
+    const { email, password } = this.props;
+    fetchLogin(
+      {
+        email: email,
+        password: password
+      },
+      this.props.history.push('/')
+    );
+    console.log({
+      email: email,
+      password: password
+    });
+  }
+
   render() {
+    localStorage.clear();
     const { classes, valid } = this.props;
     return (
       <div>
@@ -35,7 +58,12 @@ class Login extends Component {
                       type="password"
                       placeholder="Password"
                     />
-                    <button className={classes.button} type="submit" disabled={!valid}>
+
+                    <button
+                      className={classes.button}
+                      type="submit"
+                      disabled={!valid}
+                    >
                       Login
                     </button>
                     <div className={classes.signUpMessage}>

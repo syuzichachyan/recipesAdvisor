@@ -1,53 +1,62 @@
 import {
-  FAVOURITE_RECIPE,
   RECIPES_FETCHING,
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS
 } from '../constants';
 
-export const favouriteRecipe = (index, q) => ({
-  type: FAVOURITE_RECIPE,
-  payload: {
-    index,
-    q
-  }
-});
-
 const recipesFetching = () => {
   return { type: RECIPES_FETCHING };
 };
 
-const recipesFetchingSuccess = recipes => {
+const recipesFetchingSuccess = recipe => {
   return {
     type: RECIPES_FETCHING_SUCCESS,
-    payload: recipes
+    payload: recipe
   };
 };
 
 const recipesFetchingFailure = () => {
-  return { type: RECIPES_FETCHING_FAILURE };
+  return {
+    type: RECIPES_FETCHING_FAILURE
+  };
 };
 
-export const getRecipes = (page = 0) => dispatch => {
-  const excludes = [],
-    includes = ['eggs'];
-  let count = 24;
-  if (includes.length) count = 24 / includes.length;
-  const arr = [];
+const joiner = (arr, type) => {
+  return `&${type}` + arr.join(`&${type}`);
+};
+
+export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
+  console.log(page);
   dispatch(recipesFetching());
-  let exludecFoods = '';
-  includes.forEach(inclFoods => {
-    excludes.forEach(
-      food => (exludecFoods = exludecFoods + `&excluded=${food}`)
-    );
+  const excludes = [],
+    includes = ['eggs', 'fish'],
+    random = ['soy', 'chocolate'];
+  let count = 24;
+  let excludesFoods = '',
+    connectedLabels = '';
+  if (labels.length) connectedLabels = joiner(labels, type);
+  let include = [];
+  if (q !== undefined) {
+    include.push(q);
+    if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
+  } else {
+    if (includes.length) {
+      if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
+      include = includes;
+      count = count / include.length;
+    } else {
+      include = random;
+      count = count / random.length;
+    }
+  }
+  include.forEach(inclFoods => {
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=8d30ad7e&app_key=2e15423acdc14ff0c010ea43cd8c94e8&from=${page *
-        count}&to=${(page + 1) * count}&` + exludecFoods
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=a37bb1eb&app_key=3f704a5ce747891ed2b8978661054585&from=${page *
+        count}&to=${count * (page + 1)}${connectedLabels}${excludesFoods}`
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        arr.push(recipes);
-        return dispatch(recipesFetchingSuccess(arr));
+        return dispatch(recipesFetchingSuccess(recipes));
       })
       .catch(error => {
         console.log(error);

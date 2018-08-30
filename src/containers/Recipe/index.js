@@ -1,29 +1,22 @@
 import { connect } from 'react-redux';
 
-import {
-  addToFavourites,
-  favouriteRecipe,
-  favouriteSpecialRecipe,
-  removeFromFavourites
-} from '../../actions';
+import { favouriteRecipe, favouriteSpecialRecipe } from '../../actions';
 import Recipe from '../../components/Recipe';
+import {
+  deleteFetchFavourites,
+  fetchFavourites
+} from '../../actions/favourites';
+
+const mapStateToProps = state => ({
+  favourites: state.favourites
+});
 
 const mapDispatchToProps = dispatch => ({
-  favouriteRecipe: (index, q, type) => {
-    switch (type) {
-      case 'special':
-        return dispatch(favouriteSpecialRecipe(index, q));
-      case 'healthy':
-        return dispatch(favouriteSpecialRecipe(index, q));
-      default:
-        return dispatch(favouriteRecipe(index, q));
-    }
-  },
-  addToFavourites: recipe => dispatch(addToFavourites(recipe)),
-  removeFromFavourites: uri => dispatch(removeFromFavourites(uri))
+  fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
+  deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt))
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(Recipe);
