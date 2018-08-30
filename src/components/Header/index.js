@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
+import AnimatableImages from '../AnimatableImages';
 import Search from '../Search';
 
 import styles from './styles';
@@ -163,7 +164,7 @@ class Header extends Component {
             </div>
           </Container>
         </header>
-        <div style={{ minHeight: '400px', backgroundColor: 'black' }} />
+        <AnimatableImages />
         <Search />
       </React.Fragment>
     );

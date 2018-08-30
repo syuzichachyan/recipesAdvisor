@@ -101,12 +101,13 @@ export default {
     width: '100%',
     height: 'auto',
     left: 0,
-    marginTop: '20px',
-    transitionDuration: '500ms, 500ms'
+    paddingTop: '20px',
+    transitionDuration: '500ms, 500ms',
+    zIndex: 1030
   },
   sticky: {
     backgroundColor: 'black',
-    marginTop: 0,
+    paddingTop: 0,
     boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)'
   },
   container: {
