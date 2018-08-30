@@ -19,7 +19,8 @@ export default {
       height: '270px'
     },
     height: '210px',
-    width: '100%'
+    width: '100%',
+    marginBottom: '50px'
   },
   opacity: {
     height: '100%',
@@ -54,7 +55,6 @@ export default {
     transitionDuration: '2s'
   },
   dNone: {
-    // display: 'none',
     opacity: '0'
   }
 };
