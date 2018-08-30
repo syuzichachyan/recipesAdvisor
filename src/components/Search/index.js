@@ -54,7 +54,7 @@ class Search extends Component {
         />
         <Fa
           icon={'close'}
-          size={'lg'}
+          size={'sm'}
           className={`${classes.closeIcon} ${
             isCloseIconVisible ? '' : classes.dNone
           }`}

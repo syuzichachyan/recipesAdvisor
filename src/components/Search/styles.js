@@ -40,7 +40,9 @@ export default {
   closeIcon: {
     color: 'gray',
     position: 'relative',
-    right: '26px !important',
+    right: '23px !important',
+    bottom: '2px',
+    fontWeight: 100,
     cursor: 'pointer'
   }
 };
